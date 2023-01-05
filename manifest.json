@@ -1,0 +1,13 @@
+{
+  "name": "UnstableCards",
+  "version_number": "1.0.0",
+  "website_url": "https://github.com/thunderstore-io",
+  "description": "Unstable cards that are hilariously goofy.",
+  "dependencies": [
+    "Root-RarityLib-1.2.1",
+    "willis81808-UnboundLib-3.2.4",
+    "Pykess-CardChoiceSpawnUniqueCardPatch-0.1.9",
+    "Pykess-ModdingUtils-0.4.3",
+    "willuwontu-BlockForcePatch-1.0.1"
+  ]
+}
