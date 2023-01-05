@@ -37,7 +37,7 @@
       <HintPath>E:\Program files (x86)\Steam\steamapps\common\ROUNDS\Rounds_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="WillsWackyManagers">
-      <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Default\BepInEx\plugins\willuwontu-WillsWackyManagers\WillsWackyManagers.dll</HintPath>
+      <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Testing\BepInEx\plugins\willuwontu-WillsWackyManagers\WillsWackyManagers.dll</HintPath>
     </Reference>
   </ItemGroup>
 

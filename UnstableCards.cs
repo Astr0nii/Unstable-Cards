@@ -57,6 +57,7 @@ namespace UnstableCards
             CustomCard.BuildCard<UraniumPayload>();
             CustomCard.BuildCard<TackShooter>();
             CustomCard.BuildCard<StabbinLicense>();
+            CustomCard.BuildCard<BomberVest>();
 
             // DeBuffs
             CustomCard.BuildCard<WhiskeyBottle>();
@@ -109,6 +110,29 @@ namespace UnstableCards
 
             return (A_ExplosionSpark, explosionCustom, explosion);
         }
+        public static (GameObject AddToProjectile, GameObject effect, Explosion explosion) LoadInstantExplosion(string name, Gun? gun = null)
+        {
+            // load explosion effect from Explosive Bullet card
+            GameObject? explosiveBullet = (GameObject)Resources.Load("0 cards/Explosive bullet");
 
+            Gun explosiveGun = explosiveBullet.GetComponent<Gun>();
+
+            if (gun != null)
+            {
+                // change the gun sounds
+                gun.soundGun.AddSoundImpactModifier(explosiveGun.soundImpactModifier);
+            }
+
+            // load assets
+            GameObject A_ExplosionSpark = explosiveGun.objectsToSpawn[0].AddToProjectile;
+            GameObject explosionCustom = Instantiate(explosiveGun.objectsToSpawn[0].effect);
+            explosionCustom.transform.position = new Vector3(1000, 0, 0);
+            explosionCustom.hideFlags = HideFlags.HideAndDontSave;
+            explosionCustom.name = name;
+            DestroyImmediate(explosionCustom.GetComponent<RemoveAfterSeconds>());
+            Explosion explosion = explosionCustom.GetComponent<Explosion>();
+
+            return (A_ExplosionSpark, explosionCustom, explosion);
+        }
     }
 }

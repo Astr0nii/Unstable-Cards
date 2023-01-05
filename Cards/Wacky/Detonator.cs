@@ -13,28 +13,56 @@ using static UnityEngine.Random;
 
 namespace UnstableCards.Cards.Wacky
 {
-    class StabbinLicense : CustomCard
+    class Detonator : CustomCard
     {
+        private readonly ObjectsToSpawn[] explosionToSpawn = new ObjectsToSpawn[1];
+
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            gun.destroyBulletAfter = 0.05f;
+            gun.destroyBulletAfter = 0.02f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            characterStats.movementSpeed *= 1.1f;
-            gun.bulletDamageMultiplier = 2.0f;
+            // add explosion effect
+            if (explosionToSpawn[0] == null)
+            {
+                (GameObject AddToProjectile, GameObject effect, Explosion explosion) = UnstableCards.LoadInstantExplosion("explosionBomberVest", gun);
+
+                explosion.force *= 16f;
+                explosion.range *= 8f;
+
+                explosionToSpawn[0] = new ObjectsToSpawn
+                {
+                    AddToProjectile = AddToProjectile,
+                    direction = ObjectsToSpawn.Direction.forward,
+                    effect = effect,
+                    normalOffset = 1f,
+                    scaleFromDamage = 1f,
+                    scaleStackM = 0.2f,
+                    scaleStacks = true,
+                    spawnAsChild = false,
+                    spawnOn = ObjectsToSpawn.SpawnOn.all,
+                    stacks = 1,
+                    stickToAllTargets = false,
+                    stickToBigTargets = false,
+                    zeroZ = true,
+                    
+                };
+            }
+            gun.objectsToSpawn = gun.objectsToSpawn.Concat(explosionToSpawn).ToArray();
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
+            gun.objectsToSpawn = gun.objectsToSpawn.Except(explosionToSpawn).ToArray();
         }
 
         protected override string GetTitle()
         {
-            return "Stabbin License";
+            return "Detonator";
         }
         protected override string GetDescription()
         {
-            return "Officer: Oi mate you got a license for stabbin that bloke? *shows license*. Officer: Fair enough, keep stabbin him.";
+            return "Blast everything (including yourself) into oblivion.";
         }
         protected override GameObject GetCardArt()
         {
@@ -50,31 +78,17 @@ namespace UnstableCards.Cards.Wacky
             {
                 new CardInfoStat()
                 {
-                    positive = true,
-                    stat = "Sharpened Blade",
-                    amount = "2x Damage",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
-                },
-                new CardInfoStat()
-                {
-                    positive = true,
-                    stat = "Movement Speed",
-                    amount = "+10%",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
-                },
-                new CardInfoStat()
-                {
                     positive = false,
-                    stat = "Bullet Range",
-                    amount = "Melee",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotLower
+                    stat = "Self Explosion",
+                    amount = "explosion!",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
                 }
             };
 
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.ColdBlue;
+            return CardThemeColor.CardThemeColorType.DestructiveRed;
         }
         public override string GetModName()
         {
