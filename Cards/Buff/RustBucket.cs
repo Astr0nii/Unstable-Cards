@@ -1,9 +1,4 @@
 ﻿using RarityLib.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
@@ -21,7 +16,6 @@ namespace UnstableCards.Cards.Buffs
             var misfire = player.gameObject.GetOrAddComponent<Misfire_Mono>();
             misfire.misfireChance += 50;
             gun.damage *= 1.5f;
-            gunAmmo.maxAmmo += 50;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
