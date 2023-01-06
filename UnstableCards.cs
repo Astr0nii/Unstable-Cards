@@ -35,7 +35,7 @@ namespace UnstableCards
     {
         private const string ModId = "com.Astr0ni.Rounds.UnstableCards";
         private const string ModName = "Unstable Cards";
-        private const string Version = "2.0.0"; // Mod version (major.minor.patch)
+        private const string Version = "1.6.0"; // Mod version (major.minor.patch)
 
         public const string ModInitialsWacky = "UC : Wacky Cards";
         public const string ModInitialsBuff = "UC : Buff Cards";
