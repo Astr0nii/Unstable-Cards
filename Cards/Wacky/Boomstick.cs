@@ -25,7 +25,6 @@ namespace UnstableCards.Cards.Wacky
             gun.numberOfProjectiles += 5;
             gunAmmo.reloadTimeAdd += 2.0f;
             gun.bulletDamageMultiplier = 0.6f;
-            gun.recoilMuiltiplier += 1.5f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {

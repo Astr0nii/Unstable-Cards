@@ -21,9 +21,9 @@ namespace UnstableCards.Cards.God
         {
 
             characterStats.lifeSteal = 100f;
-            characterStats.secondsToTakeDamageOver = 5;
+            characterStats.secondsToTakeDamageOver = 15;
             characterStats.sizeMultiplier = 2.5f;
-
+            characterStats.respawns = 2;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -31,7 +31,7 @@ namespace UnstableCards.Cards.God
 
         protected override string GetTitle()
         {
-            return "Anima devorantis";
+            return "Anima Devorantis";
         }
         protected override string GetDescription()
         {
@@ -59,8 +59,15 @@ namespace UnstableCards.Cards.God
                 new CardInfoStat()
                 {
                     positive = true,
+                    stat = "Additional Lives",
+                    amount = "+2",
+                    simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
                     stat = "Soul Protector",
-                    amount = "+5.0s until DMG effects you",
+                    amount = "+15.0s until DMG effects you",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()

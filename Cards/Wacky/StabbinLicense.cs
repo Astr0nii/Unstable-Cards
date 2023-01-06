@@ -22,7 +22,7 @@ namespace UnstableCards.Cards.Wacky
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
             characterStats.movementSpeed *= 1.1f;
-            gun.bulletDamageMultiplier = 2.0f;
+            gun.bulletDamageMultiplier = 4.0f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -52,8 +52,8 @@ namespace UnstableCards.Cards.Wacky
                 {
                     positive = true,
                     stat = "Sharpened Blade",
-                    amount = "2x Damage",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
+                    amount = "x4 Damage",
+                    simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
                 },
                 new CardInfoStat()
                 {

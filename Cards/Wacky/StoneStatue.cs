@@ -8,18 +8,17 @@ using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 
-namespace UnstableCards.Cards.Debuffs
+namespace UnstableCards.Cards.Wacky
 {
-    class Weakheart : CustomCard
+    class StoneStatue : CustomCard
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            characterStats.health *= 0.85f;
-            characterStats.jump *= 0.5f;
-            characterStats.movementSpeed *= 0.75f;
+            characterStats.health *= 10.0f;
+            characterStats.movementSpeed = 0.0f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -27,11 +26,11 @@ namespace UnstableCards.Cards.Debuffs
 
         protected override string GetTitle()
         {
-            return "Weak Heart";
+            return "Stone Statue";
         }
         protected override string GetDescription()
         {
-            return "I still wuv u tho <3. Go do some cardio ffs.";
+            return "Moving is soooo overrated!";
         }
         protected override GameObject GetCardArt()
         {
@@ -39,7 +38,7 @@ namespace UnstableCards.Cards.Debuffs
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Trinket");
+            return RarityUtils.GetRarity("Exotic");
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -48,41 +47,27 @@ namespace UnstableCards.Cards.Debuffs
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Softie",
-                    amount = "I Wuv u sooo much UwU <3",
+                    stat = "Health",
+                    amount = "+1000%",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "Health",
-                    amount = "-25%",
-                    simepleAmount = CardInfoStat.SimpleAmount.slightlySmaller
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "Jump Height",
-                    amount = "-50%",
-                    simepleAmount = CardInfoStat.SimpleAmount.lower
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "Movement Speed",
-                    amount = "-25%",
-                    simepleAmount = CardInfoStat.SimpleAmount.slightlySmaller
+                    stat = "Statue",
+                    amount = "Cannot move",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 }
             };
 
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.DestructiveRed;
+            return CardThemeColor.CardThemeColorType.TechWhite;
         }
         public override string GetModName()
         {
-            return UnstableCards.ModInitialsCurse;
+            return UnstableCards.ModInitialsWacky;
         }
     }
 }

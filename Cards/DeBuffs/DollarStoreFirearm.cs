@@ -7,31 +7,38 @@ using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
+using WillsWackyManagers.MonoBehaviours;
 
 namespace UnstableCards.Cards.Debuffs
 {
-    class Weakheart : CustomCard
+    class DollarStoreFirearm : CustomCard
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            characterStats.health *= 0.85f;
-            characterStats.jump *= 0.5f;
-            characterStats.movementSpeed *= 0.75f;
+            var misfire = player.gameObject.GetOrAddComponent<Misfire_Mono>();
+            misfire.misfireChance += 15;
+            gun.spread *= 1.1f;
+            gun.attackSpeed *= 1.1f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
+            var misfire = player.gameObject.GetComponent<Misfire_Mono>();
+            if (misfire)
+            {
+                misfire.misfireChance -= 15;
+            }
         }
 
         protected override string GetTitle()
         {
-            return "Weak Heart";
+            return "Dollar Store Firearm";
         }
         protected override string GetDescription()
         {
-            return "I still wuv u tho <3. Go do some cardio ffs.";
+            return "Didn't you know the risks that came with that steeply discounted price?!?";
         }
         protected override GameObject GetCardArt()
         {
@@ -48,30 +55,30 @@ namespace UnstableCards.Cards.Debuffs
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Softie",
-                    amount = "I Wuv u sooo much UwU <3",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                    stat = "Bullet Cost",
+                    amount = "Cheap as chips!",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLotLower
                 },
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "Health",
-                    amount = "-25%",
-                    simepleAmount = CardInfoStat.SimpleAmount.slightlySmaller
+                    stat = "Spread",
+                    amount = "+10%",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
                 },
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "Jump Height",
-                    amount = "-50%",
-                    simepleAmount = CardInfoStat.SimpleAmount.lower
+                    stat = "ATKSPD",
+                    amount = "-10%",
+                    simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "Movement Speed",
-                    amount = "-25%",
-                    simepleAmount = CardInfoStat.SimpleAmount.slightlySmaller
+                    stat = "Misfire Chance",
+                    amount = "+15%",
+                    simepleAmount = CardInfoStat.SimpleAmount.Some
                 }
             };
 

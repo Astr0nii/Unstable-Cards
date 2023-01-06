@@ -11,11 +11,12 @@ using UnstableCards.Cards.Buffs;
 using UnstableCards.Cards.Debuffs;
 using UnstableCards.Cards.God;
 using WillsWackyManagers.Utils;
+using UnstableCards.Cards.Buff;
 
 namespace UnstableCards
 {
     // Mods required to make this work.
-    
+
     [BepInDependency("root.rarity.lib", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("Root.Gun.bodyRecoil.Patch", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.CrazyCoders.Rounds.RarityBundle", BepInDependency.DependencyFlags.HardDependency)]
@@ -34,7 +35,7 @@ namespace UnstableCards
     {
         private const string ModId = "com.Astr0ni.Rounds.UnstableCards";
         private const string ModName = "Unstable Cards";
-        private const string Version = "1.5.0"; // Mod version (major.minor.patch)
+        private const string Version = "2.0.0"; // Mod version (major.minor.patch)
 
         public const string ModInitialsWacky = "UC : Wacky Cards";
         public const string ModInitialsBuff = "UC : Buff Cards";
@@ -57,7 +58,9 @@ namespace UnstableCards
             CustomCard.BuildCard<UraniumPayload>();
             CustomCard.BuildCard<TackShooter>();
             CustomCard.BuildCard<StabbinLicense>();
-            CustomCard.BuildCard<BomberVest>();
+            CustomCard.BuildCard<Detonator>();
+            CustomCard.BuildCard<StoneStatue>();
+            CustomCard.BuildCard<RocketJumper>();
 
             // DeBuffs
             CustomCard.BuildCard<WhiskeyBottle>();
@@ -67,6 +70,7 @@ namespace UnstableCards
             CustomCard.BuildCard<Weakheart>();
             CustomCard.BuildCard<WallStreetCrash>();
             CustomCard.BuildCard<Amateur>();
+            CustomCard.BuildCard<DollarStoreFirearm>();
 
             // Normal Cards
             CustomCard.BuildCard<RustBucket>();
@@ -75,6 +79,9 @@ namespace UnstableCards
             CustomCard.BuildCard<BostonBoy>();
             CustomCard.BuildCard<GoldenApple>();
             CustomCard.BuildCard<EnchantedGoldenApple>();
+            CustomCard.BuildCard<OneInTheChamber>();
+            CustomCard.BuildCard<DrumMag>();
+            CustomCard.BuildCard<IllegalGunParts>();
 
             //God Cards
             CustomCard.BuildCard<TheCat>();
@@ -87,30 +94,6 @@ namespace UnstableCards
         public static UnstableCards instance { get; private set; }
 
         public static (GameObject AddToProjectile, GameObject effect, Explosion explosion) LoadExplosion(string name, Gun? gun = null)
-        {
-            // load explosion effect from Explosive Bullet card
-            GameObject? explosiveBullet = (GameObject)Resources.Load("0 cards/Explosive bullet");
-
-            Gun explosiveGun = explosiveBullet.GetComponent<Gun>();
-
-            if (gun != null)
-            {
-                // change the gun sounds
-                gun.soundGun.AddSoundImpactModifier(explosiveGun.soundImpactModifier);
-            }
-
-            // load assets
-            GameObject A_ExplosionSpark = explosiveGun.objectsToSpawn[0].AddToProjectile;
-            GameObject explosionCustom = Instantiate(explosiveGun.objectsToSpawn[0].effect);
-            explosionCustom.transform.position = new Vector3(1000, 0, 0);
-            explosionCustom.hideFlags = HideFlags.HideAndDontSave;
-            explosionCustom.name = name;
-            DestroyImmediate(explosionCustom.GetComponent<RemoveAfterSeconds>());
-            Explosion explosion = explosionCustom.GetComponent<Explosion>();
-
-            return (A_ExplosionSpark, explosionCustom, explosion);
-        }
-        public static (GameObject AddToProjectile, GameObject effect, Explosion explosion) LoadInstantExplosion(string name, Gun? gun = null)
         {
             // load explosion effect from Explosive Bullet card
             GameObject? explosiveBullet = (GameObject)Resources.Load("0 cards/Explosive bullet");

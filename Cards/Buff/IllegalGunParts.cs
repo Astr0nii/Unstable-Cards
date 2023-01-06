@@ -8,18 +8,18 @@ using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 
-namespace UnstableCards.Cards.Debuffs
+namespace UnstableCards.Cards.Buffs
 {
-    class Weakheart : CustomCard
+    class IllegalGunParts : CustomCard
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            characterStats.health *= 0.85f;
-            characterStats.jump *= 0.5f;
-            characterStats.movementSpeed *= 0.75f;
+            gun.damage *= 1.15f;
+            gun.projectileSpeed *= 1.1f;
+            characterStats.attackSpeedMultiplier = 1.5f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -27,11 +27,11 @@ namespace UnstableCards.Cards.Debuffs
 
         protected override string GetTitle()
         {
-            return "Weak Heart";
+            return "Illegal Gun Parts";
         }
         protected override string GetDescription()
         {
-            return "I still wuv u tho <3. Go do some cardio ffs.";
+            return "Illegal gun parts sold to you during the darkest hours of night for a better weapon.";
         }
         protected override GameObject GetCardArt()
         {
@@ -39,7 +39,7 @@ namespace UnstableCards.Cards.Debuffs
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Trinket");
+            return RarityUtils.GetRarity("Exotic");
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -48,41 +48,34 @@ namespace UnstableCards.Cards.Debuffs
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Softie",
-                    amount = "I Wuv u sooo much UwU <3",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                    stat = "Damage",
+                    amount = "+15%",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "ATKSPD",
+                    amount = "+50%",
+                    simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "Health",
-                    amount = "-25%",
-                    simepleAmount = CardInfoStat.SimpleAmount.slightlySmaller
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "Jump Height",
-                    amount = "-50%",
-                    simepleAmount = CardInfoStat.SimpleAmount.lower
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "Movement Speed",
-                    amount = "-25%",
-                    simepleAmount = CardInfoStat.SimpleAmount.slightlySmaller
+                    stat = "Bullet Speed",
+                    amount = "+10%",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
                 }
             };
 
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.DestructiveRed;
+            return CardThemeColor.CardThemeColorType.FirepowerYellow;
         }
         public override string GetModName()
         {
-            return UnstableCards.ModInitialsCurse;
+            return UnstableCards.ModInitialsBuff;
         }
     }
 }

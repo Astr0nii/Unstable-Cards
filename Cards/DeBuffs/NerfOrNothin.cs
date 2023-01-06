@@ -28,7 +28,7 @@ namespace UnstableCards.Cards.Debuffs
 
         protected override string GetTitle()
         {
-            return "Nerf or nothin";
+            return "Nerf or Nothin";
         }
         protected override string GetDescription()
         {

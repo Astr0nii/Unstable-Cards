@@ -1,5 +1,4 @@
-﻿using Photon.Pun.Simple;
-using RarityLib.Utils;
+﻿using RarityLib.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,40 +7,39 @@ using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
-using static CardInfoStat;
-using static UnityEngine.Random;
 
 namespace UnstableCards.Cards.Wacky
 {
-    class Detonator : CustomCard
+    class RocketJumper : CustomCard
     {
         private readonly ObjectsToSpawn[] explosionToSpawn = new ObjectsToSpawn[1];
 
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
+            gun.projectileColor = Color.yellow;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gun.bulletDamageMultiplier = 2.0f;
-            gun.size = 10.0f;
-            gun.projectileSpeed = 0.5f;
-            gun.unblockable = true;
+            gun.damage = 0f;
+            gunAmmo.maxAmmo += 25;
+            player.data.healthHandler.regeneration += 2;
+            characterStats.gravity *= 0.5f;
+
             // add explosion effect
             if (explosionToSpawn[0] == null)
             {
-                (GameObject AddToProjectile, GameObject effect, Explosion explosion) = UnstableCards.LoadExplosion("explosionDetonator", gun);
+                (GameObject AddToProjectile, GameObject effect, Explosion explosion) = UnstableCards.LoadExplosion("explosionRocketJumper", gun);
 
-                explosion.force *= 10f;
-                explosion.range *= 3f;
-                explosion.damage = int.MaxValue;
-                explosion.ignoreWalls = true;
+                explosion.force *= 16f;
+                explosion.range *= 4f;
+                explosion.damage = 0f;
 
                 explosionToSpawn[0] = new ObjectsToSpawn
                 {
                     AddToProjectile = AddToProjectile,
                     direction = ObjectsToSpawn.Direction.forward,
                     effect = effect,
-                    normalOffset = 1f,
+                    normalOffset = 0.1f,
                     scaleFromDamage = 1f,
                     scaleStackM = 0.2f,
                     scaleStacks = true,
@@ -51,7 +49,6 @@ namespace UnstableCards.Cards.Wacky
                     stickToAllTargets = false,
                     stickToBigTargets = false,
                     zeroZ = false,
-                    
                 };
             }
             gun.objectsToSpawn = gun.objectsToSpawn.Concat(explosionToSpawn).ToArray();
@@ -63,11 +60,11 @@ namespace UnstableCards.Cards.Wacky
 
         protected override string GetTitle()
         {
-            return "Detonator";
+            return "Rocket Jumper";
         }
         protected override string GetDescription()
         {
-            return "Blast everything around you (including yourself) into oblivion.";
+            return "Nearly Harmless rockets! Meant for rocket jumping practice sessions! (or knocking your friends to infinity and beyond)";
         }
         protected override GameObject GetCardArt()
         {
@@ -75,7 +72,7 @@ namespace UnstableCards.Cards.Wacky
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Rare;
+            return RarityUtils.GetRarity("Scarce");
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -83,17 +80,38 @@ namespace UnstableCards.Cards.Wacky
             {
                 new CardInfoStat()
                 {
-                    positive = false,
-                    stat = "Self Explosion",
-                    amount = "explosion!",
-                    simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
+                    positive = true,
+                    stat = "Damage",
+                    amount = "Almost Harmless",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLotLower
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "Ammo",
+                    amount = "+25",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "Life Regeneration",
+                    amount = "+2hp/s",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "Gravity",
+                    amount = "-50%",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 }
             };
 
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.ColdBlue;
+            return CardThemeColor.CardThemeColorType.MagicPink;
         }
         public override string GetModName()
         {
