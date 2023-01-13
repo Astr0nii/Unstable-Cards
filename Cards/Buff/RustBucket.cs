@@ -1,13 +1,19 @@
-﻿using RarityLib.Utils;
+﻿using ClassesManagerReborn.Util;
+using RarityLib.Utils;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
+using UnstableCards.Cards.NameClasses;
 using WillsWackyManagers.MonoBehaviours;
 
-namespace UnstableCards.Cards.Buffs
+namespace UnstableCards.Cards.Buff
 {
     class RustBucket : CustomCard
     {
+        public override void Callback()
+        {
+            gameObject.GetOrAddComponent<ClassNameMono>().className = BuffClass.name;
+        }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
         }
@@ -69,7 +75,7 @@ namespace UnstableCards.Cards.Buffs
         }
         public override string GetModName()
         {
-            return UnstableCards.ModInitialsBuff;
+            return UnstableCards.ModInitials;
         }
     }
 }

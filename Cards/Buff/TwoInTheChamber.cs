@@ -12,7 +12,7 @@ using UnstableCards.Cards.NameClasses;
 
 namespace UnstableCards.Cards.Buff
 {
-    class IllegalGunParts : CustomCard
+    class TwoInTheChamber : CustomCard
     {
         public override void Callback()
         {
@@ -20,12 +20,14 @@ namespace UnstableCards.Cards.Buff
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
+            gun.reloadTime = 25f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gun.damage *= 1.15f;
-            gun.projectileSpeed *= 1.1f;
-            characterStats.attackSpeedMultiplier = 1.30f;
+            gunAmmo.maxAmmo = 2;
+            gun.bulletDamageMultiplier *= 999999;
+            gun.projectileSize *= 0.00001f;
+            gun.attackSpeed *= 5.0f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -33,11 +35,11 @@ namespace UnstableCards.Cards.Buff
 
         protected override string GetTitle()
         {
-            return "Illegal Gun Parts";
+            return "Two in the Chamber";
         }
         protected override string GetDescription()
         {
-            return "Illegal gun parts sold to you during the darkest hours of night for a better weapon.";
+            return "Wait. Thats Illegal";
         }
         protected override GameObject GetCardArt()
         {
@@ -45,7 +47,7 @@ namespace UnstableCards.Cards.Buff
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Exotic");
+            return RarityUtils.GetRarity("Mythical");
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -55,29 +57,36 @@ namespace UnstableCards.Cards.Buff
                 {
                     positive = true,
                     stat = "Damage",
-                    amount = "+15%",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
+                    amount = "ALOT",
+                    simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
                 },
                 new CardInfoStat()
                 {
-                    positive = true,
-                    stat = "ATKSPD",
-                    amount = "+30%",
-                    simepleAmount = CardInfoStat.SimpleAmount.Some
+                    positive = false,
+                    stat = "Ammo",
+                    amount = "2",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLotLower
                 },
                 new CardInfoStat()
                 {
-                    positive = true,
-                    stat = "Bullet Speed",
-                    amount = "+10%",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
+                    positive = false,
+                    stat = "Reload Time",
+                    amount = "Good Luck",
+                    simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
+                    stat = "Attack Speed",
+                    amount = "+500%",
+                    simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
                 }
             };
 
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.FirepowerYellow;
+            return CardThemeColor.CardThemeColorType.ColdBlue;
         }
         public override string GetModName()
         {

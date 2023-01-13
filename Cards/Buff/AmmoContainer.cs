@@ -1,4 +1,4 @@
-﻿using Photon.Pun.Simple;
+﻿using ClassesManagerReborn.Util;
 using RarityLib.Utils;
 using System;
 using System.Collections.Generic;
@@ -8,19 +8,23 @@ using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
-using static CardInfoStat;
-using static UnityEngine.Random;
+using UnstableCards.Cards.NameClasses;
 
-namespace UnstableCards.Cards.Debuffs
+namespace UnstableCards.Cards.Buff
 {
-    class Hunger : CustomCard
+    class AmmoContainer : CustomCard
     {
+        public override void Callback()
+        {
+            gameObject.GetOrAddComponent<ClassNameMono>().className = BuffClass.name;
+        }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
-        { 
+        {
+            gun.reloadTime = 2.4f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            player.data.healthHandler.regeneration -= 999;
+            gunAmmo.maxAmmo += 99;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -28,11 +32,11 @@ namespace UnstableCards.Cards.Debuffs
 
         protected override string GetTitle()
         {
-            return "Hunger";
+            return "Ammo Shipping Container";
         }
         protected override string GetDescription()
         {
-            return "Forgetting to eat is bad for your health kids!";
+            return "The ultimate solution to all of your ammo desires.";
         }
         protected override GameObject GetCardArt()
         {
@@ -40,7 +44,7 @@ namespace UnstableCards.Cards.Debuffs
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Trinket");
+            return RarityUtils.GetRarity("Epic");
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -49,27 +53,27 @@ namespace UnstableCards.Cards.Debuffs
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Hunger",
-                    amount = "Ravenous!",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                    stat = "Ammo",
+                    amount = "max",
+                    simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
                 },
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "Life Regeneration",
-                    amount = "Disables",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotLower
+                    stat = "Reload Time",
+                    amount = "+140%",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 }
             };
 
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.DestructiveRed;
+            return CardThemeColor.CardThemeColorType.FirepowerYellow;
         }
         public override string GetModName()
         {
-            return UnstableCards.ModInitialsCurse;
+            return UnstableCards.ModInitials;
         }
     }
 }

@@ -10,22 +10,22 @@ using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
 
-namespace UnstableCards.Cards.Buff
+namespace UnstableCards.Cards.Debuffs
 {
-    class IllegalGunParts : CustomCard
+    class Amatuer : CustomCard
     {
         public override void Callback()
         {
-            gameObject.GetOrAddComponent<ClassNameMono>().className = BuffClass.name;
+            gameObject.GetOrAddComponent<ClassNameMono>().className = DebuffClass.name;
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
+            cardInfo.categories = new CardCategory[] { UnstableCards.instance.debuffCategory };
+            gun.reloadTimeAdd = 0.5f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gun.damage *= 1.15f;
-            gun.projectileSpeed *= 1.1f;
-            characterStats.attackSpeedMultiplier = 1.30f;
+            gun.spread *= 1.4f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -33,11 +33,11 @@ namespace UnstableCards.Cards.Buff
 
         protected override string GetTitle()
         {
-            return "Illegal Gun Parts";
+            return "Amateur";
         }
         protected override string GetDescription()
         {
-            return "Illegal gun parts sold to you during the darkest hours of night for a better weapon.";
+            return "Amateur... No wonder they can't use a gun!";
         }
         protected override GameObject GetCardArt()
         {
@@ -45,7 +45,7 @@ namespace UnstableCards.Cards.Buff
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Exotic");
+            return RarityUtils.GetRarity("Trinket");
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -54,30 +54,30 @@ namespace UnstableCards.Cards.Buff
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Damage",
-                    amount = "+15%",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
+                    stat = "Beginners",
+                    amount = "Luck",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
-                    positive = true,
-                    stat = "ATKSPD",
-                    amount = "+30%",
+                    positive = false,
+                    stat = "Spread",
+                    amount = "+40%",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
-                    positive = true,
-                    stat = "Bullet Speed",
-                    amount = "+10%",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
+                    positive = false,
+                    stat = "Reload Time",
+                    amount = "+0.5s",
+                    simepleAmount = CardInfoStat.SimpleAmount.Some
                 }
             };
 
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.FirepowerYellow;
+            return CardThemeColor.CardThemeColorType.DestructiveRed;
         }
         public override string GetModName()
         {

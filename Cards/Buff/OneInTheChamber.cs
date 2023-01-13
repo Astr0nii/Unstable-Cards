@@ -1,4 +1,5 @@
-﻿using RarityLib.Utils;
+﻿using ClassesManagerReborn.Util;
+using RarityLib.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,19 +8,25 @@ using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
+using UnstableCards.Cards.NameClasses;
 
 namespace UnstableCards.Cards.Buff
 {
     class OneInTheChamber : CustomCard
     {
+        public override void Callback()
+        {
+            gameObject.GetOrAddComponent<ClassNameMono>().className = BuffClass.name;
+        }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
+            gun.reloadTime = 25f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gunAmmo.maxAmmo = 0;
-            gun.reloadTime *= 100.0f;
-            gun.damage = float.MaxValue;
+            gunAmmo.maxAmmo = 1;
+            gun.bulletDamageMultiplier *= 999999;
+            gun.projectileSize *= 0.00001f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -49,7 +56,7 @@ namespace UnstableCards.Cards.Buff
                 {
                     positive = true,
                     stat = "Damage",
-                    amount = "Instant Kill",
+                    amount = "ALOT",
                     simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
                 },
                 new CardInfoStat()
@@ -75,7 +82,7 @@ namespace UnstableCards.Cards.Buff
         }
         public override string GetModName()
         {
-            return UnstableCards.ModInitialsBuff;
+            return UnstableCards.ModInitials;
         }
     }
 }

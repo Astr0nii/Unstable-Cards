@@ -1,44 +1,45 @@
 ﻿using RarityLib.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 using WillsWackyManagers.MonoBehaviours;
+using ClassesManagerReborn.Util;
+using UnstableCards.Cards.NameClasses;
 
 namespace UnstableCards.Cards.Debuffs
 {
-    class DollarStoreFirearm : CustomCard
+    class Clumsy : CustomCard
     {
+        public override void Callback()
+        {
+            gameObject.GetOrAddComponent<ClassNameMono>().className = DebuffClass.name;
+        }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
+            cardInfo.categories = new CardCategory[] { UnstableCards.instance.debuffCategory };
+            gun.reloadTime = 1.4f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
             var misfire = player.gameObject.GetOrAddComponent<Misfire_Mono>();
-            misfire.misfireChance += 15;
-            gun.spread *= 1.1f;
-            gun.attackSpeed *= 1.1f;
+            misfire.misfireChance += 25;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
             var misfire = player.gameObject.GetComponent<Misfire_Mono>();
             if (misfire)
             {
-                misfire.misfireChance -= 15;
+                misfire.misfireChance -= 25;
             }
         }
 
         protected override string GetTitle()
         {
-            return "Dollar Store Firearm";
+            return "Clumsy";
         }
         protected override string GetDescription()
         {
-            return "Didn't you know the risks that came with that steeply discounted price?!?";
+            return "You are such a klutz, stop fumbling with the mag and reload it!";
         }
         protected override GameObject GetCardArt()
         {
@@ -55,29 +56,22 @@ namespace UnstableCards.Cards.Debuffs
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Bullet Cost",
-                    amount = "Cheap as chips!",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotLower
+                    stat = "Klutziness",
+                    amount = "Accidents!",
+                    simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
                 },
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "Spread",
-                    amount = "+10%",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "ATKSPD",
-                    amount = "-10%",
+                    stat = "Misfire chance",
+                    amount = "+25%",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "Misfire Chance",
-                    amount = "+15%",
+                    stat = "Reload Time",
+                    amount = "+40%",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 }
             };
@@ -89,7 +83,7 @@ namespace UnstableCards.Cards.Debuffs
         }
         public override string GetModName()
         {
-            return UnstableCards.ModInitialsCurse;
+            return UnstableCards.ModInitials;
         }
     }
 }

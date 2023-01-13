@@ -1,4 +1,5 @@
-﻿using RarityLib.Utils;
+﻿using ClassesManagerReborn.Util;
+using RarityLib.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +8,16 @@ using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
+using UnstableCards.Cards.NameClasses;
 
 namespace UnstableCards.Cards.God
 {
     class TheSoulConsumer : CustomCard
     {
-
+        public override void Callback()
+        {
+            gameObject.GetOrAddComponent<ClassNameMono>().className = GodClass.name;
+        }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             cardInfo.allowMultiple = false;
@@ -21,7 +26,7 @@ namespace UnstableCards.Cards.God
         {
 
             characterStats.lifeSteal = 100f;
-            characterStats.secondsToTakeDamageOver = 15;
+            characterStats.secondsToTakeDamageOver = 7.5f;
             characterStats.sizeMultiplier = 2.5f;
             characterStats.respawns = 2;
         }
@@ -67,14 +72,14 @@ namespace UnstableCards.Cards.God
                 {
                     positive = true,
                     stat = "Soul Protector",
-                    amount = "+15.0s until DMG effects you",
+                    amount = "+7.5s DMG takeover",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Size",
-                    amount = "+250%",
+                    amount = "+200%",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 }
             };
@@ -86,7 +91,7 @@ namespace UnstableCards.Cards.God
         }
         public override string GetModName()
         {
-            return UnstableCards.ModInitialsGod;
+            return UnstableCards.ModInitials;
         }
     }
 }

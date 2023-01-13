@@ -1,4 +1,5 @@
-﻿using RarityLib.Utils;
+﻿using ClassesManagerReborn.Util;
+using RarityLib.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +8,17 @@ using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
+using UnstableCards.Cards.NameClasses;
 using Random = UnityEngine.Random;
 
 namespace UnstableCards.Cards.Wacky
 {
     class TackShooter : CustomCard
     {
+        public override void Callback()
+        {
+            gameObject.GetOrAddComponent<ClassNameMono>().className = GodClass.name;
+        }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             gun.destroyBulletAfter = 2.0f;
@@ -77,7 +83,7 @@ namespace UnstableCards.Cards.Wacky
         }
         public override string GetModName()
         {
-            return UnstableCards.ModInitialsWacky;
+            return UnstableCards.ModInitials;
         }
     }
 }

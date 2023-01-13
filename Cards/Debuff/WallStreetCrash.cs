@@ -1,4 +1,5 @@
-﻿using RarityLib.Utils;
+﻿using ClassesManagerReborn.Util;
+using RarityLib.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,19 +8,25 @@ using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
+using UnstableCards.Cards.NameClasses;
 
 namespace UnstableCards.Cards.Debuffs
 {
-    class Weakheart : CustomCard
+    class WallStreetCrash : CustomCard
     {
+        public override void Callback()
+        {
+            gameObject.GetOrAddComponent<ClassNameMono>().className = DebuffClass.name;
+        }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
+            cardInfo.categories = new CardCategory[] { UnstableCards.instance.debuffCategory };
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            characterStats.health *= 0.85f;
-            characterStats.jump *= 0.5f;
-            characterStats.movementSpeed *= 0.75f;
+            gun.projectileSpeed *= 0.75f;
+            gun.projectileSize *= 0.8f;
+            gunAmmo.maxAmmo -= 5;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -27,11 +34,11 @@ namespace UnstableCards.Cards.Debuffs
 
         protected override string GetTitle()
         {
-            return "Weak Heart";
+            return "Wall Street Crash";
         }
         protected override string GetDescription()
         {
-            return "I still wuv u tho <3. Go do some cardio ffs.";
+            return "Guess that dogecoin invest went south huh? No money for quality ammo? No worries!";
         }
         protected override GameObject GetCardArt()
         {
@@ -48,29 +55,29 @@ namespace UnstableCards.Cards.Debuffs
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Softie",
-                    amount = "I Wuv u sooo much UwU <3",
+                    stat = "Market Capital",
+                    amount = "Much investment!",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "Health",
+                    stat = "Ammo",
+                    amount = "-5",
+                    simepleAmount = CardInfoStat.SimpleAmount.lower
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
+                    stat = "Bullet Speed",
                     amount = "-25%",
                     simepleAmount = CardInfoStat.SimpleAmount.slightlySmaller
                 },
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "Jump Height",
-                    amount = "-50%",
-                    simepleAmount = CardInfoStat.SimpleAmount.lower
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "Movement Speed",
-                    amount = "-25%",
+                    stat = "Bullet Size",
+                    amount = "-20%",
                     simepleAmount = CardInfoStat.SimpleAmount.slightlySmaller
                 }
             };
@@ -82,7 +89,7 @@ namespace UnstableCards.Cards.Debuffs
         }
         public override string GetModName()
         {
-            return UnstableCards.ModInitialsCurse;
+            return UnstableCards.ModInitials;
         }
     }
 }

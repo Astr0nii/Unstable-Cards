@@ -1,4 +1,5 @@
-﻿using Photon.Pun.Simple;
+﻿using ClassesManagerReborn.Util;
+using ModdingUtils.Patches;
 using RarityLib.Utils;
 using System;
 using System.Collections.Generic;
@@ -8,20 +9,25 @@ using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
-using static CardInfoStat;
-using static UnityEngine.Random;
+using UnstableCards.Cards.NameClasses;
 
 namespace UnstableCards.Cards.Debuffs
 {
-    class WeakBones : CustomCard
+    class WhiskeyBottle : CustomCard
     {
+        public override void Callback()
+        {
+            gameObject.GetOrAddComponent<ClassNameMono>().className = DebuffClass.name;
+        }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
+            cardInfo.categories = new CardCategory[] { UnstableCards.instance.debuffCategory };
+            gun.reloadTimeAdd = 1.5f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            characterStats.health *= 0.75f;
-            characterStats.movementSpeed *= 1.1f;
+            gun.spread *= 1.1f;
+            gun.attackSpeed *= 1.1f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -29,11 +35,11 @@ namespace UnstableCards.Cards.Debuffs
 
         protected override string GetTitle()
         {
-            return "Weak Bones";
+            return "Whiskey Bottle";
         }
         protected override string GetDescription()
         {
-            return "Aw shucks! Someone forgot to drink their milk!";
+            return "Drunk Shooting!";
         }
         protected override GameObject GetCardArt()
         {
@@ -50,16 +56,30 @@ namespace UnstableCards.Cards.Debuffs
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Lightweight Bones",
-                    amount = "Fragile!",
+                    stat = "Drunk",
+                    amount = "Cures depression!",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "Health",
-                    amount = "-25%",
-                    simepleAmount = CardInfoStat.SimpleAmount.slightlySmaller
+                    stat = "Spread",
+                    amount = "+10%",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
+                    stat = "Reload Time",
+                    amount = "+50%",
+                    simepleAmount = CardInfoStat.SimpleAmount.Some
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
+                    stat = "ATKSPD",
+                    amount = "-10%",
+                    simepleAmount = CardInfoStat.SimpleAmount.Some
                 }
             };
 
@@ -70,7 +90,7 @@ namespace UnstableCards.Cards.Debuffs
         }
         public override string GetModName()
         {
-            return UnstableCards.ModInitialsCurse;
+            return UnstableCards.ModInitials;
         }
     }
 }

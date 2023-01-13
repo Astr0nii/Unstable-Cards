@@ -1,18 +1,14 @@
 ﻿using ClassesManagerReborn.Util;
 using RarityLib.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
+using WillsWackyManagers.MonoBehaviours;
 
 namespace UnstableCards.Cards.Buff
 {
-    class IllegalGunParts : CustomCard
+    class RunItBack : CustomCard
     {
         public override void Callback()
         {
@@ -20,12 +16,12 @@ namespace UnstableCards.Cards.Buff
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
+            statModifiers.health = 0.8f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gun.damage *= 1.15f;
-            gun.projectileSpeed *= 1.1f;
-            characterStats.attackSpeedMultiplier = 1.30f;
+            characterStats.respawns = 1;
+            
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -33,11 +29,11 @@ namespace UnstableCards.Cards.Buff
 
         protected override string GetTitle()
         {
-            return "Illegal Gun Parts";
+            return "Run it back.";
         }
         protected override string GetDescription()
         {
-            return "Illegal gun parts sold to you during the darkest hours of night for a better weapon.";
+            return "Kill me baby one more time!";
         }
         protected override GameObject GetCardArt()
         {
@@ -45,7 +41,7 @@ namespace UnstableCards.Cards.Buff
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Exotic");
+            return RarityUtils.GetRarity("Scarce");
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -54,30 +50,23 @@ namespace UnstableCards.Cards.Buff
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Damage",
-                    amount = "+15%",
+                    stat = "Respawns",
+                    amount = "+1",
                     simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
                 },
                 new CardInfoStat()
                 {
-                    positive = true,
-                    stat = "ATKSPD",
-                    amount = "+30%",
-                    simepleAmount = CardInfoStat.SimpleAmount.Some
-                },
-                new CardInfoStat()
-                {
-                    positive = true,
-                    stat = "Bullet Speed",
-                    amount = "+10%",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
+                    positive = false,
+                    stat = "Health",
+                    amount = "-20%",
+                    simepleAmount = CardInfoStat.SimpleAmount.slightlyLower
                 }
             };
 
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.FirepowerYellow;
+            return CardThemeColor.CardThemeColorType.TechWhite;
         }
         public override string GetModName()
         {

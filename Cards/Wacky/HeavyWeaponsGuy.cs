@@ -8,30 +8,32 @@ using UnboundLib.Cards;
 using UnityEngine;
 using RarityLib;
 using RarityLib.Utils;
+using ClassesManagerReborn.Util;
+using UnstableCards.Cards.NameClasses;
 
-namespace UnstableCards.Cards.Buffs
+namespace UnstableCards.Cards.Wacky
 {
     class HeavyWeaponsGuy : CustomCard
     {
+        public override void Callback()
+        {
+            gameObject.GetOrAddComponent<ClassNameMono>().className = GodClass.name;
+        }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             gun.attackSpeed = 0.1f;
             gun.reflects = -999;
             gun.spread = 0.4f;
             gun.reloadTime = 0.5f;
-
-            //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
             gunAmmo.maxAmmo += 90;
             gun.projectileSpeed *= 2.0f;
             gun.bulletDamageMultiplier = 0.2f;
-            //Edits values on player when card is selected
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            //Run when the card is removed from the player
         }
 
         protected override string GetTitle()
@@ -98,7 +100,7 @@ namespace UnstableCards.Cards.Buffs
         }
         public override string GetModName()
         {
-            return UnstableCards.ModInitialsBuff;
+            return UnstableCards.ModInitials;
         }
     }
 }

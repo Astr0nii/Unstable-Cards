@@ -1,4 +1,5 @@
-﻿using RarityLib.Utils;
+﻿using ClassesManagerReborn.Util;
+using RarityLib.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,16 @@ using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
+using UnstableCards.Cards.NameClasses;
 
 namespace UnstableCards.Cards.Wacky
 {
     class UraniumPayload : CustomCard
     {
+        public override void Callback()
+        {
+            gameObject.GetOrAddComponent<ClassNameMono>().className = GodClass.name;
+        }
         private readonly ObjectsToSpawn[] explosionToSpawn = new ObjectsToSpawn[1];
 
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
@@ -109,7 +115,7 @@ namespace UnstableCards.Cards.Wacky
         }
         public override string GetModName()
         {
-            return UnstableCards.ModInitialsWacky;
+            return UnstableCards.ModInitials;
         }
     }
 }

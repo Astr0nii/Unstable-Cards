@@ -1,4 +1,5 @@
-﻿using Photon.Pun.Simple;
+﻿using ClassesManagerReborn.Util;
+using Photon.Pun.Simple;
 using RarityLib.Utils;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
+using UnstableCards.Cards.NameClasses;
 using static CardInfoStat;
 using static UnityEngine.Random;
 
@@ -15,6 +17,10 @@ namespace UnstableCards.Cards.Wacky
 {
     class Detonator : CustomCard
     {
+        public override void Callback()
+        {
+            gameObject.GetOrAddComponent<ClassNameMono>().className = GodClass.name;
+        }
         private readonly ObjectsToSpawn[] explosionToSpawn = new ObjectsToSpawn[1];
 
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
@@ -97,7 +103,7 @@ namespace UnstableCards.Cards.Wacky
         }
         public override string GetModName()
         {
-            return UnstableCards.ModInitialsWacky;
+            return UnstableCards.ModInitials;
         }
     }
 }

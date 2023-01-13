@@ -7,11 +7,12 @@ using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 using RarityLib.Utils;
 using System.Collections.Generic;
 using UnstableCards.Cards.Wacky;
-using UnstableCards.Cards.Buffs;
 using UnstableCards.Cards.Debuffs;
 using UnstableCards.Cards.God;
-using WillsWackyManagers.Utils;
 using UnstableCards.Cards.Buff;
+using UnstableCards.Cards.Shrine;
+using WillsWackyManagers.Utils;
+
 
 namespace UnstableCards
 {
@@ -24,6 +25,7 @@ namespace UnstableCards
     [BepInDependency("com.willuwontu.rounds.managers", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("pykess.rounds.plugins.moddingutils", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("pykess.rounds.plugins.cardchoicespawnuniquecardpatch", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("root.classes.manager.reborn", BepInDependency.DependencyFlags.HardDependency)]
 
     // Declaring that our mod exists to BepIn
     [BepInPlugin(ModId, ModName, Version)]
@@ -33,14 +35,12 @@ namespace UnstableCards
 
     public class UnstableCards : BaseUnityPlugin
     {
+        public CardCategory debuffCategory { get; private set; } = CustomCardCategories.instance.CardCategory("Debuff");
         private const string ModId = "com.Astr0ni.Rounds.UnstableCards";
         private const string ModName = "Unstable Cards";
-        private const string Version = "1.6.0"; // Mod version (major.minor.patch)
+        private const string Version = "1.8.0"; // Mod version (major.minor.patch)
 
-        public const string ModInitialsWacky = "UC : Wacky Cards";
-        public const string ModInitialsBuff = "UC : Buff Cards";
-        public const string ModInitialsCurse = "UC : DeBuff Cards";
-        public const string ModInitialsGod = "UC : God Cards";
+        public const string ModInitials = "UC";
 
         public static Dictionary<string, GameObject> CardArt = new Dictionary<string, GameObject>();
 
@@ -52,7 +52,7 @@ namespace UnstableCards
 
         void Start()
         {
-            // Retarded Cards
+            // Wacky Cards
             CustomCard.BuildCard<Boomstick>();
             CustomCard.BuildCard<PointClickAdventureGame>();
             CustomCard.BuildCard<UraniumPayload>();
@@ -61,6 +61,7 @@ namespace UnstableCards
             CustomCard.BuildCard<Detonator>();
             CustomCard.BuildCard<StoneStatue>();
             CustomCard.BuildCard<RocketJumper>();
+            CustomCard.BuildCard<HeavyWeaponsGuy>();
 
             // DeBuffs
             CustomCard.BuildCard<WhiskeyBottle>();
@@ -69,25 +70,32 @@ namespace UnstableCards
             CustomCard.BuildCard<Hunger>();
             CustomCard.BuildCard<Weakheart>();
             CustomCard.BuildCard<WallStreetCrash>();
-            CustomCard.BuildCard<Amateur>();
+            CustomCard.BuildCard<Amatuer>();
             CustomCard.BuildCard<DollarStoreFirearm>();
+            CustomCard.BuildCard<Clumsy>();
 
             // Normal Cards
             CustomCard.BuildCard<RustBucket>();
-            CustomCard.BuildCard<HeavyWeaponsGuy>();
             CustomCard.BuildCard<NinjitsuMaster>();
             CustomCard.BuildCard<BostonBoy>();
             CustomCard.BuildCard<GoldenApple>();
             CustomCard.BuildCard<EnchantedGoldenApple>();
             CustomCard.BuildCard<OneInTheChamber>();
             CustomCard.BuildCard<DrumMag>();
+            CustomCard.BuildCard<AmmoContainer>();
             CustomCard.BuildCard<IllegalGunParts>();
+            CustomCard.BuildCard<TwoInTheChamber>();
+            CustomCard.BuildCard<RunItBack>();
 
             //God Cards
             CustomCard.BuildCard<TheCat>();
             CustomCard.BuildCard<TheSoulConsumer>();
             CustomCard.BuildCard<AngelWeaver>();
 
+            //Shrine Cards
+            CustomCard.BuildCard<ShrineOfTheForgotten>();
+            CustomCard.BuildCard<ShrineOfTheBalanced>();
+            CustomCard.BuildCard<ShrineOfTheDamned>();
 
             instance = this;
         }
