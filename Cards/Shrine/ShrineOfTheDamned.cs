@@ -30,7 +30,7 @@ namespace UnstableCards.Cards.Shrine
         {
             for (int i = 5; i > 0; i--)
             {
-                var choiceCard = ModdingUtils.Utils.Cards.instance.GetRandomCardWithCondition(player, gun, gunAmmo, data, health, gravity, block, characterStats, Func<player, gun, gunAmmo, data, health, gravity, block, characterStats, true, cardInfo.categories.Contains(UnstableCards.instance.debuffCategory), 1000);
+                var choiceCard = ModdingUtils.Utils.Cards.instance.GetRandomCardWithCondition(player, gun, gunAmmo, data, health, gravity, block, characterStats, Func<player, gun, gunAmmo, data, health, gravity, block, characterStats, true> cardInfo.categories.Contains(UnstableCards.instance.debuffCategory), 1000);
                 UnityEngine.Debug.Log($"{choiceCard}");
                 WaitFor.Frames(20);
                 //    ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, choiceCard, false, "", 0f, 0f, false);
