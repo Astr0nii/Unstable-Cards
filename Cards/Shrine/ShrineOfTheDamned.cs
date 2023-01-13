@@ -24,13 +24,13 @@ namespace UnstableCards.Cards.Shrine
             gameObject.GetOrAddComponent<ClassNameMono>().className = ShrineClass.name;
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
-        {         
+        {
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
             for (int i = 5; i > 0; i--)
             {
-                var choiceCard = ModdingUtils.Utils.Cards.instance.GetRandomCardWithCondition(player, gun, gunAmmo, data, health, gravity, block, characterStats, Func<cardInfo, player, gun, gunAmmo, data, health, gravity, block, characterStats, cardInfo.categories> UnstableCards.instance.debuffCategory, 1000);
+                var choiceCard = ModdingUtils.Utils.Cards.instance.GetRandomCardWithCondition(player, gun, gunAmmo, data, health, gravity, block, characterStats, Func<player, gun, gunAmmo, data, health, gravity, block, characterStats, true, cardInfo.categories.Contains(UnstableCards.instance.debuffCategory), 1000);
                 UnityEngine.Debug.Log($"{choiceCard}");
                 WaitFor.Frames(20);
                 //    ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, choiceCard, false, "", 0f, 0f, false);
