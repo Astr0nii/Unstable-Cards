@@ -28,13 +28,16 @@ namespace UnstableCards.Cards.Shrine
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
+            AudioSource audioSource = gameObject.GetOrAddComponent<AudioSource>();
+            audioSource.PlayOneShot(Assets.shrineOfTheDamnedAudio, 2.0f);
+            int[] cardIndeces = Enumerable.Range(0, player.data.currentCards.Count()).Where((index) => player.data.currentCards[index]).ToArray();
             for (int i = 5; i > 0; i--)
             {
-                var choiceCard = ModdingUtils.Utils.Cards.instance.GetRandomCardWithCondition(player, gun, gunAmmo, data, health, gravity, block, characterStats, (ci, p, g, ga, cd, hh, gr, b, csm) => ci.categories.Contains(UnstableCards.instance.debuffCategory));
-                WaitFor.Frames(20);
+                var choiceCard = ModdingUtils.Utils.Cards.instance.GetRandomCardWithCondition(player, gun, gunAmmo, data, health, gravity, block, characterStats, (ci, p, g, ga, cd, hh, gr, b, csm) => ci.categories.Contains(UnstableCards.instance.damnedCategory));
                 UnityEngine.Debug.Log($"{choiceCard}");
-                ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, choiceCard, false, "", 0f, 0f, false);
+                ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, choiceCard, false, "", 2f, 2f, true);
             }
+            //CardInfo[] removePlayerCards = ModdingUtils.Utils.Cards.instance.RemoveCardsFromPlayer(player, cardIndeces);
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -63,7 +66,7 @@ namespace UnstableCards.Cards.Shrine
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Debuff cards added",
+                    stat = "Damned cards added",
                     amount = "Alot",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 }

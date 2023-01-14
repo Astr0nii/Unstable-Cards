@@ -1,32 +1,30 @@
 ﻿using ClassesManagerReborn.Util;
-using ModdingUtils.Patches;
 using RarityLib.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
+using WillsWackyManagers.MonoBehaviours;
 
-namespace UnstableCards.Cards.Debuffs
+namespace UnstableCards.Cards.Damned
 {
-    class WhiskeyBottle : CustomCard
+    class ShieldOfTheDamned : CustomCard
     {
         public override void Callback()
         {
-            gameObject.GetOrAddComponent<ClassNameMono>().className = DebuffClass.name;
+            gameObject.GetOrAddComponent<ClassNameMono>().className = DamnedClass.name;
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            gun.reloadTimeAdd = 1.5f;
+            cardInfo.allowMultiple = true;
+            cardInfo.categories = new CardCategory[] { UnstableCards.instance.damnedCategory };
+            block.forceToAdd = -5f;
+            block.cdMultiplier = 0.9f;
+            block.healing = 25f;
+            statModifiers.health = 0.25f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gun.spread *= 1.1f;
-            gun.attackSpeed *= 1.1f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -34,11 +32,11 @@ namespace UnstableCards.Cards.Debuffs
 
         protected override string GetTitle()
         {
-            return "Whiskey Bottle";
+            return "Shield of the Damned";
         }
         protected override string GetDescription()
         {
-            return "Drunk Shooting!";
+            return "Infused with the souls of whom were condemmed to defending this land.";
         }
         protected override GameObject GetCardArt()
         {
@@ -46,7 +44,7 @@ namespace UnstableCards.Cards.Debuffs
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Trinket");
+            return RarityUtils.GetRarity("Damned");
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -55,37 +53,31 @@ namespace UnstableCards.Cards.Debuffs
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Drunk",
-                    amount = "Cures depression!",
+                    stat = "Strength",
+                    amount = "ALOT",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
-                    positive = false,
-                    stat = "Spread",
-                    amount = "+10%",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
-                },
+                    positive = true,
+                    stat = "Power",
+                    amount = "ALOT",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                }
+                ,
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "Reload Time",
-                    amount = "+50%",
-                    simepleAmount = CardInfoStat.SimpleAmount.Some
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "ATKSPD",
-                    amount = "-10%",
-                    simepleAmount = CardInfoStat.SimpleAmount.Some
+                    stat = "Sacrifice",
+                    amount = "ALOT",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 }
             };
 
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.DestructiveRed;
+            return CardThemeColor.CardThemeColorType.PoisonGreen;
         }
         public override string GetModName()
         {

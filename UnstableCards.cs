@@ -1,5 +1,4 @@
 ﻿using BepInEx;
-using UnboundLib;
 using UnityEngine;
 using UnboundLib.Cards;
 using HarmonyLib;
@@ -11,8 +10,8 @@ using UnstableCards.Cards.Debuffs;
 using UnstableCards.Cards.God;
 using UnstableCards.Cards.Buff;
 using UnstableCards.Cards.Shrine;
-using WillsWackyManagers.Utils;
-
+using UnstableCards.Cards.Damned;
+using UnboundLib;
 
 namespace UnstableCards
 {
@@ -35,7 +34,7 @@ namespace UnstableCards
 
     public class UnstableCards : BaseUnityPlugin
     {
-        public CardCategory debuffCategory { get; private set; } = CustomCardCategories.instance.CardCategory("Debuff");
+        public CardCategory damnedCategory { get; private set; } = CustomCardCategories.instance.CardCategory("Damned");
         private const string ModId = "com.Astr0ni.Rounds.UnstableCards";
         private const string ModName = "Unstable Cards";
         private const string Version = "1.8.0"; // Mod version (major.minor.patch)
@@ -48,10 +47,13 @@ namespace UnstableCards
         {
             var harmony = new Harmony(ModId);
             harmony.PatchAll();
+            RarityUtils.AddRarity("Damned", 0.000000000000000000001f, new Color32(15, 214, 81, 255), new Color32(0, 95, 60, 255));
         }
 
         void Start()
         {
+            AudioSource audioSource = gameObject.GetOrAddComponent<AudioSource>();
+            audioSource.PlayOneShot(Assets.startupSound, 0.75f);
             // Wacky Cards
             CustomCard.BuildCard<Boomstick>();
             CustomCard.BuildCard<PointClickAdventureGame>();
@@ -75,7 +77,7 @@ namespace UnstableCards
             CustomCard.BuildCard<Clumsy>();
 
             // Normal Cards
-            CustomCard.BuildCard<RustBucket>();
+            CustomCard.BuildCard<ShieldOfTheDamned>();
             CustomCard.BuildCard<NinjitsuMaster>();
             CustomCard.BuildCard<BostonBoy>();
             CustomCard.BuildCard<GoldenApple>();
@@ -96,6 +98,9 @@ namespace UnstableCards
             CustomCard.BuildCard<ShrineOfTheForgotten>();
             CustomCard.BuildCard<ShrineOfTheBalanced>();
             CustomCard.BuildCard<ShrineOfTheDamned>();
+
+            //Damned Cards
+            CustomCard.BuildCard<ShieldOfTheDamned>();
 
             instance = this;
         }
