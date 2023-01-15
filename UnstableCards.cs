@@ -37,7 +37,7 @@ namespace UnstableCards
         public CardCategory damnedCategory { get; private set; } = CustomCardCategories.instance.CardCategory("Damned");
         private const string ModId = "com.Astr0ni.Rounds.UnstableCards";
         private const string ModName = "Unstable Cards";
-        private const string Version = "1.8.0"; // Mod version (major.minor.patch)
+        private const string Version = "1.9.0"; // Mod version (major.minor.patch)
 
         public const string ModInitials = "UC";
 
@@ -52,8 +52,6 @@ namespace UnstableCards
 
         void Start()
         {
-            AudioSource audioSource = gameObject.GetOrAddComponent<AudioSource>();
-            audioSource.PlayOneShot(Assets.startupSound, 0.75f);
             // Wacky Cards
             CustomCard.BuildCard<Boomstick>();
             CustomCard.BuildCard<PointClickAdventureGame>();

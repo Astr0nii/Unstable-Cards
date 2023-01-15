@@ -28,8 +28,13 @@ namespace UnstableCards.Cards.Shrine
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            AudioSource audioSource = gameObject.GetOrAddComponent<AudioSource>();
-            audioSource.PlayOneShot(Assets.shrineOfTheDamnedAudio, 2.0f);
+            // Audio Logic
+            var audioSource = new GameObject("audioSource").gameObject.GetOrAddComponent<AudioSource>();
+            audioSource.gameObject.GetOrAddComponent<RemoveAfterSeconds>();
+            var timer = audioSource.GetComponent<RemoveAfterSeconds>();
+            timer.seconds = 5;
+            audioSource.PlayOneShot(Assets.shrineOfTheDamnedAudio, 1.35f);
+
             int[] cardIndeces = Enumerable.Range(0, player.data.currentCards.Count()).Where((index) => player.data.currentCards[index]).ToArray();
             for (int i = 5; i > 0; i--)
             {
@@ -37,7 +42,7 @@ namespace UnstableCards.Cards.Shrine
                 UnityEngine.Debug.Log($"{choiceCard}");
                 ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, choiceCard, false, "", 2f, 2f, true);
             }
-            //CardInfo[] removePlayerCards = ModdingUtils.Utils.Cards.instance.RemoveCardsFromPlayer(player, cardIndeces);
+            CardInfo[] removePlayerCards = ModdingUtils.Utils.Cards.instance.RemoveCardsFromPlayer(player, cardIndeces);
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {

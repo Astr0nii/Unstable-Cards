@@ -28,6 +28,7 @@ namespace UnstableCards.Cards.Shrine
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
+
             int[] cardIndeces = Enumerable.Range(0, player.data.currentCards.Count()).Where((index) => player.data.currentCards[index]).ToArray();
             var randomCard = cardIndeces[new System.Random().Next(0, cardIndeces.Length)];
             var choiceCard = player.data.currentCards[randomCard];
