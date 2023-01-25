@@ -21,11 +21,12 @@ namespace UnstableCards.Cards.God
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             cardInfo.allowMultiple = false;
+            statModifiers.lifeSteal = 1f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
 
-            characterStats.lifeSteal = 100f;
+            
             characterStats.secondsToTakeDamageOver = 7.5f;
             characterStats.sizeMultiplier = 2.5f;
             characterStats.respawns = 2;
@@ -87,7 +88,7 @@ namespace UnstableCards.Cards.God
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.DestructiveRed;
+            return CardThemeColor.CardThemeColorType.EvilPurple;
         }
         public override string GetModName()
         {

@@ -16,7 +16,7 @@ namespace UnstableCards.Cards.Wacky
     {
         public override void Callback()
         {
-            gameObject.GetOrAddComponent<ClassNameMono>().className = GodClass.name;
+            gameObject.GetOrAddComponent<ClassNameMono>().className = WackyClass.name;
         }
         private readonly ObjectsToSpawn[] explosionToSpawn = new ObjectsToSpawn[1];
 
@@ -27,7 +27,7 @@ namespace UnstableCards.Cards.Wacky
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gun.damage *= 8f;
+            gun.damage *= 6f;
 
             characterStats.movementSpeed *= 0.5f;
 

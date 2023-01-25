@@ -14,6 +14,8 @@ using System.Collections;
 using ModdingUtils.Patches;
 using UnboundLib.Utils;
 using CardChoiceSpawnUniqueCardPatch.CustomCategories;
+using ModdingUtils.Utils;
+using static CardInfo;
 
 namespace UnstableCards.Cards.Shrine
 {
@@ -25,6 +27,7 @@ namespace UnstableCards.Cards.Shrine
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
+            gun.projectileColor = Color.green;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -36,11 +39,10 @@ namespace UnstableCards.Cards.Shrine
             audioSource.PlayOneShot(Assets.shrineOfTheDamnedAudio, 1.35f);
 
             int[] cardIndeces = Enumerable.Range(0, player.data.currentCards.Count()).Where((index) => player.data.currentCards[index]).ToArray();
-            for (int i = 5; i > 0; i--)
+            for (int i = 3; i > 0; i--)
             {
                 var choiceCard = ModdingUtils.Utils.Cards.instance.GetRandomCardWithCondition(player, gun, gunAmmo, data, health, gravity, block, characterStats, (ci, p, g, ga, cd, hh, gr, b, csm) => ci.categories.Contains(UnstableCards.instance.damnedCategory));
-                UnityEngine.Debug.Log($"{choiceCard}");
-                ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, choiceCard, false, "", 2f, 2f, true);
+                ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, choiceCard, false, "", 2f, 2f, false);
             }
             CardInfo[] removePlayerCards = ModdingUtils.Utils.Cards.instance.RemoveCardsFromPlayer(player, cardIndeces);
         }
@@ -72,7 +74,7 @@ namespace UnstableCards.Cards.Shrine
                 {
                     positive = true,
                     stat = "Damned cards added",
-                    amount = "Alot",
+                    amount = "+3",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 }
             };

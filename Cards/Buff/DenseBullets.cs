@@ -4,11 +4,10 @@ using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
-using WillsWackyManagers.MonoBehaviours;
 
 namespace UnstableCards.Cards.Buff
 {
-    class RunItBack : CustomCard
+    class DenseBullets : CustomCard
     {
         public override void Callback()
         {
@@ -16,13 +15,13 @@ namespace UnstableCards.Cards.Buff
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.health = 0.6f;
-            statModifiers.movementSpeed = 0.85f;
+            gun.projectileSpeed = 0.5f;
+            gun.projectileSize = 0.5f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            characterStats.respawns = 1;
-            
+            gun.numberOfProjectiles += 3;
+            gunAmmo.maxAmmo *= 2;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -30,11 +29,11 @@ namespace UnstableCards.Cards.Buff
 
         protected override string GetTitle()
         {
-            return "Run it back.";
+            return "Dense Bullets";
         }
         protected override string GetDescription()
         {
-            return "Kill me baby one more time!";
+            return "Compress your existing bullets and new ones into one SOLID projectile";
         }
         protected override GameObject GetCardArt()
         {
@@ -51,30 +50,37 @@ namespace UnstableCards.Cards.Buff
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Respawns",
-                    amount = "+1",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
+                    stat = "Bullets",
+                    amount = "+3",
+                    simepleAmount = CardInfoStat.SimpleAmount.Some
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "Ammo",
+                    amount = "x2",
+                    simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "Health",
-                    amount = "-40%",
-                    simepleAmount = CardInfoStat.SimpleAmount.slightlyLower
+                    stat = "Bullet Speed",
+                    amount = "-50%",
+                    simepleAmount = CardInfoStat.SimpleAmount.lower
                 },
                 new CardInfoStat()
                 {
-                    positive = false,
-                    stat = "Health",
-                    amount = "-15%",
-                    simepleAmount = CardInfoStat.SimpleAmount.slightlyLower
+                    positive = true,
+                    stat = "Bullet Size",
+                    amount = "-50%",
+                    simepleAmount = CardInfoStat.SimpleAmount.lower
                 }
             };
 
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.TechWhite;
+            return CardThemeColor.CardThemeColorType.DestructiveRed;
         }
         public override string GetModName()
         {

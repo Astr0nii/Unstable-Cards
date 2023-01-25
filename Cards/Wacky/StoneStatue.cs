@@ -16,7 +16,7 @@ namespace UnstableCards.Cards.Wacky
     {
         public override void Callback()
         {
-            gameObject.GetOrAddComponent<ClassNameMono>().className = GodClass.name;
+            gameObject.GetOrAddComponent<ClassNameMono>().className = WackyClass.name;
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
@@ -70,7 +70,7 @@ namespace UnstableCards.Cards.Wacky
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.TechWhite;
+            return CardThemeColor.CardThemeColorType.DefensiveBlue;
         }
         public override string GetModName()
         {

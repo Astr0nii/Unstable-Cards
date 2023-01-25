@@ -16,18 +16,18 @@ namespace UnstableCards.Cards.Wacky
     {
         public override void Callback()
         {
-            gameObject.GetOrAddComponent<ClassNameMono>().className = GodClass.name;
+            gameObject.GetOrAddComponent<ClassNameMono>().className = WackyClass.name;
         }
         private readonly ObjectsToSpawn[] explosionToSpawn = new ObjectsToSpawn[1];
 
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             gun.projectileColor = Color.yellow;
+            gun.damage = 0f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gun.damage = 0f;
-            gunAmmo.maxAmmo += 25;
+            gunAmmo.maxAmmo += 10;
             player.data.healthHandler.regeneration += 2;
             characterStats.gravity *= 0.5f;
 

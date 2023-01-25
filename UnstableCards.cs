@@ -12,6 +12,8 @@ using UnstableCards.Cards.Buff;
 using UnstableCards.Cards.Shrine;
 using UnstableCards.Cards.Damned;
 using UnboundLib;
+using ModdingUtils;
+using UnboundLib.Utils;
 
 namespace UnstableCards
 {
@@ -37,7 +39,7 @@ namespace UnstableCards
         public CardCategory damnedCategory { get; private set; } = CustomCardCategories.instance.CardCategory("Damned");
         private const string ModId = "com.Astr0ni.Rounds.UnstableCards";
         private const string ModName = "Unstable Cards";
-        private const string Version = "1.9.0"; // Mod version (major.minor.patch)
+        private const string Version = "2.0.0"; // Mod version (major.minor.patch)
 
         public const string ModInitials = "UC";
 
@@ -47,7 +49,7 @@ namespace UnstableCards
         {
             var harmony = new Harmony(ModId);
             harmony.PatchAll();
-            RarityUtils.AddRarity("Damned", 0.000000000000000000001f, new Color32(15, 214, 81, 255), new Color32(0, 95, 60, 255));
+            RarityUtils.AddRarity("Damned", 0.000000001f, new Color32(15, 214, 81, 255), new Color32(0, 95, 60, 255));
         }
 
         void Start()
@@ -56,7 +58,6 @@ namespace UnstableCards
             CustomCard.BuildCard<Boomstick>();
             CustomCard.BuildCard<PointClickAdventureGame>();
             CustomCard.BuildCard<UraniumPayload>();
-            CustomCard.BuildCard<TackShooter>();
             CustomCard.BuildCard<StabbinLicense>();
             CustomCard.BuildCard<Detonator>();
             CustomCard.BuildCard<StoneStatue>();
@@ -75,7 +76,7 @@ namespace UnstableCards
             CustomCard.BuildCard<Clumsy>();
 
             // Normal Cards
-            CustomCard.BuildCard<ShieldOfTheDamned>();
+            CustomCard.BuildCard<RustBucket>();
             CustomCard.BuildCard<NinjitsuMaster>();
             CustomCard.BuildCard<BostonBoy>();
             CustomCard.BuildCard<GoldenApple>();
@@ -86,6 +87,9 @@ namespace UnstableCards
             CustomCard.BuildCard<IllegalGunParts>();
             CustomCard.BuildCard<TwoInTheChamber>();
             CustomCard.BuildCard<RunItBack>();
+            CustomCard.BuildCard<WeaponServicing>();
+            CustomCard.BuildCard<Fireflies>();
+            CustomCard.BuildCard<DenseBullets>();
 
             //God Cards
             CustomCard.BuildCard<TheCat>();
@@ -99,6 +103,9 @@ namespace UnstableCards
 
             //Damned Cards
             CustomCard.BuildCard<ShieldOfTheDamned>();
+            CustomCard.BuildCard<SkullOfTheDamned>();
+            CustomCard.BuildCard<HeartOfTheDamned>();
+            CustomCard.BuildCard<SoulOfTheDamned>();
 
             instance = this;
         }

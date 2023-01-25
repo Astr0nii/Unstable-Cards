@@ -10,8 +10,6 @@ using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
-using static CardInfoStat;
-using static UnityEngine.Random;
 
 namespace UnstableCards.Cards.Wacky
 {
@@ -19,19 +17,19 @@ namespace UnstableCards.Cards.Wacky
     {
         public override void Callback()
         {
-            gameObject.GetOrAddComponent<ClassNameMono>().className = GodClass.name;
+            gameObject.GetOrAddComponent<ClassNameMono>().className = WackyClass.name;
         }
         private readonly ObjectsToSpawn[] explosionToSpawn = new ObjectsToSpawn[1];
 
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-        }
-        public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
-        {
             gun.bulletDamageMultiplier = 2.0f;
             gun.size = 10.0f;
             gun.projectileSpeed = 0.5f;
             gun.unblockable = true;
+        }
+        public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
+        {
             // add explosion effect
             if (explosionToSpawn[0] == null)
             {
@@ -99,7 +97,7 @@ namespace UnstableCards.Cards.Wacky
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.ColdBlue;
+            return CardThemeColor.CardThemeColorType.DestructiveRed;
         }
         public override string GetModName()
         {

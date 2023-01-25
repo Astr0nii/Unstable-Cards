@@ -63,7 +63,7 @@ namespace UnstableCards.Cards.Buff
                 {
                     positive = true,
                     stat = "health",
-                    amount = "+200%",
+                    amount = "+100%",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()

@@ -4,7 +4,6 @@ using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
-using WillsWackyManagers.MonoBehaviours;
 
 namespace UnstableCards.Cards.Damned
 {
@@ -63,8 +62,7 @@ namespace UnstableCards.Cards.Damned
                     stat = "Power",
                     amount = "ALOT",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
-                }
-                ,
+                },
                 new CardInfoStat()
                 {
                     positive = false,

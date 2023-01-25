@@ -9,9 +9,6 @@ using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
-using ModdingUtils;
-using RarityLib;
-using static CardInfo;
 using System.Threading;
 using System.Collections;
 
@@ -28,6 +25,12 @@ namespace UnstableCards.Cards.Shrine
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
+            // Audio Logic
+            var audioSource = new GameObject("audioSource").gameObject.GetOrAddComponent<AudioSource>();
+            audioSource.gameObject.GetOrAddComponent<RemoveAfterSeconds>();
+            var timer = audioSource.GetComponent<RemoveAfterSeconds>();
+            timer.seconds = 5;
+            audioSource.PlayOneShot(Assets.shrineOfTheBalancedAudio, 1.35f);
 
             int[] cardIndeces = Enumerable.Range(0, player.data.currentCards.Count()).Where((index) => player.data.currentCards[index]).ToArray();
             var randomCard = cardIndeces[new System.Random().Next(0, cardIndeces.Length)];

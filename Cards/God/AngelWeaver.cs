@@ -22,6 +22,7 @@ namespace UnstableCards.Cards.God
         {
             cardInfo.allowMultiple = false;
             statModifiers.health = 10.0f;
+            gun.projectileColor = Color.white;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -86,7 +87,7 @@ namespace UnstableCards.Cards.God
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.DestructiveRed;
+            return CardThemeColor.CardThemeColorType.TechWhite;
         }
         public override string GetModName()
         {

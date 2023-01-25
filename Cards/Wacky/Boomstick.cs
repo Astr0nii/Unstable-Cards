@@ -21,16 +21,17 @@ namespace UnstableCards.Cards.Wacky
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             gun.attackSpeed = 1.5f;
-            gun.spread = 0.1f;
+            gun.damage = 0.6f;
+            gun.recoilMuiltiplier = 1.5f;
+            gun.spread = 0.05f;
+            gun.multiplySpread = 1.75f;
+            gun.knockback = 5.0f;
+            
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gun.recoilMuiltiplier += 0.5f;
-            gun.spread *= 1.75f;
-            gun.knockback *= 5.0f;
-            gun.numberOfProjectiles += 5;
             gunAmmo.reloadTimeAdd += 2.0f;
-            gun.bulletDamageMultiplier = 0.6f;
+            gun.numberOfProjectiles += 5; 
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {

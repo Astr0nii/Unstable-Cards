@@ -4,25 +4,23 @@ using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
-using WillsWackyManagers.MonoBehaviours;
 
-namespace UnstableCards.Cards.Buff
+namespace UnstableCards.Cards.Damned
 {
-    class RunItBack : CustomCard
+    class SkullOfTheDamned : CustomCard
     {
         public override void Callback()
         {
-            gameObject.GetOrAddComponent<ClassNameMono>().className = BuffClass.name;
+            gameObject.GetOrAddComponent<ClassNameMono>().className = DamnedClass.name;
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.health = 0.6f;
-            statModifiers.movementSpeed = 0.85f;
+            cardInfo.allowMultiple = true;
+            cardInfo.categories = new CardCategory[] { UnstableCards.instance.damnedCategory };
+            statModifiers.health = 1.5f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            characterStats.respawns = 1;
-            
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -30,11 +28,11 @@ namespace UnstableCards.Cards.Buff
 
         protected override string GetTitle()
         {
-            return "Run it back.";
+            return "Skull of the Damned";
         }
         protected override string GetDescription()
         {
-            return "Kill me baby one more time!";
+            return "Iron Skin, Cursed mind.";
         }
         protected override GameObject GetCardArt()
         {
@@ -42,7 +40,7 @@ namespace UnstableCards.Cards.Buff
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Scarce");
+            return RarityUtils.GetRarity("Damned");
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -51,30 +49,23 @@ namespace UnstableCards.Cards.Buff
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Respawns",
-                    amount = "+1",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
+                    stat = "Health",
+                    amount = "ALOT",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "Health",
-                    amount = "-40%",
-                    simepleAmount = CardInfoStat.SimpleAmount.slightlyLower
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "Health",
-                    amount = "-15%",
-                    simepleAmount = CardInfoStat.SimpleAmount.slightlyLower
+                    stat = "Sacrifice",
+                    amount = "ALOT",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 }
             };
 
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.TechWhite;
+            return CardThemeColor.CardThemeColorType.PoisonGreen;
         }
         public override string GetModName()
         {

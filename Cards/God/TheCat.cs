@@ -35,7 +35,7 @@ namespace UnstableCards.Cards.God
 
         protected override string GetTitle()
         {
-            return "Felis catus";
+            return "Felis Catus";
         }
         protected override string GetDescription()
         {
@@ -72,7 +72,7 @@ namespace UnstableCards.Cards.God
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.EvilPurple;
+            return CardThemeColor.CardThemeColorType.MagicPink;
         }
         public override string GetModName()
         {

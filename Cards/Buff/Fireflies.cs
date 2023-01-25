@@ -4,11 +4,11 @@ using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
-using WillsWackyManagers.MonoBehaviours;
+using static UnityEngine.Random;
 
 namespace UnstableCards.Cards.Buff
 {
-    class RunItBack : CustomCard
+    class Fireflies : CustomCard
     {
         public override void Callback()
         {
@@ -16,13 +16,18 @@ namespace UnstableCards.Cards.Buff
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.health = 0.6f;
-            statModifiers.movementSpeed = 0.85f;
+            gun.spread = 0.1f;
+            gun.projectileColor = Color.yellow;
+            gun.gravity = 0;
+            gun.projectileSpeed = 0.15f;
+            gun.ignoreWalls = true;
+            gun.bulletDamageMultiplier = 0.35f;
+            gun.multiplySpread = 1.5f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            characterStats.respawns = 1;
-            
+            gun.numberOfProjectiles += 6;
+            gunAmmo.maxAmmo += 6;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -30,11 +35,11 @@ namespace UnstableCards.Cards.Buff
 
         protected override string GetTitle()
         {
-            return "Run it back.";
+            return "Fireflies";
         }
         protected override string GetDescription()
         {
-            return "Kill me baby one more time!";
+            return "Shoot slow moving fireflies, You won't believe your eyes!";
         }
         protected override GameObject GetCardArt()
         {
@@ -42,7 +47,7 @@ namespace UnstableCards.Cards.Buff
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Scarce");
+            return RarityUtils.GetRarity("Epic");
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -51,30 +56,44 @@ namespace UnstableCards.Cards.Buff
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Respawns",
-                    amount = "+1",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
+                    stat = "Bullets",
+                    amount = "+6",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "Ignore Walls",
+                    amount = "true",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "Health",
-                    amount = "-40%",
-                    simepleAmount = CardInfoStat.SimpleAmount.slightlyLower
+                    stat = "Bullet Spread",
+                    amount = "+50%",
+                    simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "Health",
-                    amount = "-15%",
-                    simepleAmount = CardInfoStat.SimpleAmount.slightlyLower
+                    stat = "Bullet Speed",
+                    amount = "-85%",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLotLower
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
+                    stat = "Bullet Damage",
+                    amount = "-65%",
+                    simepleAmount = CardInfoStat.SimpleAmount.lower
                 }
             };
 
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.TechWhite;
+            return CardThemeColor.CardThemeColorType.FirepowerYellow;
         }
         public override string GetModName()
         {

@@ -17,7 +17,7 @@ namespace UnstableCards.Cards.Wacky
     {
         public override void Callback()
         {
-            gameObject.GetOrAddComponent<ClassNameMono>().className = GodClass.name;
+            gameObject.GetOrAddComponent<ClassNameMono>().className = WackyClass.name;
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
@@ -25,12 +25,12 @@ namespace UnstableCards.Cards.Wacky
             gun.reflects = -999;
             gun.spread = 0.4f;
             gun.reloadTime = 0.5f;
+            gun.projectileSpeed = 2.0f;
+            gun.bulletDamageMultiplier = 0.2f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
             gunAmmo.maxAmmo += 90;
-            gun.projectileSpeed *= 2.0f;
-            gun.bulletDamageMultiplier = 0.2f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -96,7 +96,7 @@ namespace UnstableCards.Cards.Wacky
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.TechWhite;
+            return CardThemeColor.CardThemeColorType.DestructiveRed;
         }
         public override string GetModName()
         {

@@ -25,7 +25,7 @@ namespace UnstableCards.Cards.Buff
         {
             data.jumps += 1;
             characterStats.movementSpeed *= 1.30f;
-            characterStats.health *= 0.60f;
+            characterStats.health = 0.65f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -69,7 +69,7 @@ namespace UnstableCards.Cards.Buff
                 {
                     positive = false,
                     stat = "Health",
-                    amount = "-40%",
+                    amount = "-35%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
                 }
             };

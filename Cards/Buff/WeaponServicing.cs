@@ -8,7 +8,7 @@ using WillsWackyManagers.MonoBehaviours;
 
 namespace UnstableCards.Cards.Buff
 {
-    class RunItBack : CustomCard
+    class WeaponServicing : CustomCard
     {
         public override void Callback()
         {
@@ -16,25 +16,29 @@ namespace UnstableCards.Cards.Buff
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.health = 0.6f;
-            statModifiers.movementSpeed = 0.85f;
+            gun.damage = 1.1f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            characterStats.respawns = 1;
-            
+            var misfire = player.gameObject.GetOrAddComponent<Misfire_Mono>();
+            misfire.misfireChance -= 20;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
+            var misfire = player.gameObject.GetComponent<Misfire_Mono>();
+            if (misfire)
+            {
+                misfire.misfireChance += 20;
+            }
         }
 
         protected override string GetTitle()
         {
-            return "Run it back.";
+            return "Weapon Servicing";
         }
         protected override string GetDescription()
         {
-            return "Kill me baby one more time!";
+            return "Schedule your weapon for a free comprehensive servicing covered by Geico!";
         }
         protected override GameObject GetCardArt()
         {
@@ -42,7 +46,7 @@ namespace UnstableCards.Cards.Buff
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Scarce");
+            return RarityUtils.GetRarity("Epic");
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -51,23 +55,16 @@ namespace UnstableCards.Cards.Buff
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Respawns",
-                    amount = "+1",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
+                    stat = "Damage",
+                    amount = "+10%",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
-                    positive = false,
-                    stat = "Health",
-                    amount = "-40%",
-                    simepleAmount = CardInfoStat.SimpleAmount.slightlyLower
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "Health",
-                    amount = "-15%",
-                    simepleAmount = CardInfoStat.SimpleAmount.slightlyLower
+                    positive = true,
+                    stat = "Realiability",
+                    amount = "+50%",
+                    simepleAmount = CardInfoStat.SimpleAmount.Some
                 }
             };
 

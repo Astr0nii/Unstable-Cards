@@ -16,12 +16,12 @@ namespace UnstableCards.Cards.Buff
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
+            gun.damage = 1.5f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
             var misfire = player.gameObject.GetOrAddComponent<Misfire_Mono>();
             misfire.misfireChance += 50;
-            gun.damage *= 1.5f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -56,7 +56,7 @@ namespace UnstableCards.Cards.Buff
                 {
                     positive = true,
                     stat = "Damage",
-                    amount = "+150%",
+                    amount = "+50%",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()

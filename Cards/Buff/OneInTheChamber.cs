@@ -21,12 +21,12 @@ namespace UnstableCards.Cards.Buff
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             gun.reloadTime = 25f;
+            gun.bulletDamageMultiplier = 999999;
+            gun.projectileSize = 0.00001f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
             gunAmmo.maxAmmo = 1;
-            gun.bulletDamageMultiplier *= 999999;
-            gun.projectileSize *= 0.00001f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
