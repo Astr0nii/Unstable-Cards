@@ -12,74 +12,40 @@ using UnstableCards.Cards.NameClasses;
 
 namespace UnstableCards.Cards.Wacky
 {
-    class UraniumPayload : CustomCard
+    class LivingStatue : CustomCard
     {
         public override void Callback()
         {
             gameObject.GetOrAddComponent<ClassNameMono>().className = WackyClass.name;
         }
-        private readonly ObjectsToSpawn[] explosionToSpawn = new ObjectsToSpawn[1];
-
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            gun.attackSpeed = 5.5f;
-            gun.projectileColor = Color.green;
+            statModifiers.health = 2.0f;
+            gun.projectielSimulatonSpeed = 0.5f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gun.damage *= 6f;
-
-            characterStats.movementSpeed *= 0.5f;
-
-            gun.attackSpeed *= 4f;
-
-            // add explosion effect
-            if (explosionToSpawn[0] == null)
-            {
-                (GameObject AddToProjectile, GameObject effect, Explosion explosion) = UnstableCards.LoadExplosion("explosionUraniumPayload", gun);
-
-                explosion.force *= 16f;
-                explosion.range *= 8f;
-
-                explosionToSpawn[0] = new ObjectsToSpawn
-                {
-                    AddToProjectile = AddToProjectile,
-                    direction = ObjectsToSpawn.Direction.forward,
-                    effect = effect,
-                    normalOffset = 0.1f,
-                    scaleFromDamage = 1f,
-                    scaleStackM = 0.2f,
-                    scaleStacks = true,
-                    spawnAsChild = false,
-                    spawnOn = ObjectsToSpawn.SpawnOn.all,
-                    stacks = 1,
-                    stickToAllTargets = false,
-                    stickToBigTargets = false,
-                    zeroZ = false,
-                };
-            }
-            gun.objectsToSpawn = gun.objectsToSpawn.Concat(explosionToSpawn).ToArray();
+            characterStats.movementSpeed *= 0.15f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gun.objectsToSpawn = gun.objectsToSpawn.Except(explosionToSpawn).ToArray();
         }
 
         protected override string GetTitle()
         {
-            return "Uranium Payload";
+            return "Living Statue";
         }
         protected override string GetDescription()
         {
-            return "Ammunition infused with 20KG of Uranium 235 for unstable results. 100% Compliant with OSHA guidelines!";
+            return "Mobility is not that important.";
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.UraniumPayloadArt;
+            return Assets.LivingStatueArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Epic");
+            return RarityUtils.GetRarity("Exotic");
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -87,22 +53,22 @@ namespace UnstableCards.Cards.Wacky
             {
                 new CardInfoStat()
                 {
-                    positive = false,
-                    stat = "Instability",
-                    amount = "+9999%",
-                    simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "ATKSPD",
-                    amount = "5.5s",
+                    positive = true,
+                    stat = "Health",
+                    amount = "+200%",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "Movement Speed",
+                    stat = "Living Statue",
+                    amount = "Minimal movement",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
+                    stat = "Projectile Speed",
                     amount = "-50%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
                 }
@@ -111,7 +77,7 @@ namespace UnstableCards.Cards.Wacky
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.PoisonGreen;
+            return CardThemeColor.CardThemeColorType.DefensiveBlue;
         }
         public override string GetModName()
         {

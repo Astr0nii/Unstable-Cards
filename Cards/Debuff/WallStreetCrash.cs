@@ -41,7 +41,7 @@ namespace UnstableCards.Cards.Debuffs
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return Assets.WallStreetCrashArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

@@ -74,7 +74,7 @@ namespace UnstableCards.Cards.Wacky
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return Assets.RocketJumperArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {
@@ -95,7 +95,7 @@ namespace UnstableCards.Cards.Wacky
                 {
                     positive = true,
                     stat = "Ammo",
-                    amount = "+25",
+                    amount = "+10",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()

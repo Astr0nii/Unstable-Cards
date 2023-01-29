@@ -39,11 +39,11 @@ namespace UnstableCards.Cards.Buff
         }
         protected override string GetDescription()
         {
-            return "Wait. Thats Illegal";
+            return "Wait! Thats Illegal";
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return Assets.TwoInTheChamberArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

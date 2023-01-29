@@ -44,7 +44,7 @@ namespace UnstableCards.Cards.God
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return Assets.AngelWeaverArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

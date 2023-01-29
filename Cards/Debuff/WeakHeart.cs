@@ -21,11 +21,11 @@ namespace UnstableCards.Cards.Debuffs
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             statModifiers.health = 0.75f;
+            statModifiers.movementSpeed = 0.75f;
+            statModifiers.jump = 0.5f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            characterStats.jump *= 0.5f;
-            characterStats.movementSpeed *= 0.75f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -41,7 +41,7 @@ namespace UnstableCards.Cards.Debuffs
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return Assets.WeakheartArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

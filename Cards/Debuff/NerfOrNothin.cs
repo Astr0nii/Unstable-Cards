@@ -37,11 +37,11 @@ namespace UnstableCards.Cards.Debuffs
         }
         protected override string GetDescription()
         {
-            return "Nerf this! Trusta approved.";
+            return "It's nerf or nothin! REEEEEEE.";
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return Assets.NerforNothinArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

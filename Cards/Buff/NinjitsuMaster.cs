@@ -43,7 +43,7 @@ namespace UnstableCards.Cards.Buff
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return Assets.NinjitsuMasterArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

@@ -17,11 +17,11 @@ namespace UnstableCards.Cards.Buff
         {
             gun.projectileSpeed = 0.5f;
             gun.projectileSize = 0.5f;
+            gun.spread = 0;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
             gun.numberOfProjectiles += 3;
-            gunAmmo.maxAmmo *= 2;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -37,7 +37,7 @@ namespace UnstableCards.Cards.Buff
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return Assets.DenseBulletsArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {
@@ -57,21 +57,14 @@ namespace UnstableCards.Cards.Buff
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Ammo",
-                    amount = "x2",
-                    simepleAmount = CardInfoStat.SimpleAmount.Some
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "Bullet Speed",
+                    stat = "Bullet Size",
                     amount = "-50%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
                 },
                 new CardInfoStat()
                 {
-                    positive = true,
-                    stat = "Bullet Size",
+                    positive = false,
+                    stat = "Bullet Speed",
                     amount = "-50%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
                 }

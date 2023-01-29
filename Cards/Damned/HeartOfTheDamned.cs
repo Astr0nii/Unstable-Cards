@@ -16,7 +16,6 @@ namespace UnstableCards.Cards.Damned
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             cardInfo.allowMultiple = true;
-            cardInfo.categories = new CardCategory[] { UnstableCards.instance.damnedCategory };
             statModifiers.health = 1.3f;
             statModifiers.lifeSteal = 0.35f;
         }
@@ -38,7 +37,7 @@ namespace UnstableCards.Cards.Damned
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return Assets.HeartOfTheDamnedArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

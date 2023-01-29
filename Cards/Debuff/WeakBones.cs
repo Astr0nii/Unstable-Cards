@@ -43,7 +43,7 @@ namespace UnstableCards.Cards.Debuffs
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return Assets.WeakBonesArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

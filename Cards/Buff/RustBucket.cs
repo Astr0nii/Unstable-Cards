@@ -42,7 +42,7 @@ namespace UnstableCards.Cards.Buff
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return Assets.RustBucketArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {
@@ -62,7 +62,7 @@ namespace UnstableCards.Cards.Buff
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "Unrealiability",
+                    stat = "Unreliability",
                     amount = "+50%",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 }

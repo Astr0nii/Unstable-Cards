@@ -9,6 +9,7 @@ using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
+using Random = System.Random;
 
 namespace UnstableCards.Cards.Buff
 {
@@ -41,7 +42,7 @@ namespace UnstableCards.Cards.Buff
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return Assets.IllegalGunPartsArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

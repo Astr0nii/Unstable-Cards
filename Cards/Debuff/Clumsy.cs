@@ -42,7 +42,7 @@ namespace UnstableCards.Cards.Debuffs
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return Assets.ClumsyArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

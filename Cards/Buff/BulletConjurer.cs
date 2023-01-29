@@ -1,30 +1,25 @@
 ﻿using ClassesManagerReborn.Util;
 using RarityLib.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
 
-namespace UnstableCards.Cards.Debuffs
+namespace UnstableCards.Cards.Buff
 {
-    class Amatuer : CustomCard
+    class BulletConjurer : CustomCard
     {
         public override void Callback()
         {
-            gameObject.GetOrAddComponent<ClassNameMono>().className = DebuffClass.name;
+            gameObject.GetOrAddComponent<ClassNameMono>().className = BuffClass.name;
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            gun.reloadTimeAdd = 0.5f;
+            gun.ammoReg = 0.005f;
+            statModifiers.health = 0.5f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gun.spread *= 1.4f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -32,19 +27,19 @@ namespace UnstableCards.Cards.Debuffs
 
         protected override string GetTitle()
         {
-            return "Amateur";
+            return "Bullet Conjurer";
         }
         protected override string GetDescription()
         {
-            return "Amateur... No wonder they can't use a gun!";
+            return "W-What! Where do you keep getting them from?! How?!";
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.AmateurArt;
+            return Assets.BulletConjurerArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Trinket");
+            return RarityUtils.GetRarity("Epic");
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -53,30 +48,23 @@ namespace UnstableCards.Cards.Debuffs
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Beginners",
-                    amount = "Luck",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "Spread",
-                    amount = "+40%",
+                    stat = "Ammo Regen",
+                    amount = "+0.5/s",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "Reload Time",
-                    amount = "+0.5s",
-                    simepleAmount = CardInfoStat.SimpleAmount.Some
+                    stat = "Health",
+                    amount = "-50%",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLotLower
                 }
             };
 
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.DestructiveRed;
+            return CardThemeColor.CardThemeColorType.FirepowerYellow;
         }
         public override string GetModName()
         {

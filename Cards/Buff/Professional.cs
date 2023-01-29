@@ -1,33 +1,30 @@
 ﻿using ClassesManagerReborn.Util;
 using RarityLib.Utils;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
-using static UnityEngine.Random;
 
-namespace UnstableCards.Cards.Buff
+namespace UnstableCards.Cards.Debuffs
 {
-    class Fireflies : CustomCard
+    class Professional : CustomCard
     {
         public override void Callback()
         {
-            gameObject.GetOrAddComponent<ClassNameMono>().className = BuffClass.name;
+            gameObject.GetOrAddComponent<ClassNameMono>().className = DebuffClass.name;
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            gun.spread = 0.1f;
-            gun.projectileColor = Color.yellow;
-            gun.gravity = 0;
-            gun.projectileSpeed = 0.15f;
-            gun.ignoreWalls = true;
-            gun.bulletDamageMultiplier = 0.35f;
-            gun.multiplySpread = 1.5f;
+            gun.reloadTime = 0.75f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gun.numberOfProjectiles += 6;
-            gunAmmo.maxAmmo += 6;
+            gun.spread *= 1.4f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -35,19 +32,19 @@ namespace UnstableCards.Cards.Buff
 
         protected override string GetTitle()
         {
-            return "Fireflies";
+            return "Professional";
         }
         protected override string GetDescription()
         {
-            return "Shoot slow moving fireflies, You won't believe your eyes!";
+            return "Professionals have standards; be polite, be efficient, have a plan to kill everyone you meet.";
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return Assets.ProfessionalArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Epic");
+            return CardInfo.Rarity.Rare;
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -56,36 +53,22 @@ namespace UnstableCards.Cards.Buff
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Bullets",
-                    amount = "+6",
+                    stat = "Professional",
+                    amount = "Skill",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Ignore Walls",
-                    amount = "true",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "Bullet Spread",
-                    amount = "+50%",
-                    simepleAmount = CardInfoStat.SimpleAmount.Some
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "Bullet Speed",
-                    amount = "-85%",
+                    stat = "Spread",
+                    amount = "resets",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotLower
                 },
                 new CardInfoStat()
                 {
-                    positive = false,
-                    stat = "Bullet Damage",
-                    amount = "-65%",
+                    positive = true,
+                    stat = "Reload Time",
+                    amount = "-25%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
                 }
             };

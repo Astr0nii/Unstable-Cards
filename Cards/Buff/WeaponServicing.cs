@@ -42,7 +42,7 @@ namespace UnstableCards.Cards.Buff
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return Assets.WeaponServicingArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {
@@ -62,8 +62,8 @@ namespace UnstableCards.Cards.Buff
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Realiability",
-                    amount = "+50%",
+                    stat = "Reliability",
+                    amount = "+20%",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 }
             };

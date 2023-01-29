@@ -14,6 +14,7 @@ using UnstableCards.Cards.Damned;
 using UnboundLib;
 using ModdingUtils;
 using UnboundLib.Utils;
+using System.Linq;
 
 namespace UnstableCards
 {
@@ -27,6 +28,9 @@ namespace UnstableCards
     [BepInDependency("pykess.rounds.plugins.moddingutils", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("pykess.rounds.plugins.cardchoicespawnuniquecardpatch", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("root.classes.manager.reborn", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.willuwontu.rounds.BlockForcePatch", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.willuwontu.rounds.RespawnPatch", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.root.projectile.size.patch", BepInDependency.DependencyFlags.HardDependency)]
 
     // Declaring that our mod exists to BepIn
     [BepInPlugin(ModId, ModName, Version)]
@@ -36,20 +40,19 @@ namespace UnstableCards
 
     public class UnstableCards : BaseUnityPlugin
     {
-        public CardCategory damnedCategory { get; private set; } = CustomCardCategories.instance.CardCategory("Damned");
         private const string ModId = "com.Astr0ni.Rounds.UnstableCards";
         private const string ModName = "Unstable Cards";
         private const string Version = "2.0.0"; // Mod version (major.minor.patch)
 
         public const string ModInitials = "UC";
 
-        public static Dictionary<string, GameObject> CardArt = new Dictionary<string, GameObject>();
+
+        internal static List<CardInfo> damnedCards = new List<CardInfo>();
 
         void Awake()
         {
             var harmony = new Harmony(ModId);
             harmony.PatchAll();
-            RarityUtils.AddRarity("Damned", 0.000000001f, new Color32(15, 214, 81, 255), new Color32(0, 95, 60, 255));
         }
 
         void Start()
@@ -63,6 +66,8 @@ namespace UnstableCards
             CustomCard.BuildCard<StoneStatue>();
             CustomCard.BuildCard<RocketJumper>();
             CustomCard.BuildCard<HeavyWeaponsGuy>();
+            CustomCard.BuildCard<LivingStatue>();
+            CustomCard.BuildCard<Fireflies>();
 
             // DeBuffs
             CustomCard.BuildCard<WhiskeyBottle>();
@@ -72,7 +77,7 @@ namespace UnstableCards
             CustomCard.BuildCard<Weakheart>();
             CustomCard.BuildCard<WallStreetCrash>();
             CustomCard.BuildCard<Amatuer>();
-            CustomCard.BuildCard<DollarStoreFirearm>();
+            CustomCard.BuildCard<FirearmRestrictions>();
             CustomCard.BuildCard<Clumsy>();
 
             // Normal Cards
@@ -88,24 +93,26 @@ namespace UnstableCards
             CustomCard.BuildCard<TwoInTheChamber>();
             CustomCard.BuildCard<RunItBack>();
             CustomCard.BuildCard<WeaponServicing>();
-            CustomCard.BuildCard<Fireflies>();
             CustomCard.BuildCard<DenseBullets>();
+            CustomCard.BuildCard<Professional>();
+            CustomCard.BuildCard<BulletConjurer>();
 
             //God Cards
             CustomCard.BuildCard<TheCat>();
             CustomCard.BuildCard<TheSoulConsumer>();
             CustomCard.BuildCard<AngelWeaver>();
 
-            //Shrine Cards
-            CustomCard.BuildCard<ShrineOfTheForgotten>();
-            CustomCard.BuildCard<ShrineOfTheBalanced>();
-            CustomCard.BuildCard<ShrineOfTheDamned>();
+            //Totem Cards
+            CustomCard.BuildCard<TotemOfTheForgotten>();
+            CustomCard.BuildCard<TotemOfTheBalanced>();
+            CustomCard.BuildCard<TotemOfTheDamned>();
 
-            //Damned Cards
-            CustomCard.BuildCard<ShieldOfTheDamned>();
-            CustomCard.BuildCard<SkullOfTheDamned>();
-            CustomCard.BuildCard<HeartOfTheDamned>();
-            CustomCard.BuildCard<SoulOfTheDamned>();
+            //Damned Totem Cards
+            CustomCard.BuildCard<HeartOfTheDamned>(c => { ModdingUtils.Utils.Cards.instance.AddHiddenCard(c); damnedCards.Add(c); });
+            CustomCard.BuildCard<SkullOfTheDamned>(c => { ModdingUtils.Utils.Cards.instance.AddHiddenCard(c); damnedCards.Add(c); });
+            CustomCard.BuildCard<ShieldOfTheDamned>(c => { ModdingUtils.Utils.Cards.instance.AddHiddenCard(c); damnedCards.Add(c); });
+            CustomCard.BuildCard<SoulOfTheDamned>(c => { ModdingUtils.Utils.Cards.instance.AddHiddenCard(c); damnedCards.Add(c); });
+
 
             instance = this;
         }

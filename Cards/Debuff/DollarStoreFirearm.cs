@@ -13,7 +13,7 @@ using WillsWackyManagers.MonoBehaviours;
 
 namespace UnstableCards.Cards.Debuffs
 {
-    class DollarStoreFirearm : CustomCard
+    class FirearmRestrictions : CustomCard
     {
         public override void Callback()
         {
@@ -48,7 +48,7 @@ namespace UnstableCards.Cards.Debuffs
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return Assets.DollarStoreFirearmArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

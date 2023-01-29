@@ -21,6 +21,7 @@ namespace UnstableCards.Cards.God
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             cardInfo.allowMultiple = false;
+            statModifiers.movementSpeed = 1.5f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -43,7 +44,7 @@ namespace UnstableCards.Cards.God
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return Assets.TheCatArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {
@@ -59,6 +60,13 @@ namespace UnstableCards.Cards.God
                     stat = "The Cat never lies",
                     amount = "nine lives",
                     simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "Movement Speed",
+                    amount = "+50%",
+                    simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {

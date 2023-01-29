@@ -11,14 +11,15 @@ using UnityEngine;
 using UnstableCards.Cards.NameClasses;
 using System.Threading;
 using System.Collections;
+using Photon.Pun;
 
 namespace UnstableCards.Cards.Shrine
 {
-    class ShrineOfTheBalanced : CustomCard
+    class TotemOfTheBalanced : CustomCard
     {
         public override void Callback()
         {
-            gameObject.GetOrAddComponent<ClassNameMono>().className = ShrineClass.name;
+            gameObject.GetOrAddComponent<ClassNameMono>().className = TotemClass.name;
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
@@ -30,17 +31,21 @@ namespace UnstableCards.Cards.Shrine
             audioSource.gameObject.GetOrAddComponent<RemoveAfterSeconds>();
             var timer = audioSource.GetComponent<RemoveAfterSeconds>();
             timer.seconds = 5;
-            audioSource.PlayOneShot(Assets.shrineOfTheBalancedAudio, 1.35f);
+            audioSource.PlayOneShot(Assets.totemOfTheBalancedAudio, 1.35f);
 
-            int[] cardIndeces = Enumerable.Range(0, player.data.currentCards.Count()).Where((index) => player.data.currentCards[index]).ToArray();
+            // Card Adding/Removing Logic
+            UnityEngine.Debug.Log($"{player.data.currentCards}");
+            Unbound.Instance.StartCoroutine(DoReplaceCards(player));
+        }
+        private static IEnumerator DoReplaceCards(Player player)
+        {
+            if (!PhotonNetwork.IsMasterClient && !PhotonNetwork.OfflineMode) yield break;
+
+            int[] cardIndeces = Enumerable.Range(0, player.data.currentCards.Count()).ToArray();
             var randomCard = cardIndeces[new System.Random().Next(0, cardIndeces.Length)];
             var choiceCard = player.data.currentCards[randomCard];
-            for (int i = player.data.currentCards.Count(); i > 0; i--)
-            {
-                WaitFor.Frames(20);
-                ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, choiceCard, false, "", 0f, 0f, false);
-            }
-            CardInfo[] removePlayerCards = ModdingUtils.Utils.Cards.instance.RemoveCardsFromPlayer(player, cardIndeces);
+            CardInfo[] choiceCardList = Enumerable.Repeat(choiceCard, cardIndeces.Length).ToArray();
+            yield return ModdingUtils.Utils.Cards.instance.ReplaceCards(player, cardIndeces, choiceCardList, null);
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -48,7 +53,7 @@ namespace UnstableCards.Cards.Shrine
 
         protected override string GetTitle()
         {
-            return "Shrine Of The Balanced";
+            return "Totem Of The Balanced";
         }
         protected override string GetDescription()
         {
@@ -56,7 +61,7 @@ namespace UnstableCards.Cards.Shrine
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return Assets.TotemOfTheBalancedArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {
@@ -83,22 +88,6 @@ namespace UnstableCards.Cards.Shrine
         public override string GetModName()
         {
             return UnstableCards.ModInitials;
-        }
-        private static class WaitFor
-        {
-            public static IEnumerator Frames(int frameCount)
-            {
-                if (frameCount <= 0)
-                {
-                    throw new ArgumentOutOfRangeException("frameCount", "Cannot wait for less that 1 frame");
-                }
-
-                while (frameCount > 0)
-                {
-                    frameCount--;
-                    yield return null;
-                }
-            }
         }
     }
 }

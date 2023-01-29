@@ -42,7 +42,7 @@ namespace UnstableCards.Cards.Buff
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return Assets.EnchantedGoldenAppleArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

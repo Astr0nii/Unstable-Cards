@@ -38,11 +38,11 @@ namespace UnstableCards.Cards.Buff
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return Assets.RunItBackArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Scarce");
+            return RarityUtils.GetRarity("Exotic");
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -65,7 +65,7 @@ namespace UnstableCards.Cards.Buff
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "Health",
+                    stat = "Movement Speed",
                     amount = "-15%",
                     simepleAmount = CardInfoStat.SimpleAmount.slightlyLower
                 }

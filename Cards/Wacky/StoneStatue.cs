@@ -20,12 +20,12 @@ namespace UnstableCards.Cards.Wacky
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.health = 10.0f;
+            statModifiers.health = 7.5f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
             characterStats.movementSpeed = 0.0f;
-            data.jumps = -1;
+            data.jumps = -99;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -41,7 +41,7 @@ namespace UnstableCards.Cards.Wacky
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return Assets.StoneStatueArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {
@@ -55,7 +55,7 @@ namespace UnstableCards.Cards.Wacky
                 {
                     positive = true,
                     stat = "Health",
-                    amount = "+1000%",
+                    amount = "+750%",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()

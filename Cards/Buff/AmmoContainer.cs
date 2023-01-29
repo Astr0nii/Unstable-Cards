@@ -40,7 +40,7 @@ namespace UnstableCards.Cards.Buff
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return Assets.AmmoContainerArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

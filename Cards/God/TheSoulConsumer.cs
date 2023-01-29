@@ -1,4 +1,5 @@
 ﻿using ClassesManagerReborn.Util;
+using Photon.Pun.Simple;
 using RarityLib.Utils;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,8 @@ using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
+using static CardInfoStat;
+using static UnityEngine.Random;
 
 namespace UnstableCards.Cards.God
 {
@@ -22,13 +25,12 @@ namespace UnstableCards.Cards.God
         {
             cardInfo.allowMultiple = false;
             statModifiers.lifeSteal = 1f;
+            statModifiers.sizeMultiplier = 1.75f;
+            gun.damage = 2;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-
-            
             characterStats.secondsToTakeDamageOver = 7.5f;
-            characterStats.sizeMultiplier = 2.5f;
             characterStats.respawns = 2;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -45,7 +47,7 @@ namespace UnstableCards.Cards.God
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return Assets.TheSoulConsumerArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {
@@ -60,6 +62,13 @@ namespace UnstableCards.Cards.God
                     positive = true,
                     stat = "Life Steal",
                     amount = "Everything",
+                    simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "Damage",
+                    amount = "+100%",
                     simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
                 },
                 new CardInfoStat()
@@ -80,7 +89,7 @@ namespace UnstableCards.Cards.God
                 {
                     positive = false,
                     stat = "Size",
-                    amount = "+200%",
+                    amount = "+75%",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 }
             };
