@@ -31,7 +31,7 @@ namespace UnstableCards.Cards.Shrine
             audioSource.gameObject.GetOrAddComponent<RemoveAfterSeconds>();
             var timer = audioSource.GetComponent<RemoveAfterSeconds>();
             timer.seconds = 5;
-            audioSource.PlayOneShot(Assets.totemOfTheBalancedAudio, 1.35f);
+            audioSource.PlayOneShot(Assets.totemOfTheBalancedAudio, 1.2f);
 
             // Card Adding/Removing Logic
             UnityEngine.Debug.Log($"{player.data.currentCards}");

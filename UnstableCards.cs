@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnboundLib.Cards;
 using HarmonyLib;
-using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 using RarityLib.Utils;
 using System.Collections.Generic;
 using UnstableCards.Cards.Wacky;
@@ -68,6 +67,7 @@ namespace UnstableCards
             CustomCard.BuildCard<HeavyWeaponsGuy>();
             CustomCard.BuildCard<LivingStatue>();
             CustomCard.BuildCard<Fireflies>();
+            CustomCard.BuildCard<WavyBullets>();
 
             // DeBuffs
             CustomCard.BuildCard<WhiskeyBottle>();
@@ -79,6 +79,7 @@ namespace UnstableCards
             CustomCard.BuildCard<Amatuer>();
             CustomCard.BuildCard<FirearmRestrictions>();
             CustomCard.BuildCard<Clumsy>();
+            CustomCard.BuildCard<Turtle>();
 
             // Normal Cards
             CustomCard.BuildCard<RustBucket>();
@@ -112,7 +113,7 @@ namespace UnstableCards
             CustomCard.BuildCard<SkullOfTheDamned>(c => { ModdingUtils.Utils.Cards.instance.AddHiddenCard(c); damnedCards.Add(c); });
             CustomCard.BuildCard<ShieldOfTheDamned>(c => { ModdingUtils.Utils.Cards.instance.AddHiddenCard(c); damnedCards.Add(c); });
             CustomCard.BuildCard<SoulOfTheDamned>(c => { ModdingUtils.Utils.Cards.instance.AddHiddenCard(c); damnedCards.Add(c); });
-
+            CustomCard.BuildCard<BulletsOfTheDamned>(c => { ModdingUtils.Utils.Cards.instance.AddHiddenCard(c); damnedCards.Add(c); });
 
             instance = this;
         }

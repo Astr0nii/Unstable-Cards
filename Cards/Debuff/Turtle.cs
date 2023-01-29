@@ -7,7 +7,7 @@ using UnstableCards.Cards.NameClasses;
 
 namespace UnstableCards.Cards.Debuffs
 {
-    class Tortoise : CustomCard
+    class Turtle : CustomCard
     {
         public override void Callback()
         {
@@ -27,15 +27,15 @@ namespace UnstableCards.Cards.Debuffs
 
         protected override string GetTitle()
         {
-            return "Tortoise";
+            return "Turtle";
         }
         protected override string GetDescription()
         {
-            return "Slow and steady wins the race!";
+            return "Turrrrrtles Ye-Ye-Yeah! Slow and steady wins the race!";
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.TortoiseArt;
+            return Assets.TurtleArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

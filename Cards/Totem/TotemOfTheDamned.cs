@@ -36,7 +36,7 @@ namespace UnstableCards.Cards.Shrine
             audioSource.gameObject.GetOrAddComponent<RemoveAfterSeconds>();
             var timer = audioSource.GetComponent<RemoveAfterSeconds>();
             timer.seconds = 5;
-            audioSource.PlayOneShot(Assets.totemOfTheDamnedAudio, 1.35f);
+            audioSource.PlayOneShot(Assets.totemOfTheDamnedAudio, 1.2f);
 
             // Card Adding Logic
             UnstableCards.damnedCards.Shuffle();

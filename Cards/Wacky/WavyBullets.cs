@@ -1,4 +1,5 @@
 ﻿using ClassesManagerReborn.Util;
+using Photon.Pun.Simple;
 using RarityLib.Utils;
 using System;
 using System.Collections.Generic;
@@ -9,31 +10,25 @@ using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
-using ModdingUtils;
+using static CardInfoStat;
+using static UnityEngine.Random;
 
-namespace UnstableCards.Cards.Shrine
+namespace UnstableCards.Cards.Wacky
 {
-    class TotemOfTheForgotten : CustomCard
+    class WavyBullets : CustomCard
     {
         public override void Callback()
         {
-            gameObject.GetOrAddComponent<ClassNameMono>().className = TotemClass.name;
+            gameObject.GetOrAddComponent<ClassNameMono>().className = WackyClass.name;
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
+            gun.damage = 0.7f;
+            gun.cos = 4.0f;
+            gun.projectileSpeed = 1.5f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            // Audio Logic
-            var audioSource = new GameObject("audioSource").gameObject.GetOrAddComponent<AudioSource>();
-            audioSource.gameObject.GetOrAddComponent<RemoveAfterSeconds>();
-            var timer = audioSource.GetComponent<RemoveAfterSeconds>();
-            timer.seconds = 5;
-            audioSource.PlayOneShot(Assets.totemOfTheForgottenAudio, 1.2f);
-
-            // Card Removing Logic
-            int[] cardIndeces = Enumerable.Range(0, player.data.currentCards.Count()).ToArray();
-            CardInfo[] playerCards = ModdingUtils.Utils.Cards.instance.RemoveCardsFromPlayer(player, cardIndeces);
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -41,19 +36,19 @@ namespace UnstableCards.Cards.Shrine
 
         protected override string GetTitle()
         {
-            return "Totem Of The Forgotten";
+            return "Wavy Bullets";
         }
         protected override string GetDescription()
         {
-            return "Some things are best left forgotten, left to rot for eternity.";
+            return "The waviest bullets in the seven seas, ARRRR.";
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.TotemOfTheForgottenArt;
+            return Assets.WavyBulletsArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Epic");
+            return RarityUtils.GetRarity("Exotic");
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -62,16 +57,30 @@ namespace UnstableCards.Cards.Shrine
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Cards Removed",
-                    amount = "All",
+                    stat = "Wavy Bullets",
+                    amount = "Yes",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "Bullet Speed",
+                    amount = "+50%",
+                    simepleAmount = CardInfoStat.SimpleAmount.Some
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
+                    stat = "Damge",
+                    amount = "-30%",
+                    simepleAmount = CardInfoStat.SimpleAmount.lower
                 }
             };
 
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.EvilPurple;
+            return CardThemeColor.CardThemeColorType.DefensiveBlue;
         }
         public override string GetModName()
         {

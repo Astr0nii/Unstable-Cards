@@ -53,8 +53,10 @@ namespace UnstableCards
         public static GameObject HeavyWeaponsGuyArt = Bundle.LoadAsset<GameObject>("C_HeavyWeaponsGuy");
         public static GameObject StabbinLicenseArt = Bundle.LoadAsset<GameObject>("C_StabbinLicense");
         public static GameObject TheSoulConsumerArt = Bundle.LoadAsset<GameObject>("C_TheSoulConsumer");
-        public static GameObject TortoiseArt = Bundle.LoadAsset<GameObject>("C_Tortoise");
+        public static GameObject TurtleArt = Bundle.LoadAsset<GameObject>("C_Turtle");
         public static GameObject BulletConjurerArt = Bundle.LoadAsset<GameObject>("C_BulletConjurer");
+        public static GameObject BulletsOfTheDamnedArt = Bundle.LoadAsset<GameObject>("C_BulletsOfTheDamned");
+        public static GameObject WavyBulletsArt = Bundle.LoadAsset<GameObject>("C_WavyBullets");
 
         // Audio
         public static AudioClip totemOfTheDamnedAudio = Bundle.LoadAsset<AudioClip>("A_TotemOfTheDamned");

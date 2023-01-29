@@ -23,20 +23,21 @@ namespace UnstableCards.Cards.Wacky
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             gun.projectileColor = Color.yellow;
-            gun.damage = 0f;
+            gun.bulletDamageMultiplier = -1f;
+            gun.gravity = 0f;
+            gun.projectileSpeed = 2f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
             gunAmmo.maxAmmo += 10;
-            player.data.healthHandler.regeneration += 2;
-            characterStats.gravity *= 0.5f;
+            characterStats.gravity *= 0.75f;
 
             // add explosion effect
             if (explosionToSpawn[0] == null)
             {
                 (GameObject AddToProjectile, GameObject effect, Explosion explosion) = UnstableCards.LoadExplosion("explosionRocketJumper", gun);
 
-                explosion.force *= 16f;
+                explosion.force *= 10f;
                 explosion.range *= 2.5f;
                 explosion.damage = 0f;
 
@@ -46,7 +47,7 @@ namespace UnstableCards.Cards.Wacky
                     direction = ObjectsToSpawn.Direction.forward,
                     effect = effect,
                     normalOffset = 0.1f,
-                    scaleFromDamage = 1f,
+                    scaleFromDamage = 0f,
                     scaleStackM = 0.2f,
                     scaleStacks = true,
                     spawnAsChild = false,
@@ -70,7 +71,7 @@ namespace UnstableCards.Cards.Wacky
         }
         protected override string GetDescription()
         {
-            return "Nearly Harmless rockets! Meant for rocket jumping practice sessions! (or knocking your friends to infinity and beyond)";
+            return "Harmless rockets! Meant for rocket jumping practice sessions! (or knocking your friends to infinity and beyond!)";
         }
         protected override GameObject GetCardArt()
         {
@@ -88,7 +89,7 @@ namespace UnstableCards.Cards.Wacky
                 {
                     positive = true,
                     stat = "Damage",
-                    amount = "Almost Harmless",
+                    amount = "Harmless",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotLower
                 },
                 new CardInfoStat()
@@ -101,16 +102,9 @@ namespace UnstableCards.Cards.Wacky
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Life Regeneration",
-                    amount = "+2hp/s",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
-                },
-                new CardInfoStat()
-                {
-                    positive = true,
                     stat = "Gravity",
-                    amount = "-50%",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                    amount = "-25%",
+                    simepleAmount = CardInfoStat.SimpleAmount.lower
                 }
             };
 

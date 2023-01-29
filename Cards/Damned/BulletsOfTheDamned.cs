@@ -1,39 +1,28 @@
 ﻿using ClassesManagerReborn.Util;
 using RarityLib.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
-using ModdingUtils;
 
-namespace UnstableCards.Cards.Shrine
+namespace UnstableCards.Cards.Damned
 {
-    class TotemOfTheForgotten : CustomCard
+    class BulletsOfTheDamned : CustomCard
     {
         public override void Callback()
         {
-            gameObject.GetOrAddComponent<ClassNameMono>().className = TotemClass.name;
+            gameObject.GetOrAddComponent<ClassNameMono>().className = DamnedClass.name;
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
+            cardInfo.allowMultiple = true;
+            statModifiers.health = 0.5f;
+            gun.bodyRecoil = 2.0f;
+            gun.bulletDamageMultiplier = 1.75f;
+            statModifiers.lifeSteal = 0.35f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            // Audio Logic
-            var audioSource = new GameObject("audioSource").gameObject.GetOrAddComponent<AudioSource>();
-            audioSource.gameObject.GetOrAddComponent<RemoveAfterSeconds>();
-            var timer = audioSource.GetComponent<RemoveAfterSeconds>();
-            timer.seconds = 5;
-            audioSource.PlayOneShot(Assets.totemOfTheForgottenAudio, 1.2f);
-
-            // Card Removing Logic
-            int[] cardIndeces = Enumerable.Range(0, player.data.currentCards.Count()).ToArray();
-            CardInfo[] playerCards = ModdingUtils.Utils.Cards.instance.RemoveCardsFromPlayer(player, cardIndeces);
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -41,19 +30,19 @@ namespace UnstableCards.Cards.Shrine
 
         protected override string GetTitle()
         {
-            return "Totem Of The Forgotten";
+            return "Bullets of the Damned";
         }
         protected override string GetDescription()
         {
-            return "Some things are best left forgotten, left to rot for eternity.";
+            return "Bullets infused with the damneds power.";
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.TotemOfTheForgottenArt;
+            return Assets.BulletsOfTheDamnedArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Epic");
+            return RarityUtils.GetRarity("Damned");
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -62,8 +51,22 @@ namespace UnstableCards.Cards.Shrine
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Cards Removed",
-                    amount = "All",
+                    stat = "Damage",
+                    amount = "ALOT",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "Greed",
+                    amount = "ALOT",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
+                    stat = "Sacrifice",
+                    amount = "ALOT",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 }
             };
@@ -71,7 +74,7 @@ namespace UnstableCards.Cards.Shrine
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.EvilPurple;
+            return CardThemeColor.CardThemeColorType.PoisonGreen;
         }
         public override string GetModName()
         {
