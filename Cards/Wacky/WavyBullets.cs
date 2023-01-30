@@ -71,7 +71,7 @@ namespace UnstableCards.Cards.Wacky
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "Damge",
+                    stat = "Damage",
                     amount = "-30%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
                 }

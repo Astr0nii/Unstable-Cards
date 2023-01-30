@@ -65,5 +65,9 @@ namespace UnstableCards.Cards.Damned
         {
             return UnstableCards.ModInitials;
         }
+        public override bool GetEnabled()
+        {
+            return false;
+        }
     }
 }
