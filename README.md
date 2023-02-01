@@ -1,6 +1,6 @@
-# Unstable Cards adds 40 new cards that are "Balanced".
+# Unstable Cards adds 47 new cards that are "Balanced".
 
-## Newest Update 1.9.1 adds 6 new cards and removes 1 card!:
+## Newest Update 2.0.0 adds 6 new cards and removes 1 card!:
 ## *All stats and cards are NOT in their final state and are subject to change!*
 ###General Changes:
 
