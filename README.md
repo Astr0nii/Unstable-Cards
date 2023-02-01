@@ -2,7 +2,7 @@
 
 ## Newest Update 2.0.0 adds 6 new cards and removes 1 card!:
 ## *All stats and cards are NOT in their final state and are subject to change!*
-###General Changes:
+### General Changes:
 
 - Card art is now implemented!
 - Mod Should now work in multiplayer!
@@ -10,7 +10,7 @@
 - Fixed typos through out the mod. Nothing should be written incorrectly now! "Should".
 - Custom sounds are slightly quieter.
 
-###Balancing Changes/Changes to existing cards:
+### Balancing Changes/Changes to existing cards:
 
 - Shrines are now called 'Totems' to better allign with their new art and effects.
 - Totem of the balanced fixed and works better (Thanks Willis <3).
@@ -28,18 +28,18 @@
 - Anima Devorantis Buffed (Size +200% > +75%) (Damage +0% > +100%).
 - Rocket Jumper no longer gives regen due to rockets being harmless now and the projectiles are actually rockets now.
 
-###New Cards/Reworks:
+### New Cards/Reworks:
 
-###New/Reworked Buff Cards:
+### New/Reworked Buff Cards:
 - Dense Bullets (Compress those bullets!).
 - Professional (Opposite of amateur).
 
-###New/Reworked Wacky Cards:
+### New/Reworked Wacky Cards:
 - Fireflies (Slow moving fireflies! (duh!)).
 - Wavy Bullets (Waviest Bullets of the seven seas!).
 
-###New/Reworked Debuff Cards:
+### New/Reworked Debuff Cards:
 - Turtle (Slow and steady wins the race!).
 
-###New/Reworked Damned Cards:
+### New/Reworked Damned Cards:
 - Bullets of the damned (Cursed bullets!).
