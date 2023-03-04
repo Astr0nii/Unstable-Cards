@@ -16,7 +16,7 @@ namespace UnstableCards.Cards.Buff
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             gun.ammoReg = 0.005f;
-            statModifiers.health = 0.5f;
+            statModifiers.health = 0.4f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -31,7 +31,7 @@ namespace UnstableCards.Cards.Buff
         }
         protected override string GetDescription()
         {
-            return "W-What! Where do you keep getting them from?! How?!";
+            return "W-What! Where do you keep getting them from?! How?! Only works when you are not reloading.";
         }
         protected override GameObject GetCardArt()
         {
@@ -39,7 +39,7 @@ namespace UnstableCards.Cards.Buff
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Epic");
+            return RarityUtils.GetRarity("Scarce");
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -56,7 +56,7 @@ namespace UnstableCards.Cards.Buff
                 {
                     positive = false,
                     stat = "Health",
-                    amount = "-50%",
+                    amount = "-40%",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotLower
                 }
             };

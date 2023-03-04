@@ -21,11 +21,11 @@ namespace UnstableCards.Cards.Wacky
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             gun.attackSpeed = 1.5f;
-            gun.damage = 0.6f;
-            gun.recoilMuiltiplier = 1.5f;
-            gun.spread = 0.05f;
+            gun.damage = 0.75f;
+            gun.recoilMuiltiplier = 1.1f;
+            gun.spread = 0.75f;
             gun.multiplySpread = 1.75f;
-            gun.knockback = 5.0f;
+            gun.knockback = 10.0f;
             
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -61,7 +61,7 @@ namespace UnstableCards.Cards.Wacky
                 {
                     positive = true,
                     stat = "Knockback",
-                    amount = "+500%",
+                    amount = "+1000%",
                     simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
                 },
                 new CardInfoStat()
@@ -89,7 +89,7 @@ namespace UnstableCards.Cards.Wacky
                 {
                     positive = false,
                     stat = "DMG",
-                    amount = "-40%",
+                    amount = "-20%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
                 },
                 new CardInfoStat()
@@ -103,7 +103,7 @@ namespace UnstableCards.Cards.Wacky
                 {
                     positive = false,
                     stat = "Recoil",
-                    amount = "+50%",
+                    amount = "+10%",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 }
             };

@@ -23,7 +23,7 @@ namespace UnstableCards.Cards.Buff
             block.additionalBlocks = +2;
             block.forceToAdd = -15f;
             block.cdMultiplier = 0.55f;
-            statModifiers.health = 0.5f;
+            statModifiers.health = 0.85f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -71,7 +71,7 @@ namespace UnstableCards.Cards.Buff
                 {
                     positive = false,
                     stat = "health",
-                    amount = "-50%",
+                    amount = "-25%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
                 },
                 new CardInfoStat()

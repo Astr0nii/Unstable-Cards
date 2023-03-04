@@ -17,7 +17,6 @@ namespace UnstableCards.Cards.Damned
         {
             cardInfo.allowMultiple = true;
             statModifiers.health = 0.5f;
-            gun.bodyRecoil = 2.0f;
             gun.bulletDamageMultiplier = 1.75f;
             statModifiers.lifeSteal = 0.35f;
         }

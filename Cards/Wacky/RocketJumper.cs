@@ -23,7 +23,7 @@ namespace UnstableCards.Cards.Wacky
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             gun.projectileColor = Color.yellow;
-            gun.bulletDamageMultiplier = -1f;
+            gun.bulletDamageMultiplier = 0f;
             gun.gravity = 0f;
             gun.projectileSpeed = 2f;
         }

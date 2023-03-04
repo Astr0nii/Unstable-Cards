@@ -17,6 +17,7 @@ namespace UnstableCards.Cards.Buff
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             gun.damage = 1.1f;
+            gun.recoilMuiltiplier = 0.5f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -65,6 +66,13 @@ namespace UnstableCards.Cards.Buff
                     stat = "Reliability",
                     amount = "+20%",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "Recoil",
+                    amount = "-50%",
+                    simepleAmount = CardInfoStat.SimpleAmount.lower
                 }
             };
 

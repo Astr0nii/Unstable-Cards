@@ -1,4 +1,5 @@
 ﻿using ClassesManagerReborn.Util;
+using ModdingUtils.MonoBehaviours;
 using RarityLib.Utils;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ using UnstableCards.Cards.NameClasses;
 
 namespace UnstableCards.Cards.Wacky
 {
-    class LivingStatue : CustomCard
+    class Bubble : CustomCard
     {
         public override void Callback()
         {
@@ -20,12 +21,18 @@ namespace UnstableCards.Cards.Wacky
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.health = 2.0f;
-            gun.projectielSimulatonSpeed = 0.5f;
+            statModifiers.health = 0.5f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            characterStats.movementSpeed *= 0.15f;
+            InAirJumpEffect flight = player.gameObject.GetOrAddComponent<InAirJumpEffect>();
+            flight.SetJumpMult(0.1f);
+            flight.AddJumps(10000);
+            flight.SetCostPerJump(1);
+            flight.SetContinuousTrigger(true);
+            flight.SetResetOnWallGrab(true);
+            flight.SetInterval(0.1f);
+            gravity.gravityForce = 0.01f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -33,19 +40,19 @@ namespace UnstableCards.Cards.Wacky
 
         protected override string GetTitle()
         {
-            return "Living Statue";
+            return "Bubble";
         }
         protected override string GetDescription()
         {
-            return "Mobility is not that important.";
+            return "Hi bubble! *pop*. This presentation was brought to you by Blocky's funny doings international.";
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.LivingStatueArt;
+            return Assets.BubbleArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Exotic");
+            return RarityUtils.GetRarity("Scarce");
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -54,21 +61,14 @@ namespace UnstableCards.Cards.Wacky
                 new CardInfoStat()
                 {
                     positive = true,
+                    stat = "Gravity",
+                    amount = "fly!",
+                    simepleAmount = CardInfoStat.SimpleAmount.Some
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
                     stat = "Health",
-                    amount = "+200%",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "Living Statue",
-                    amount = "Minimal movement",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "Projectile Speed",
                     amount = "-50%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
                 }
@@ -77,7 +77,7 @@ namespace UnstableCards.Cards.Wacky
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.DefensiveBlue;
+            return CardThemeColor.CardThemeColorType.TechWhite;
         }
         public override string GetModName()
         {

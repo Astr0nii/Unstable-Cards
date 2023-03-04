@@ -23,7 +23,6 @@ namespace UnstableCards
         public static GameObject WeakheartArt = Bundle.LoadAsset<GameObject>("C_Weakheart");
         public static GameObject WallStreetCrashArt = Bundle.LoadAsset<GameObject>("C_WallStreetCrash");
         public static GameObject StoneStatueArt = Bundle.LoadAsset<GameObject>("C_StoneStatue");
-        public static GameObject LivingStatueArt = Bundle.LoadAsset<GameObject>("C_LivingStatue");
         public static GameObject UraniumPayloadArt = Bundle.LoadAsset<GameObject>("C_UraniumPayload");
         public static GameObject PointClickAdventureGameArt = Bundle.LoadAsset<GameObject>("C_PointClickAdventureGame");
         public static GameObject WeaponServicingArt = Bundle.LoadAsset<GameObject>("C_WeaponServicing");
@@ -57,6 +56,7 @@ namespace UnstableCards
         public static GameObject BulletConjurerArt = Bundle.LoadAsset<GameObject>("C_BulletConjurer");
         public static GameObject BulletsOfTheDamnedArt = Bundle.LoadAsset<GameObject>("C_BulletsOfTheDamned");
         public static GameObject WavyBulletsArt = Bundle.LoadAsset<GameObject>("C_WavyBullets");
+        public static GameObject BubbleArt = Bundle.LoadAsset<GameObject>("C_Bubble");
 
         // Audio
         public static AudioClip totemOfTheDamnedAudio = Bundle.LoadAsset<AudioClip>("A_TotemOfTheDamned");

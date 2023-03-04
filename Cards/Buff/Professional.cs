@@ -16,11 +16,12 @@ namespace UnstableCards.Cards.Debuffs
     {
         public override void Callback()
         {
-            gameObject.GetOrAddComponent<ClassNameMono>().className = DebuffClass.name;
+            gameObject.GetOrAddComponent<ClassNameMono>().className = BuffClass.name;
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             gun.reloadTime = 0.75f;
+            gun.recoil = 0;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -61,6 +62,13 @@ namespace UnstableCards.Cards.Debuffs
                 {
                     positive = true,
                     stat = "Spread",
+                    amount = "resets",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLotLower
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "Recoil",
                     amount = "resets",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotLower
                 },
