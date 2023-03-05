@@ -29,6 +29,8 @@ namespace UnstableCards
     [BepInDependency("root.classes.manager.reborn", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.willuwontu.rounds.BlockForcePatch", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.willuwontu.rounds.RespawnPatch", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.rounds.willuwontu.gunchargepatch", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.willis.rounds.modsplus", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.root.projectile.size.patch", BepInDependency.DependencyFlags.HardDependency)]
 
     // Declaring that our mod exists to BepIn
@@ -97,6 +99,7 @@ namespace UnstableCards
             CustomCard.BuildCard<DenseBullets>();
             CustomCard.BuildCard<Professional>();
             CustomCard.BuildCard<BulletConjurer>();
+            CustomCard.BuildCard<Machina>();
 
             //God Cards
             CustomCard.BuildCard<TheCat>();
