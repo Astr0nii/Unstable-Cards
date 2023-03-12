@@ -1,7 +1,9 @@
 ﻿using ClassesManagerReborn.Util;
 using ModsPlus;
+using Photon.Pun;
 using RarityLib.Utils;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +20,7 @@ namespace UnstableCards.Cards.Buff
     class Machina : CustomCard
     {
         private CustomHealthBar chargeBar;
+
         public override void Callback()
         {
             gameObject.GetOrAddComponent<ClassNameMono>().className = BuffClass.name;
@@ -30,11 +33,10 @@ namespace UnstableCards.Cards.Buff
         {
             gun.useCharge = true;
             gun.chargeNumberOfProjectilesTo += 0;
-            gun.chargeSpeedTo = 3f;
+            gun.chargeSpeedTo = 7.5f;
+            gun.gravity = 0f;
             gun.dontAllowAutoFire = true;
             gun.chargeDamageMultiplier *= 2.5f;
-
-            GunChargePatch.Extensions.GunExtensions.GetAdditionalData(gun).chargeTime = 2f;
 
             Transform parent = player.GetComponentInChildren<PlayerWobblePosition>().transform;
             GameObject obj = new GameObject("Machina Charge Bar");
@@ -43,6 +45,11 @@ namespace UnstableCards.Cards.Buff
             chargeBar.transform.localPosition = Vector3.down * 0.25f;
             chargeBar.transform.localScale = Vector3.one;
             chargeBar.SetColor(Color.yellow);
+            chargeBar.SetValues(gun.currentCharge, 1);
+
+            GunChargePatch.Extensions.GunExtensions.GetAdditionalData(gun).chargeTime = 2f;
+            gameObject.GetComponent<PhotonView>().RPC("RPCA_UpdateCharge", RpcTarget.All);
+            
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -55,7 +62,7 @@ namespace UnstableCards.Cards.Buff
         }
         protected override string GetDescription()
         {
-            return "Charge up to exert extreme amounts of damage and at 100% charge gain the ability to penetrate walls!";
+            return "Charge up to exert extreme amounts of damage, bullet speed and at 100% charge gain the ability to penetrate walls!";
         }
         protected override GameObject GetCardArt()
         {
@@ -107,6 +114,11 @@ namespace UnstableCards.Cards.Buff
         public override string GetModName()
         {
             return UnstableCards.ModInitials;
+        }
+        [PunRPC]
+        private void UpdateCharge()
+        {
+            chargeBar.SetValues(gun.currentCharge, 1);
         }
     }
 }

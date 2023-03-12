@@ -10,21 +10,20 @@ using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
 
-namespace UnstableCards.Cards.Debuffs
+namespace UnstableCards.Cards.Buff
 {
-    class Amatuer : CustomCard
+    class Jarate : CustomCard
     {
         public override void Callback()
         {
-            gameObject.GetOrAddComponent<ClassNameMono>().className = DebuffClass.name;
+            gameObject.GetOrAddComponent<ClassNameMono>().className = BuffClass.name;
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            gun.reloadTimeAdd = 0.5f;
+            gun.attackSpeedMultiplier = 0.8f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gun.spread *= 1.4f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -32,19 +31,19 @@ namespace UnstableCards.Cards.Debuffs
 
         protected override string GetTitle()
         {
-            return "Amateur";
+            return "Jarate";
         }
         protected override string GetDescription()
         {
-            return "Amateur... No wonder they can't use a gun!";
+            return "Ahh piss! Bullets splash jarate on nearby opponents causing them to take 1.5x more dmg whilst coated";
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.AmateurArt;
+            return null;
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Trinket");
+            return CardInfo.Rarity.Rare;
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -53,30 +52,22 @@ namespace UnstableCards.Cards.Debuffs
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Beginners",
-                    amount = "Luck",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "Spread",
-                    amount = "+40%",
+                    stat = "Jarate Duration",
+                    amount = "5s",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "Reload Time",
-                    amount = "+0.5s",
-                    simepleAmount = CardInfoStat.SimpleAmount.Some
+                    stat = "ATKSPD",
+                    amount = "-20%",
+                    simepleAmount = CardInfoStat.SimpleAmount.lower
                 }
             };
-
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.DestructiveRed;
+            return CardThemeColor.CardThemeColorType.TechWhite;
         }
         public override string GetModName()
         {

@@ -23,7 +23,7 @@ namespace UnstableCards.Cards.Wacky
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            gun.destroyBulletAfter = 0.05f;
+            gun.destroyBulletAfter = 0.1f;
             gun.bulletDamageMultiplier = 5.0f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)

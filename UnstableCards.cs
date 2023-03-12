@@ -43,7 +43,7 @@ namespace UnstableCards
     {
         private const string ModId = "com.Astr0ni.Rounds.UnstableCards";
         private const string ModName = "Unstable Cards";
-        private const string Version = "2.3.0"; // Mod version (major.minor.patch)
+        private const string Version = "2.4.0"; // Mod version (major.minor.patch)
 
         public const string ModInitials = "UC";
 
@@ -70,18 +70,6 @@ namespace UnstableCards
             CustomCard.BuildCard<Fireflies>();
             CustomCard.BuildCard<WavyBullets>();
             CustomCard.BuildCard<Bubble>();
-
-            // DeBuffs
-            CustomCard.BuildCard<WhiskeyBottle>();
-            CustomCard.BuildCard<NerfOrNothin>();
-            CustomCard.BuildCard<WeakBones>();
-            CustomCard.BuildCard<Hunger>();
-            CustomCard.BuildCard<Weakheart>();
-            CustomCard.BuildCard<WallStreetCrash>();
-            CustomCard.BuildCard<Amatuer>();
-            CustomCard.BuildCard<FirearmRestrictions>();
-            CustomCard.BuildCard<Clumsy>();
-            CustomCard.BuildCard<Turtle>();
 
             // Normal Cards
             CustomCard.BuildCard<RustBucket>();
