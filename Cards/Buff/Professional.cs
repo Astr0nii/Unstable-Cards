@@ -22,6 +22,7 @@ namespace UnstableCards.Cards.Debuffs
         {
             gun.reloadTime = 0.75f;
             gun.recoil = 0;
+            gun.bodyRecoil = 0;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -45,7 +46,7 @@ namespace UnstableCards.Cards.Debuffs
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Rare;
+            return CardInfo.Rarity.Uncommon;
         }
         protected override CardInfoStat[] GetStats()
         {

@@ -57,10 +57,16 @@ namespace UnstableCards
         public static GameObject BulletsOfTheDamnedArt = Bundle.LoadAsset<GameObject>("C_BulletsOfTheDamned");
         public static GameObject WavyBulletsArt = Bundle.LoadAsset<GameObject>("C_WavyBullets");
         public static GameObject BubbleArt = Bundle.LoadAsset<GameObject>("C_Bubble");
+        public static GameObject OilFilter = Bundle.LoadAsset<GameObject>("C_OilFilter");
+        public static GameObject TrainBullets = Bundle.LoadAsset<GameObject>("C_TrainBullets");
 
         // Audio
         public static AudioClip totemOfTheDamnedAudio = Bundle.LoadAsset<AudioClip>("A_TotemOfTheDamned");
         public static AudioClip totemOfTheBalancedAudio = Bundle.LoadAsset<AudioClip>("A_TotemOfTheBalanced");
         public static AudioClip totemOfTheForgottenAudio = Bundle.LoadAsset<AudioClip>("A_TotemOfTheForgotten");
+        public static AudioClip BostonBoyAudio = Bundle.LoadAsset<AudioClip>("A_BostonBoy");
+        public static AudioClip BoomstickAudio = Bundle.LoadAsset<AudioClip>("A_Boomstick");
+        public static AudioClip GoldenAppleAudio = Bundle.LoadAsset<AudioClip>("A_GoldenApple");
+        public static AudioClip RustBucketAudio = Bundle.LoadAsset<AudioClip>("A_RustBucket");
     }
 }

@@ -25,6 +25,13 @@ namespace UnstableCards.Cards.Buff
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
+            // Audio Logic
+            var audioSource = new GameObject("audioSource").gameObject.GetOrAddComponent<AudioSource>();
+            audioSource.gameObject.GetOrAddComponent<RemoveAfterSeconds>();
+            var timer = audioSource.GetComponent<RemoveAfterSeconds>();
+            timer.seconds = 5;
+            audioSource.PlayOneShot(Assets.BostonBoyAudio, 1.2f);
+
             data.jumps += 1;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)

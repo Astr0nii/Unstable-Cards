@@ -58,7 +58,7 @@ namespace UnstableCards.Cards.God
                 {
                     positive = true,
                     stat = "The Cat never lies",
-                    amount = "nine lives",
+                    amount = "nine additional lives",
                     simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
                 },
                 new CardInfoStat()

@@ -1,10 +1,6 @@
 ﻿using ClassesManagerReborn.Util;
+using Photon.Realtime;
 using RarityLib.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
@@ -12,7 +8,7 @@ using UnstableCards.Cards.NameClasses;
 
 namespace UnstableCards.Cards.Buff
 {
-    class Jarate : CustomCard
+    class CardCollector : CustomCard
     {
         public override void Callback()
         {
@@ -20,10 +16,15 @@ namespace UnstableCards.Cards.Buff
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            gun.attackSpeedMultiplier = 0.8f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
+            gun.damage *= 1 + (player.data.currentCards.Count * 0.05f);
+            gun.projectileSpeed *= 1 + (player.data.currentCards.Count * 0.05f);
+            characterStats.health *= 1 + (player.data.currentCards.Count * 0.05f);
+            gun.attackSpeed *= 1 - (player.data.currentCards.Count * 0.05f);
+            gunAmmo.reloadTimeMultiplier *= 1 - (player.data.currentCards.Count * 0.05f);
+            characterStats.movementSpeed *= 1 - (player.data.currentCards.Count * 0.05f);
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -31,11 +32,11 @@ namespace UnstableCards.Cards.Buff
 
         protected override string GetTitle()
         {
-            return "Jarate";
+            return "Card Collector";
         }
         protected override string GetDescription()
         {
-            return "Ahh piss! Bullets splash jarate on nearby opponents causing them to take 1.5x more dmg whilst coated";
+            return "No way dude is that a *insert absurdly rare card from a card game*. Isn't that worth like 100K? Per card gain (Capped at 10 cards):";
         }
         protected override GameObject GetCardArt()
         {
@@ -52,22 +53,51 @@ namespace UnstableCards.Cards.Buff
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Jarate Duration",
-                    amount = "5s",
+                    stat = "Damage",
+                    amount = "+5%",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
-                    positive = false,
+                    positive = true,
+                    stat = "Health",
+                    amount = "+5%",
+                    simepleAmount = CardInfoStat.SimpleAmount.Some
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "Bullet Speed",
+                    amount = "+5%",
+                    simepleAmount = CardInfoStat.SimpleAmount.Some
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
                     stat = "ATKSPD",
-                    amount = "-20%",
+                    amount = "-5%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "Reload Time",
+                    amount = "-5%",
+                    simepleAmount = CardInfoStat.SimpleAmount.lower
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
+                    stat = "Movement Speed",
+                    amount = "-5%",
+                    simepleAmount = CardInfoStat.SimpleAmount.Some
                 }
             };
+
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.TechWhite;
+            return CardThemeColor.CardThemeColorType.MagicPink;
         }
         public override string GetModName()
         {

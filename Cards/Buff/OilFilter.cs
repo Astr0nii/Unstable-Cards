@@ -8,7 +8,7 @@ using WillsWackyManagers.MonoBehaviours;
 
 namespace UnstableCards.Cards.Buff
 {
-    class WeaponServicing : CustomCard
+    class OilFilter : CustomCard
     {
         public override void Callback()
         {
@@ -16,39 +16,32 @@ namespace UnstableCards.Cards.Buff
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            gun.damage = 1.1f;
+            gun.damage = 0.9f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gun.bodyRecoil *= 0.5f;
             gun.recoil *= 0.5f;
-            var misfire = player.gameObject.GetOrAddComponent<Misfire_Mono>();
-            misfire.misfireChance -= 20;
+            gun.bodyRecoil *= 0.5f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            var misfire = player.gameObject.GetComponent<Misfire_Mono>();
-            if (misfire)
-            {
-                misfire.misfireChance += 20;
-            }
         }
 
         protected override string GetTitle()
         {
-            return "Weapon Servicing";
+            return "Oil Filter";
         }
         protected override string GetDescription()
         {
-            return "Schedule your weapon for a free comprehensive servicing covered by Geico!";
+            return "*insert call of duty modern warfare 2 cursed weapon kill montage here*";
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.WeaponServicingArt;
+            return Assets.OilFilter;
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Rare;
+            return CardInfo.Rarity.Common;
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -57,23 +50,16 @@ namespace UnstableCards.Cards.Buff
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Damage",
-                    amount = "+10%",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
-                },
-                new CardInfoStat()
-                {
-                    positive = true,
-                    stat = "Reliability",
-                    amount = "+20%",
-                    simepleAmount = CardInfoStat.SimpleAmount.Some
-                },
-                new CardInfoStat()
-                {
-                    positive = true,
                     stat = "Recoil",
                     amount = "-50%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
+                    stat = "Damage",
+                    amount = "-10%",
+                    simepleAmount = CardInfoStat.SimpleAmount.slightlyLower
                 }
             };
 

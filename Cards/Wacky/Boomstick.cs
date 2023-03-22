@@ -22,14 +22,20 @@ namespace UnstableCards.Cards.Wacky
         {
             gun.attackSpeed = 1.5f;
             gun.damage = 0.75f;
-            gun.recoilMuiltiplier = 1.1f;
-            gun.spread = 0.75f;
+            gun.spread = 0.25f;
             gun.multiplySpread = 1.75f;
             gun.knockback = 10.0f;
-            
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
+            // Audio Logic
+            var audioSource = new GameObject("audioSource").gameObject.GetOrAddComponent<AudioSource>();
+            audioSource.gameObject.GetOrAddComponent<RemoveAfterSeconds>();
+            var timer = audioSource.GetComponent<RemoveAfterSeconds>();
+            timer.seconds = 10;
+            audioSource.PlayOneShot(Assets.BoomstickAudio, 1.5f);
+
+            gun.bodyRecoil += 350;
             gunAmmo.reloadTimeAdd += 2.0f;
             gun.numberOfProjectiles += 5; 
         }
@@ -96,14 +102,14 @@ namespace UnstableCards.Cards.Wacky
                 {
                     positive = false,
                     stat = "Spread",
-                    amount = "+75%",
+                    amount = "+25%",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Recoil",
-                    amount = "+10%",
+                    amount = "+350",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 }
             };

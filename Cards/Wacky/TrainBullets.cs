@@ -4,51 +4,45 @@ using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
-using WillsWackyManagers.MonoBehaviours;
 
-namespace UnstableCards.Cards.Buff
+namespace UnstableCards.Cards.Wacky
 {
-    class WeaponServicing : CustomCard
+    class TrainBullets : CustomCard
     {
         public override void Callback()
         {
-            gameObject.GetOrAddComponent<ClassNameMono>().className = BuffClass.name;
+            gameObject.GetOrAddComponent<ClassNameMono>().className = WackyClass.name;
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            gun.damage = 1.1f;
+            gun.projectileSpeed = 1.5f;
+            gun.projectileSize = 1.5f;
+            gun.spread = 0;
+            gun.knockback = 100.0f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gun.bodyRecoil *= 0.5f;
-            gun.recoil *= 0.5f;
-            var misfire = player.gameObject.GetOrAddComponent<Misfire_Mono>();
-            misfire.misfireChance -= 20;
+            gun.numberOfProjectiles += 5;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            var misfire = player.gameObject.GetComponent<Misfire_Mono>();
-            if (misfire)
-            {
-                misfire.misfireChance += 20;
-            }
         }
 
         protected override string GetTitle()
         {
-            return "Weapon Servicing";
+            return "Train Bullets";
         }
         protected override string GetDescription()
         {
-            return "Schedule your weapon for a free comprehensive servicing covered by Geico!";
+            return "Imagine your bullets are fired with the properties of a UGL Rail C44ACI moving at 100km/h colliding with you head-on.";
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.WeaponServicingArt;
+            return Assets.TrainBullets;
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Rare;
+            return RarityUtils.GetRarity("Epic");
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -57,30 +51,37 @@ namespace UnstableCards.Cards.Buff
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Damage",
-                    amount = "+10%",
+                    stat = "Bullets",
+                    amount = "+5",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Reliability",
-                    amount = "+20%",
+                    stat = "Bullet Size",
+                    amount = "+50%",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Recoil",
-                    amount = "-50%",
-                    simepleAmount = CardInfoStat.SimpleAmount.lower
+                    stat = "Bullet Speed",
+                    amount = "+200%",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "Knockback",
+                    amount = "yeet",
+                    simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
                 }
             };
 
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.DefensiveBlue;
+            return CardThemeColor.CardThemeColorType.FirepowerYellow;
         }
         public override string GetModName()
         {
