@@ -59,6 +59,7 @@ namespace UnstableCards
         public static GameObject BubbleArt = Bundle.LoadAsset<GameObject>("C_Bubble");
         public static GameObject OilFilter = Bundle.LoadAsset<GameObject>("C_OilFilter");
         public static GameObject TrainBullets = Bundle.LoadAsset<GameObject>("C_TrainBullets");
+        public static GameObject CardCollector = Bundle.LoadAsset<GameObject>("C_CardCollector");
 
         // Audio
         public static AudioClip totemOfTheDamnedAudio = Bundle.LoadAsset<AudioClip>("A_TotemOfTheDamned");

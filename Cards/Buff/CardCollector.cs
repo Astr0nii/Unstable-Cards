@@ -19,12 +19,22 @@ namespace UnstableCards.Cards.Buff
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gun.damage *= 1 + (player.data.currentCards.Count * 0.05f);
-            gun.projectileSpeed *= 1 + (player.data.currentCards.Count * 0.05f);
-            characterStats.health *= 1 + (player.data.currentCards.Count * 0.05f);
-            gun.attackSpeed *= 1 - (player.data.currentCards.Count * 0.05f);
-            gunAmmo.reloadTimeMultiplier *= 1 - (player.data.currentCards.Count * 0.05f);
-            characterStats.movementSpeed *= 1 - (player.data.currentCards.Count * 0.05f);
+            int cardCount;
+            if (player.data.currentCards.Count >= 10)
+            {
+                cardCount = 10;
+            }
+            else
+            {
+                cardCount = player.data.currentCards.Count;
+            }
+            
+            gun.damage *= 1 + (cardCount * 0.05f);
+            gun.projectileSpeed *= 1 + (cardCount * 0.05f);
+            player.data.maxHealth *= 1 + (cardCount * 0.05f);
+            gun.attackSpeed *= 1 - (cardCount * 0.05f);
+            gunAmmo.reloadTimeMultiplier *= 1 - (cardCount * 0.05f);
+            characterStats.movementSpeed *= 1 - (cardCount * 0.05f);
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -40,11 +50,11 @@ namespace UnstableCards.Cards.Buff
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return Assets.CardCollector;
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Rare;
+            return RarityUtils.GetRarity("Epic");
         }
         protected override CardInfoStat[] GetStats()
         {

@@ -26,11 +26,11 @@ namespace UnstableCards.Cards.Wacky
             gun.spread = 0.4f;
             gun.reloadTime = 0.5f;
             gun.projectileSpeed = 2.0f;
-            gun.bulletDamageMultiplier = 0.2f;
+            gun.damage = 0.2f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gunAmmo.maxAmmo += 90;
+            gunAmmo.maxAmmo += 99;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {

@@ -21,8 +21,7 @@ namespace UnstableCards.Cards.Buff
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             gun.reloadTime = 25f;
-            gun.bulletDamageMultiplier = 999999;
-            gun.projectileSize = 0.00001f;
+            gun.damage = 999999;
             gun.attackSpeed = 5.0f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
