@@ -23,6 +23,7 @@ namespace UnstableCards.Cards.Buff
             gun.reloadTime = 25f;
             gun.damage = 999999;
             gun.attackSpeed = 5.0f;
+            gun.bursts = 0;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -46,7 +47,7 @@ namespace UnstableCards.Cards.Buff
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Legendary");
+            return RarityUtils.GetRarity("Epic");
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -71,6 +72,13 @@ namespace UnstableCards.Cards.Buff
                     positive = false,
                     stat = "Reload Time",
                     amount = "Good Luck",
+                    simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
+                    stat = "Bursts",
+                    amount = "resets",
                     simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
                 },
                 new CardInfoStat()

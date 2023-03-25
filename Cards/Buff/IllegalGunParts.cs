@@ -23,10 +23,10 @@ namespace UnstableCards.Cards.Buff
         {
             gun.damage = 1.15f;
             gun.projectileSpeed = 1.1f;
+            gun.attackSpeedMultiplier = 1.25f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            characterStats.attackSpeedMultiplier = 1.30f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -46,7 +46,7 @@ namespace UnstableCards.Cards.Buff
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Exotic");
+            return CardInfo.Rarity.Rare;
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -63,7 +63,7 @@ namespace UnstableCards.Cards.Buff
                 {
                     positive = true,
                     stat = "ATKSPD",
-                    amount = "+30%",
+                    amount = "+25%",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()

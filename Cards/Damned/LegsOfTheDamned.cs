@@ -1,34 +1,27 @@
 ﻿using ClassesManagerReborn.Util;
 using RarityLib.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
 
-namespace UnstableCards.Cards.Buff
+namespace UnstableCards.Cards.Damned
 {
-    class NinjitsuMaster : CustomCard
+    class LegsOfTheDamned : CustomCard
     {
         public override void Callback()
         {
-            gameObject.GetOrAddComponent<ClassNameMono>().className = BuffClass.name;
+            gameObject.GetOrAddComponent<ClassNameMono>().className = DamnedClass.name;
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            block.additionalBlocks = +2;
-            block.forceToAdd = -15f;
-            block.cdMultiplier = 0.55f;
-            statModifiers.health = 0.85f;
-            statModifiers.movementSpeed = 1.3f;
+            cardInfo.allowMultiple = true;
+            statModifiers.health = 0.75f;
+            statModifiers.movementSpeed = 1.5f;
+            statModifiers.jump = 2f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gunAmmo.maxAmmo = 0;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -36,19 +29,19 @@ namespace UnstableCards.Cards.Buff
 
         protected override string GetTitle()
         {
-            return "Ninjitsu Master";
+            return "Legs of the Damned";
         }
         protected override string GetDescription()
         {
-            return "Dash backwards and unleash the true art of ninjitsu!";
+            return "Fast thinker on their feet, damned soul. Sacrifice is generally the opposite stat of what is being buffed!";
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.NinjitsuMasterArt;
+            return null;
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Uncommon;
+            return RarityUtils.GetRarity("Damned");
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -57,47 +50,31 @@ namespace UnstableCards.Cards.Buff
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Addtional Blocks",
-                    amount = "+2",
-                    simepleAmount = CardInfoStat.SimpleAmount.Some
-                },
-                new CardInfoStat()
-                {
-                    positive = true,
-                    stat = "Block Cooldown",
-                    amount = "-45%",
-                    simepleAmount = CardInfoStat.SimpleAmount.lower
-                },
-                new CardInfoStat()
-                {
-                    positive = true,
                     stat = "Movement Speed",
-                    amount = "+30%",
+                    amount = "+50%",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "health",
-                    amount = "-25%",
-                    simepleAmount = CardInfoStat.SimpleAmount.lower
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "Ammo",
-                    amount = "resets",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotLower
+                    stat = "Sacrifice",
+                    amount = "ALOT",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 }
             };
+
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.TechWhite;
+            return CardThemeColor.CardThemeColorType.PoisonGreen;
         }
         public override string GetModName()
         {
             return UnstableCards.ModInitials;
+        }
+        public override bool GetEnabled()
+        {
+            return false;
         }
     }
 }

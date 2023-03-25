@@ -69,5 +69,6 @@ namespace UnstableCards
         public static AudioClip BoomstickAudio = Bundle.LoadAsset<AudioClip>("A_Boomstick");
         public static AudioClip GoldenAppleAudio = Bundle.LoadAsset<AudioClip>("A_GoldenApple");
         public static AudioClip RustBucketAudio = Bundle.LoadAsset<AudioClip>("A_RustBucket");
+        public static AudioClip HeavyWeaponsGuyAudio = Bundle.LoadAsset<AudioClip>("A_HeavyWeaponsGuy");
     }
 }

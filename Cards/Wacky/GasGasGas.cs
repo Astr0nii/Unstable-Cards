@@ -1,18 +1,13 @@
 ﻿using ClassesManagerReborn.Util;
 using RarityLib.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
 
-namespace UnstableCards.Cards.Buff
+namespace UnstableCards.Cards.Wacky
 {
-    class NinjitsuMaster : CustomCard
+    class GasGasGas : CustomCard
     {
         public override void Callback()
         {
@@ -20,15 +15,12 @@ namespace UnstableCards.Cards.Buff
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            block.additionalBlocks = +2;
-            block.forceToAdd = -15f;
-            block.cdMultiplier = 0.55f;
-            statModifiers.health = 0.85f;
-            statModifiers.movementSpeed = 1.3f;
+            statModifiers.movementSpeed = 1.25f;
+            gun.recoil = -50;
+            block.forceToAdd = -10f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gunAmmo.maxAmmo = 0;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -36,19 +28,19 @@ namespace UnstableCards.Cards.Buff
 
         protected override string GetTitle()
         {
-            return "Ninjitsu Master";
+            return "Gas Gas Gas";
         }
         protected override string GetDescription()
         {
-            return "Dash backwards and unleash the true art of ninjitsu!";
+            return "<strong>OH LAWRD HE COMIN'</strong>. Makes you dash forward when blocking and shooting";
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.NinjitsuMasterArt;
+            return null;
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Uncommon;
+            return RarityUtils.GetRarity("Scarce");
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -57,43 +49,23 @@ namespace UnstableCards.Cards.Buff
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Addtional Blocks",
-                    amount = "+2",
-                    simepleAmount = CardInfoStat.SimpleAmount.Some
-                },
-                new CardInfoStat()
-                {
-                    positive = true,
-                    stat = "Block Cooldown",
-                    amount = "-45%",
-                    simepleAmount = CardInfoStat.SimpleAmount.lower
-                },
-                new CardInfoStat()
-                {
-                    positive = true,
                     stat = "Movement Speed",
-                    amount = "+30%",
+                    amount = "+25%",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "health",
-                    amount = "-25%",
+                    stat = "Health",
+                    amount = "-10%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "Ammo",
-                    amount = "resets",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotLower
                 }
             };
+
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.TechWhite;
+            return CardThemeColor.CardThemeColorType.DestructiveRed;
         }
         public override string GetModName()
         {

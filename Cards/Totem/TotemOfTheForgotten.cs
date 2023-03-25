@@ -31,6 +31,9 @@ namespace UnstableCards.Cards.Shrine
             timer.seconds = 5;
             audioSource.PlayOneShot(Assets.totemOfTheForgottenAudio, 1.2f);
 
+            //Stat modifiers
+            player.data.maxHealth *= 1 + (player.data.currentCards.Count() * 0.05f);
+
             // Card Removing Logic
             int[] cardIndeces = Enumerable.Range(0, player.data.currentCards.Count()).ToArray();
             CardInfo[] playerCards = ModdingUtils.Utils.Cards.instance.RemoveCardsFromPlayer(player, cardIndeces);
@@ -45,7 +48,7 @@ namespace UnstableCards.Cards.Shrine
         }
         protected override string GetDescription()
         {
-            return "Some things are best left forgotten, left to rot for eternity.";
+            return "Some things are best left forgotten, left to rot for eternity. Empower your soul for every card you once owned.";
         }
         protected override GameObject GetCardArt()
         {
@@ -53,7 +56,7 @@ namespace UnstableCards.Cards.Shrine
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Epic");
+            return RarityUtils.GetRarity("Legendary");
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -65,6 +68,13 @@ namespace UnstableCards.Cards.Shrine
                     stat = "Cards Removed",
                     amount = "All",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "Health",
+                    amount = "+5%",
+                    simepleAmount = CardInfoStat.SimpleAmount.Some
                 }
             };
 

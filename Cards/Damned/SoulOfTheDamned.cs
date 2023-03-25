@@ -33,7 +33,7 @@ namespace UnstableCards.Cards.Damned
         }
         protected override string GetDescription()
         {
-            return "The amount of sacrifice is unbearable, painless, cursed and livid.";
+            return "The amount of sacrifice is unbearable, painless, cursed and livid beyond what is imaginable. Sacrifice is generally the opposite stat of what is being buffed!";
         }
         protected override GameObject GetCardArt()
         {

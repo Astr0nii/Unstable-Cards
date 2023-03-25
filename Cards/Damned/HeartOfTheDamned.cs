@@ -21,7 +21,7 @@ namespace UnstableCards.Cards.Damned
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            characterStats.movementSpeed *= 0.50f;
+            characterStats.movementSpeed *= 0.75f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -33,7 +33,7 @@ namespace UnstableCards.Cards.Damned
         }
         protected override string GetDescription()
         {
-            return "Ones heart can never recover from being damned.";
+            return "Ones heart can never recover from being damned. Sacrifice is generally the opposite stat of what is being buffed!";
         }
         protected override GameObject GetCardArt()
         {

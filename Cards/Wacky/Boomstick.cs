@@ -32,7 +32,7 @@ namespace UnstableCards.Cards.Wacky
             var audioSource = new GameObject("audioSource").gameObject.GetOrAddComponent<AudioSource>();
             audioSource.gameObject.GetOrAddComponent<RemoveAfterSeconds>();
             var timer = audioSource.GetComponent<RemoveAfterSeconds>();
-            timer.seconds = 10;
+            timer.seconds = 5;
             audioSource.PlayOneShot(Assets.BoomstickAudio, 1.5f);
 
             gun.bodyRecoil += 350;

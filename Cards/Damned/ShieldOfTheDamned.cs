@@ -19,7 +19,7 @@ namespace UnstableCards.Cards.Damned
             block.forceToAdd = -5f;
             block.cdMultiplier = 0.9f;
             block.healing = 25f;
-            statModifiers.health = 0.25f;
+            statModifiers.health = 0.75f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -34,7 +34,7 @@ namespace UnstableCards.Cards.Damned
         }
         protected override string GetDescription()
         {
-            return "Infused with the souls of whom were condemmed to defending this land.";
+            return "Infused with the souls of whom were condemmed to defending this land. Sacrifice is generally the opposite stat of what is being buffed!";
         }
         protected override GameObject GetCardArt()
         {

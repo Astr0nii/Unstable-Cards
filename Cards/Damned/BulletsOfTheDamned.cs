@@ -16,7 +16,7 @@ namespace UnstableCards.Cards.Damned
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             cardInfo.allowMultiple = true;
-            statModifiers.health = 0.5f;
+            statModifiers.health = 0.75f;
             gun.bulletDamageMultiplier = 1.75f;
             statModifiers.lifeSteal = 0.35f;
         }
@@ -33,7 +33,7 @@ namespace UnstableCards.Cards.Damned
         }
         protected override string GetDescription()
         {
-            return "Bullets infused with the damneds power.";
+            return "Bullets infused with the damneds power. Sacrifice is generally the opposite stat of what is being buffed!";
         }
         protected override GameObject GetCardArt()
         {

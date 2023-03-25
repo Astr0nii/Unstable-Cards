@@ -31,7 +31,7 @@ namespace UnstableCards.Cards.Damned
         }
         protected override string GetDescription()
         {
-            return "Iron Skin, Cursed mind.";
+            return "Iron Skin, Cursed mind. Sacrifice is generally the opposite stat of what is being buffed!";
         }
         protected override GameObject GetCardArt()
         {

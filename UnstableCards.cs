@@ -43,7 +43,7 @@ namespace UnstableCards
     {
         private const string ModId = "com.Astr0ni.Rounds.UnstableCards";
         private const string ModName = "Unstable Cards";
-        private const string Version = "2.4.2"; // Mod version (major.minor.patch)
+        private const string Version = "2.6.0"; // Mod version (major.minor.patch)
 
         public const string ModInitials = "UC";
 
@@ -71,6 +71,7 @@ namespace UnstableCards
             CustomCard.BuildCard<WavyBullets>();
             CustomCard.BuildCard<Bubble>();
             CustomCard.BuildCard<TrainBullets>();
+            CustomCard.BuildCard<GasGasGas>();
 
             // Normal Cards
             CustomCard.BuildCard<RustBucket>();
