@@ -1,26 +1,28 @@
-# Unstable Cards adds 35 new cards that are "Balanced".
-## Newest Update adds 3 new card(s) and removes 0 card(s)!:
+# Unstable Cards adds 42 new cards that are "Balanced".
+## Newest Update adds 3 new card(s) and removes 1 card(s)!:
 ## *All stats and cards are NOT in their final state and are subject to change!*
 
 ### General Changes:
 
-- A few of the cards now have pick sounds
 
 ### Balancing Changes/Changes to existing cards:
 
-- Boomstick fix (for real this time).
-- Felis Catus Buff description updated.
-- Run it back buffed (Health -40% > -35%) to make it more enticing to pick compared to other options.
-- Run it back actually adds a respawn instead of setting it to 1.
-- Weapon servicing and Professional are now more common.
+- Removed Two in The Chamber. Unbalanced and as per: https://github.com/Astr0nii/Unstable-Cards/issues/1
+- Added a description for what sacrifice generally is on the damned cards.
+- Illegal Gun Parts nerfed (ATKSPD +30% > +25%)
+- Ninjitsu Master buffed (added movement speed buff, +30%), just playing around with this card. As I've noticed from playtesting it is normally neglected.
+- Fireflies buffed (-70% damage > -60% and -80% bullet speed > -70%)
 
 ### New Cards/Reworks:
 
-### New buff card(s):
+### New Wacky Card(s):
 
-- Oil filter (Strap a COLLOSAL oil filter to your gun to reduce recoil).
-- Card Collector (Gain a small buff for every card you own).
+- Gas Gas Gas (Chase down your enemies with a forward dashing blocks and shots)
 
-### New wacky card(s):
+### Reworked Totem(s):
 
-- Train Bullets (Your bullets become trains).
+- Totem of the forgotten (Now gives a small percentage of health for every card owned)
+
+### New Damned Card(s):
+
+- Legs of the damned (Fast thinker on their feet, damned soul.)
