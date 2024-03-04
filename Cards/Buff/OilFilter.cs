@@ -37,7 +37,7 @@ namespace UnstableCards.Cards.Buff
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.OilFilter;
+            return Assets.OilFilterArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

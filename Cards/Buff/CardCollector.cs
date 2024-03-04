@@ -50,7 +50,7 @@ namespace UnstableCards.Cards.Buff
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.CardCollector;
+            return Assets.CardCollectorArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

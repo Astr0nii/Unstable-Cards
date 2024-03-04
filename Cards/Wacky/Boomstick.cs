@@ -28,12 +28,12 @@ namespace UnstableCards.Cards.Wacky
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            // Audio Logic
-            var audioSource = new GameObject("audioSource").gameObject.GetOrAddComponent<AudioSource>();
+            // Audio Logic TODO: fix audio
+            /*var audioSource = new GameObject("audioSource").gameObject.GetOrAddComponent<AudioSource>();
             audioSource.gameObject.GetOrAddComponent<RemoveAfterSeconds>();
             var timer = audioSource.GetComponent<RemoveAfterSeconds>();
             timer.seconds = 5;
-            audioSource.PlayOneShot(Assets.BoomstickAudio, 1.5f);
+            audioSource.PlayOneShot(Assets.BoomstickAudio, 1.5f);*/
 
             gun.bodyRecoil += 350;
             gunAmmo.reloadTimeAdd += 2.0f;

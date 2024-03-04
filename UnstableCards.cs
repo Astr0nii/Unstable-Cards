@@ -43,7 +43,7 @@ namespace UnstableCards
     {
         private const string ModId = "com.Astr0ni.Rounds.UnstableCards";
         private const string ModName = "Unstable Cards";
-        private const string Version = "2.6.0"; // Mod version (major.minor.patch)
+        private const string Version = "2.7.0"; // Mod version (major.minor.patch)
 
         public const string ModInitials = "UC";
 
@@ -80,10 +80,10 @@ namespace UnstableCards
             CustomCard.BuildCard<GoldenApple>();
             CustomCard.BuildCard<EnchantedGoldenApple>();
             CustomCard.BuildCard<OneInTheChamber>();
+            CustomCard.BuildCard<ExtendedMag>();
             CustomCard.BuildCard<DrumMag>();
             CustomCard.BuildCard<AmmoContainer>();
             CustomCard.BuildCard<IllegalGunParts>();
-            CustomCard.BuildCard<TwoInTheChamber>();
             CustomCard.BuildCard<RunItBack>();
             CustomCard.BuildCard<WeaponServicing>();
             CustomCard.BuildCard<DenseBullets>();
@@ -99,7 +99,7 @@ namespace UnstableCards
             CustomCard.BuildCard<AngelWeaver>();
 
             //Totem Cards
-            CustomCard.BuildCard<TotemOfTheForgotten>();
+            CustomCard.BuildCard<TotemOfRebirth>();
             CustomCard.BuildCard<TotemOfTheBalanced>();
             CustomCard.BuildCard<TotemOfTheDamned>();
 

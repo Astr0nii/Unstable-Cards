@@ -32,15 +32,15 @@ namespace UnstableCards.Cards.Wacky
         }
         protected override string GetDescription()
         {
-            return "<strong>OH LAWRD HE COMIN'</strong>. Makes you dash forward when blocking and shooting";
+            return "<b>OH LAWRD HE COMIN'</b>. Makes you dash forward when blocking and shooting";
         }
         protected override GameObject GetCardArt()
         {
-            return null;
+            return Assets.PlaceHolderArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Scarce");
+            return CardInfo.Rarity.Common;
         }
         protected override CardInfoStat[] GetStats()
         {

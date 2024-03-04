@@ -16,8 +16,8 @@ namespace UnstableCards.Cards.Buff
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.health = 0.65f;
-            statModifiers.movementSpeed = 0.85f;
+            statModifiers.health = 0.7f;
+            statModifiers.movementSpeed = 0.9f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -59,14 +59,14 @@ namespace UnstableCards.Cards.Buff
                 {
                     positive = false,
                     stat = "Health",
-                    amount = "-35%",
+                    amount = "-30%",
                     simepleAmount = CardInfoStat.SimpleAmount.slightlyLower
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Movement Speed",
-                    amount = "-15%",
+                    amount = "-10%",
                     simepleAmount = CardInfoStat.SimpleAmount.slightlyLower
                 }
             };

@@ -13,7 +13,7 @@ using ModdingUtils;
 
 namespace UnstableCards.Cards.Shrine
 {
-    class TotemOfTheForgotten : CustomCard
+    class TotemOfRebirth : CustomCard
     {
         public override void Callback()
         {
@@ -31,12 +31,13 @@ namespace UnstableCards.Cards.Shrine
             timer.seconds = 5;
             audioSource.PlayOneShot(Assets.totemOfTheForgottenAudio, 1.2f);
 
-            //Stat modifiers
-            player.data.maxHealth *= 1 + (player.data.currentCards.Count() * 0.05f);
 
             // Card Removing Logic
             int[] cardIndeces = Enumerable.Range(0, player.data.currentCards.Count()).ToArray();
             CardInfo[] playerCards = ModdingUtils.Utils.Cards.instance.RemoveCardsFromPlayer(player, cardIndeces);
+
+            //Stat modifiers
+            characterStats.respawns += 1;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -44,11 +45,11 @@ namespace UnstableCards.Cards.Shrine
 
         protected override string GetTitle()
         {
-            return "Totem Of The Forgotten";
+            return "Totem Of Rebirth";
         }
         protected override string GetDescription()
         {
-            return "Some things are best left forgotten, left to rot for eternity. Empower your soul for every card you once owned.";
+            return "Empower your soul with a new life. Start afresh when your deck is too far gone...";
         }
         protected override GameObject GetCardArt()
         {
@@ -56,7 +57,7 @@ namespace UnstableCards.Cards.Shrine
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Legendary");
+            return RarityUtils.GetRarity("Exotic");
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -72,9 +73,9 @@ namespace UnstableCards.Cards.Shrine
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Health",
-                    amount = "+5%",
-                    simepleAmount = CardInfoStat.SimpleAmount.Some
+                    stat = "Lives",
+                    amount = "+1",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
                 }
             };
 

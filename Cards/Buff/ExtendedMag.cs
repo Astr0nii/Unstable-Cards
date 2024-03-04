@@ -12,7 +12,7 @@ using UnstableCards.Cards.NameClasses;
 
 namespace UnstableCards.Cards.Buff
 {
-    class TwoInTheChamber : CustomCard
+    class ExtendedMag : CustomCard
     {
         public override void Callback()
         {
@@ -20,14 +20,12 @@ namespace UnstableCards.Cards.Buff
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            gun.reloadTime = 25f;
-            gun.damage = 999999;
-            gun.attackSpeed = 5.0f;
-            gun.bursts = 0;
+            gun.reloadTime = 1.4f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gunAmmo.maxAmmo = 2;
+            gunAmmo.maxAmmo += 5;
+            characterStats.movementSpeed *= 0.98f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -35,19 +33,19 @@ namespace UnstableCards.Cards.Buff
 
         protected override string GetTitle()
         {
-            return "Two in the Chamber";
+            return "Extended Magazine";
         }
         protected override string GetDescription()
         {
-            return "Wait! Thats Illegal";
+            return "The quintessential upgrade that must be in any shooter game worth its money with upgrades.";
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.TwoInTheChamberArt;
+            return Assets.ExtendedMagArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Epic");
+            return RarityUtils.GetRarity("Trinket");
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -56,44 +54,30 @@ namespace UnstableCards.Cards.Buff
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Damage",
-                    amount = "ALOT",
-                    simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
                     stat = "Ammo",
-                    amount = "2",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotLower
+                    amount = "+5",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Reload Time",
-                    amount = "Good Luck",
-                    simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
+                    amount = "+40%",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "Bursts",
-                    amount = "resets",
-                    simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "Attack Speed",
-                    amount = "+500%",
-                    simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
+                    stat = "Movement Speed",
+                    amount = "-2%",
+                    simepleAmount = CardInfoStat.SimpleAmount.slightlyLower
                 }
             };
 
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.ColdBlue;
+            return CardThemeColor.CardThemeColorType.FirepowerYellow;
         }
         public override string GetModName()
         {

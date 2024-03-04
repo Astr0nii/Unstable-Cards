@@ -34,11 +34,11 @@ namespace UnstableCards.Cards.Wacky
         }
         protected override string GetDescription()
         {
-            return "Imagine your bullets are fired with the properties of a UGL Rail C44ACI moving at 100km/h colliding with you head-on.";
+            return "Imagine your bullets are fired with the properties of a UGL Rail C44ACI moving at 200km/h colliding with you head-on.";
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.TrainBullets;
+            return Assets.TrainBulletsArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

@@ -41,7 +41,7 @@ namespace UnstableCards.Cards.Buff
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Scarce");
+            return CardInfo.Rarity.Common;
         }
         protected override CardInfoStat[] GetStats()
         {

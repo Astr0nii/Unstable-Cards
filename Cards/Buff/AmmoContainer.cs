@@ -20,11 +20,12 @@ namespace UnstableCards.Cards.Buff
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            gun.reloadTime = 2.4f;
+            gun.reloadTime = 2.8f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
             gunAmmo.maxAmmo += 99;
+            characterStats.movementSpeed *= 0.9f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -36,7 +37,7 @@ namespace UnstableCards.Cards.Buff
         }
         protected override string GetDescription()
         {
-            return "The ultimate solution to all of your ammo desires.";
+            return "Need ammo? No problem";
         }
         protected override GameObject GetCardArt()
         {
@@ -61,8 +62,15 @@ namespace UnstableCards.Cards.Buff
                 {
                     positive = false,
                     stat = "Reload Time",
-                    amount = "+140%",
+                    amount = "+180%",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
+                    stat = "Movement Speed",
+                    amount = "-10%",
+                    simepleAmount = CardInfoStat.SimpleAmount.slightlyLower
                 }
             };
 
