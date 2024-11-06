@@ -10,7 +10,7 @@ using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
 
-namespace UnstableCards.Cards.Debuffs
+namespace UnstableCards.Cards.Buff
 {
     class Professional : CustomCard
     {

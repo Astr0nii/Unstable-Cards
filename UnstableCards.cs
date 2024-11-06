@@ -5,15 +5,16 @@ using HarmonyLib;
 using RarityLib.Utils;
 using System.Collections.Generic;
 using UnstableCards.Cards.Wacky;
-using UnstableCards.Cards.Debuffs;
 using UnstableCards.Cards.God;
 using UnstableCards.Cards.Buff;
-using UnstableCards.Cards.Shrine;
 using UnstableCards.Cards.Damned;
+using UnstableCards.Cards.Special;
 using UnboundLib;
 using ModdingUtils;
 using UnboundLib.Utils;
 using System.Linq;
+using UnstableCards.Cards.Totem;
+using System;
 
 namespace UnstableCards
 {
@@ -43,12 +44,25 @@ namespace UnstableCards
     {
         private const string ModId = "com.Astr0ni.Rounds.UnstableCards";
         private const string ModName = "Unstable Cards";
-        private const string Version = "2.7.0"; // Mod version (major.minor.patch)
+        private const string Version = "2.8.0"; // Mod version (major.minor.patch)
 
         public const string ModInitials = "UC";
 
 
         internal static List<CardInfo> damnedCards = new List<CardInfo>();
+
+        private static List<CardInfo> registeredCards = new List<CardInfo>();
+
+        public static void SaveCardInfo(CardInfo cardInfo)
+        {
+            registeredCards.Add(cardInfo);
+            Debug.Log($"Card registered: {cardInfo.cardName}");
+        }
+
+        public static CardInfo GetCardInfoByName(string cardName)
+        {
+            return registeredCards.FirstOrDefault(card => card.cardName.Equals(cardName, StringComparison.OrdinalIgnoreCase));
+        }
 
         void Awake()
         {
@@ -59,7 +73,7 @@ namespace UnstableCards
         void Start()
         {
             // Wacky Cards
-            CustomCard.BuildCard<Boomstick>();
+            CustomCard.BuildCard<Boomstick>(cardInfo => SaveCardInfo(cardInfo));
             CustomCard.BuildCard<PointClickAdventureGame>();
             CustomCard.BuildCard<UraniumPayload>();
             CustomCard.BuildCard<StabbinLicense>();
@@ -110,7 +124,10 @@ namespace UnstableCards
             CustomCard.BuildCard<SoulOfTheDamned>(c => { ModdingUtils.Utils.Cards.instance.AddHiddenCard(c); damnedCards.Add(c); });
             CustomCard.BuildCard<BulletsOfTheDamned>(c => { ModdingUtils.Utils.Cards.instance.AddHiddenCard(c); damnedCards.Add(c); });
 
-            instance = this;
+            //Special Cards
+            CustomCard.BuildCard<RebirthedSoul>(cardInfo => SaveCardInfo(cardInfo));
+
+                instance = this;
         }
         public static UnstableCards instance { get; private set; }
 

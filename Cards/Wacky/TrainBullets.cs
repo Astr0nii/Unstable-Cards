@@ -18,7 +18,7 @@ namespace UnstableCards.Cards.Wacky
             gun.projectileSpeed = 1.5f;
             gun.projectileSize = 1.5f;
             gun.spread = 0;
-            gun.knockback = 100.0f;
+            gun.knockback = 80.0f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {

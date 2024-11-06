@@ -20,9 +20,9 @@ namespace UnstableCards.Cards.Wacky
             gun.spread = 0.1f;
             gun.projectileColor = Color.yellow;
             gun.gravity = 0;
-            gun.projectileSpeed = 0.3f;
+            gun.projectileSpeed = 0.7f;
             gun.ignoreWalls = true;
-            gun.damage = 0.4f;
+            gun.damage = 0.2f;
             gun.multiplySpread = 1.75f;
 
         }
@@ -81,14 +81,14 @@ namespace UnstableCards.Cards.Wacky
                 {
                     positive = false,
                     stat = "Bullet Speed",
-                    amount = "-70%",
+                    amount = "-30%",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotLower
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Bullet Damage",
-                    amount = "-60%",
+                    amount = "-80%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
                 }
             };

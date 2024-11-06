@@ -39,7 +39,7 @@ namespace UnstableCards.Cards.Wacky
                 (GameObject AddToProjectile, GameObject effect, Explosion explosion) = UnstableCards.LoadExplosion("explosionUraniumPayload", gun);
 
                 explosion.force *= 16f;
-                explosion.range *= 8f;
+                explosion.range *= 3f;
 
                 explosionToSpawn[0] = new ObjectsToSpawn
                 {

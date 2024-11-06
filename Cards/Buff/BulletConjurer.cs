@@ -16,7 +16,6 @@ namespace UnstableCards.Cards.Buff
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             gun.ammoReg = 0.01f;
-            statModifiers.health = 0.15f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -51,13 +50,6 @@ namespace UnstableCards.Cards.Buff
                     stat = "Ammo Regen",
                     amount = "+1/s",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "Health",
-                    amount = "-15%",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotLower
                 }
             };
 

@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
+using UnstableCards.Cards.Special;
 using UnstableCards.Cards.NameClasses;
 using ModdingUtils;
 
-namespace UnstableCards.Cards.Shrine
+namespace UnstableCards.Cards.Totem
 {
     class TotemOfRebirth : CustomCard
     {
@@ -19,9 +20,7 @@ namespace UnstableCards.Cards.Shrine
         {
             gameObject.GetOrAddComponent<ClassNameMono>().className = TotemClass.name;
         }
-        public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
-        {
-        }
+        public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block) { }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
             // Audio Logic
@@ -33,11 +32,20 @@ namespace UnstableCards.Cards.Shrine
 
 
             // Card Removing Logic
-            int[] cardIndeces = Enumerable.Range(0, player.data.currentCards.Count()).ToArray();
-            CardInfo[] playerCards = ModdingUtils.Utils.Cards.instance.RemoveCardsFromPlayer(player, cardIndeces);
+            List<int> cardIndicesToRemove = new List<int>();
+            for (int i = 0; i < player.data.currentCards.Count(); i++)
+            {
+                cardIndicesToRemove.Add(i);
+            }
+            ModdingUtils.Utils.Cards.instance.RemoveCardsFromPlayer(player, cardIndicesToRemove.ToArray());
 
             //Stat modifiers
-            characterStats.respawns += 1;
+            string cardName = "Rebirthed Soul";
+            CardInfo cardInfo = UnstableCards.GetCardInfoByName(cardName);
+            if (cardInfo != null)
+            {
+                ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, cardInfo, reassign: false, twoLetterCode: "", forceDisplay: 0f, forceDisplayDelay: 0f);
+            }
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -76,6 +84,13 @@ namespace UnstableCards.Cards.Shrine
                     stat = "Lives",
                     amount = "+1",
                     simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "Health",
+                    amount = "+100%",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 }
             };
 

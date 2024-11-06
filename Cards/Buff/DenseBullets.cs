@@ -15,7 +15,7 @@ namespace UnstableCards.Cards.Buff
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            gun.projectileSpeed = 0.5f;
+            gun.projectileSpeed = 0.7f;
             gun.projectileSize = 0.5f;
             gun.spread = 0;
         }
@@ -65,7 +65,7 @@ namespace UnstableCards.Cards.Buff
                 {
                     positive = false,
                     stat = "Bullet Speed",
-                    amount = "-50%",
+                    amount = "-30%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
                 }
             };

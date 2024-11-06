@@ -21,14 +21,14 @@ namespace UnstableCards.Cards.God
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             cardInfo.allowMultiple = false;
-            statModifiers.health = 10.0f;
+            statModifiers.health = 8.0f;
             gun.projectileColor = Color.white;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
             characterStats.gravity *= 0.5f;
             characterStats.movementSpeed *= 1.5f;
-            player.data.healthHandler.regeneration += 35;
+            player.data.healthHandler.regeneration += 20;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -58,14 +58,14 @@ namespace UnstableCards.Cards.God
                 {
                     positive = true,
                     stat = "Life Regeneration",
-                    amount = "+35hp/s",
+                    amount = "+20hp/s",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Health",
-                    amount = "+1000%",
+                    amount = "+800%",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()

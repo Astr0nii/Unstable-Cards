@@ -13,7 +13,7 @@ using System.Threading;
 using System.Collections;
 using Photon.Pun;
 
-namespace UnstableCards.Cards.Shrine
+namespace UnstableCards.Cards.Totem
 {
     class TotemOfTheBalanced : CustomCard
     {

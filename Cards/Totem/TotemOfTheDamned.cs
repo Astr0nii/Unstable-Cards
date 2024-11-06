@@ -17,7 +17,7 @@ using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 using ModdingUtils.Utils;
 using static CardInfo;
 
-namespace UnstableCards.Cards.Shrine
+namespace UnstableCards.Cards.Totem
 {
     class TotemOfTheDamned : CustomCard
     {

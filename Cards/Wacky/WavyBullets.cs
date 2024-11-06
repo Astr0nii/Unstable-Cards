@@ -23,9 +23,9 @@ namespace UnstableCards.Cards.Wacky
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            gun.damage = 0.7f;
+            gun.damage = 0.85f;
             gun.cos = 4.0f;
-            gun.projectileSpeed = 1.5f;
+            gun.projectileSpeed = 1.65f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -65,14 +65,14 @@ namespace UnstableCards.Cards.Wacky
                 {
                     positive = true,
                     stat = "Bullet Speed",
-                    amount = "+50%",
+                    amount = "+65%",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Damage",
-                    amount = "-30%",
+                    amount = "-15%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
                 }
             };

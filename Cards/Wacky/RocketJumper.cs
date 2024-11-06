@@ -29,7 +29,7 @@ namespace UnstableCards.Cards.Wacky
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gunAmmo.maxAmmo += 10;
+            gunAmmo.maxAmmo += 15;
             characterStats.gravity *= 0.75f;
 
             // add explosion effect
@@ -38,7 +38,7 @@ namespace UnstableCards.Cards.Wacky
                 (GameObject AddToProjectile, GameObject effect, Explosion explosion) = UnstableCards.LoadExplosion("explosionRocketJumper", gun);
 
                 explosion.force *= 10f;
-                explosion.range *= 2.5f;
+                explosion.range *= 2.25f;
                 explosion.damage = 0f;
 
                 explosionToSpawn[0] = new ObjectsToSpawn
@@ -96,7 +96,7 @@ namespace UnstableCards.Cards.Wacky
                 {
                     positive = true,
                     stat = "Ammo",
-                    amount = "+10",
+                    amount = "+15",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()

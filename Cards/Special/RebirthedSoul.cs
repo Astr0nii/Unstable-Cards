@@ -9,23 +9,20 @@ using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
+using ModdingUtils;
 
-namespace UnstableCards.Cards.Buff
+namespace UnstableCards.Cards.Special
 {
-    class DrumMag : CustomCard
+    class RebirthedSoul : CustomCard
     {
-        public override void Callback()
-        {
-            gameObject.GetOrAddComponent<ClassNameMono>().className = BuffClass.name;
-        }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            gun.reloadTime = 2.05f;
+            statModifiers.health = 3.0f;
+            statModifiers.respawns += 1;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gunAmmo.maxAmmo += 40;
-            characterStats.movementSpeed *= 0.95f;
+            // Additional logic for when the card is added
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -33,19 +30,19 @@ namespace UnstableCards.Cards.Buff
 
         protected override string GetTitle()
         {
-            return "Drum Magazine";
+            return "Rebirthed Soul";
         }
         protected override string GetDescription()
         {
-            return "Need ammo? Just attach a drum mag to your weapon!";
+            return "Reborn again, but stronger.";
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.DrumMagArt;
+            return null; // Replace with actual card art if available
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Common;
+            return RarityUtils.GetRarity("Rare");
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -54,34 +51,30 @@ namespace UnstableCards.Cards.Buff
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Ammo",
-                    amount = "+40",
+                    stat = "Health",
+                    amount = "+100%",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
-                    positive = false,
-                    stat = "Reload Time",
-                    amount = "+105%",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
-                },
-                new CardInfoStat()
-                {
-                    positive = false,
-                    stat = "Movement Speed",
-                    amount = "-5%",
-                    simepleAmount = CardInfoStat.SimpleAmount.slightlyLower
+                    positive = true,
+                    stat = "Respawns",
+                    amount = "+1",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
                 }
             };
-
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.FirepowerYellow;
+            return CardThemeColor.CardThemeColorType.TechWhite;
         }
         public override string GetModName()
         {
             return UnstableCards.ModInitials;
+        }
+        public override bool GetEnabled()
+        {
+            return false;
         }
     }
 }

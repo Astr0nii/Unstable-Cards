@@ -57,7 +57,7 @@ namespace UnstableCards.Cards.Wacky
                 {
                     positive = false,
                     stat = "Health",
-                    amount = "-10%",
+                    amount = "-5%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
                 }
             };
