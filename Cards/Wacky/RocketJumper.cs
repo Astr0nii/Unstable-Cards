@@ -90,21 +90,21 @@ namespace UnstableCards.Cards.Wacky
                     positive = true,
                     stat = "Damage",
                     amount = "Harmless",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotLower
+                    simpleAmount = CardInfoStat.SimpleAmount.aLotLower
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Ammo",
                     amount = "+15",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Gravity",
                     amount = "-25%",
-                    simepleAmount = CardInfoStat.SimpleAmount.lower
+                    simpleAmount = CardInfoStat.SimpleAmount.lower
                 }
             };
 

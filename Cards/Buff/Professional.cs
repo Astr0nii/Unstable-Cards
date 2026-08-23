@@ -57,28 +57,28 @@ namespace UnstableCards.Cards.Buff
                     positive = true,
                     stat = "Professional",
                     amount = "Skill",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Spread",
                     amount = "resets",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotLower
+                    simpleAmount = CardInfoStat.SimpleAmount.aLotLower
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Recoil",
                     amount = "resets",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotLower
+                    simpleAmount = CardInfoStat.SimpleAmount.aLotLower
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Reload Time",
                     amount = "-25%",
-                    simepleAmount = CardInfoStat.SimpleAmount.lower
+                    simpleAmount = CardInfoStat.SimpleAmount.lower
                 }
             };
 

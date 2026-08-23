@@ -1,7 +1,7 @@
 {
   "name": "UnstableCards",
-  "version_number": "1.0.0",
-  "website_url": "https://github.com/thunderstore-io",
+  "version_number": "2.8.0",
+  "website_url": "https://github.com/Astr0nii/Unstable-Cards",
   "description": "Unstable cards that are hilariously goofy.",
   "dependencies": [
     "Root-RarityLib-1.2.8",

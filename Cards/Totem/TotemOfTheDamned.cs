@@ -72,7 +72,7 @@ namespace UnstableCards.Cards.Totem
                     positive = true,
                     stat = "Damned cards added",
                     amount = "+3",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aLotOf
                 }
             };
 

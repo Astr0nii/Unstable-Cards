@@ -64,14 +64,14 @@ namespace UnstableCards.Cards.Buff
                     positive = true,
                     stat = "Damage",
                     amount = "+50%",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Unreliability",
                     amount = "+50%",
-                    simepleAmount = CardInfoStat.SimpleAmount.Some
+                    simpleAmount = CardInfoStat.SimpleAmount.Some
                 }
             };
 

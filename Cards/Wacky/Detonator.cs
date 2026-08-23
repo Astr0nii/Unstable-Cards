@@ -90,7 +90,7 @@ namespace UnstableCards.Cards.Wacky
                     positive = false,
                     stat = "Self Explosion",
                     amount = "explosion!",
-                    simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
                 }
             };
 

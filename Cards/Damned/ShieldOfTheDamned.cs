@@ -34,7 +34,7 @@ namespace UnstableCards.Cards.Damned
         }
         protected override string GetDescription()
         {
-            return "Infused with the souls of whom were condemmed to defending this land. Sacrifice is generally the opposite stat of what is being buffed!";
+            return "Infused with the souls of whom were condemned to defending this land. Sacrifice is generally the opposite stat of what is being buffed!";
         }
         protected override GameObject GetCardArt()
         {
@@ -53,21 +53,21 @@ namespace UnstableCards.Cards.Damned
                     positive = true,
                     stat = "Strength",
                     amount = "ALOT",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Power",
                     amount = "ALOT",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Sacrifice",
                     amount = "ALOT",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aLotOf
                 }
             };
 

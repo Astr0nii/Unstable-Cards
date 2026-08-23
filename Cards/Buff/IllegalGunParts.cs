@@ -57,21 +57,21 @@ namespace UnstableCards.Cards.Buff
                     positive = true,
                     stat = "Damage",
                     amount = "+10%",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "ATKSPD",
                     amount = "+20%",
-                    simepleAmount = CardInfoStat.SimpleAmount.Some
+                    simpleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Bullet Speed",
                     amount = "+5%",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
                 }
             };
 

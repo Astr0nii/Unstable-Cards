@@ -24,7 +24,6 @@ namespace UnstableCards
         public static GameObject RunItBackArt = Bundle.LoadAsset<GameObject>("C_RunItBack");
         public static GameObject DenseBulletsArt = Bundle.LoadAsset<GameObject>("C_DenseBullets");
         public static GameObject OneInTheChamberArt = Bundle.LoadAsset<GameObject>("C_OneInTheChamber");
-        public static GameObject TwoInTheChamberArt = Bundle.LoadAsset<GameObject>("C_TwoInTheChamber");
         public static GameObject ShieldOfTheDamnedArt = Bundle.LoadAsset<GameObject>("C_ShieldOfTheDamned");
         public static GameObject HeartOfTheDamnedArt = Bundle.LoadAsset<GameObject>("C_HeartOfTheDamned");
         public static GameObject SkullOfTheDamnedArt = Bundle.LoadAsset<GameObject>("C_SkullOfTheDamned");
