@@ -67,35 +67,35 @@ namespace UnstableCards.Cards.Wacky
                     positive = true,
                     stat = "Reload Time",
                     amount = "0.5s",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "ATKSPD",
                     amount = "0.2s",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "DMG",
                     amount = "-80%",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotLower
+                    simpleAmount = CardInfoStat.SimpleAmount.aLotLower
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Bullet Bounces",
                     amount = "Disables",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotLower
+                    simpleAmount = CardInfoStat.SimpleAmount.aLotLower
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Bullet Speed",
                     amount = "+200%",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aLotOf
                 }
             };
 

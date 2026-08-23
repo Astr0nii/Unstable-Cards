@@ -63,14 +63,14 @@ namespace UnstableCards.Cards.Wacky
                     positive = true,
                     stat = "Gravity",
                     amount = "fly!",
-                    simepleAmount = CardInfoStat.SimpleAmount.Some
+                    simpleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Health",
                     amount = "-50%",
-                    simepleAmount = CardInfoStat.SimpleAmount.lower
+                    simpleAmount = CardInfoStat.SimpleAmount.lower
                 }
             };
 

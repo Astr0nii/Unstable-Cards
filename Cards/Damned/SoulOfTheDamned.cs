@@ -52,7 +52,7 @@ namespace UnstableCards.Cards.Damned
                     positive = false,
                     stat = "Sacrifice",
                     amount = "ALOT",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aLotOf
                 }
             };
 

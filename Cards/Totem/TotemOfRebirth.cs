@@ -40,7 +40,7 @@ namespace UnstableCards.Cards.Totem
             ModdingUtils.Utils.Cards.instance.RemoveCardsFromPlayer(player, cardIndicesToRemove.ToArray());
 
             //Stat modifiers
-            string cardName = "Rebirthed Soul";
+            string cardName = "Reborn Soul";
             CardInfo cardInfo = UnstableCards.GetCardInfoByName(cardName);
             if (cardInfo != null)
             {
@@ -76,21 +76,21 @@ namespace UnstableCards.Cards.Totem
                     positive = true,
                     stat = "Cards Removed",
                     amount = "All",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Lives",
                     amount = "+1",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Health",
                     amount = "+100%",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aLotOf
                 }
             };
 

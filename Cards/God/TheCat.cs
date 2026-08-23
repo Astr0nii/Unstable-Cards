@@ -59,21 +59,21 @@ namespace UnstableCards.Cards.God
                     positive = true,
                     stat = "The Cat never lies",
                     amount = "nine additional lives",
-                    simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Movement Speed",
                     amount = "+50%",
-                    simepleAmount = CardInfoStat.SimpleAmount.Some
+                    simpleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Block Cooldown",
                     amount = "Good Luck Blocking",
-                    simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
                 }
             };
 

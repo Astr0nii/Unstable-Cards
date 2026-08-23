@@ -13,7 +13,7 @@ using ModdingUtils;
 
 namespace UnstableCards.Cards.Special
 {
-    class RebirthedSoul : CustomCard
+    class RebornSoul : CustomCard
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
@@ -30,7 +30,7 @@ namespace UnstableCards.Cards.Special
 
         protected override string GetTitle()
         {
-            return "Rebirthed Soul";
+            return "Reborn Soul";
         }
         protected override string GetDescription()
         {
@@ -53,14 +53,14 @@ namespace UnstableCards.Cards.Special
                     positive = true,
                     stat = "Health",
                     amount = "+100%",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Respawns",
                     amount = "+1",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
                 }
             };
         }

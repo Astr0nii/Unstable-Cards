@@ -56,21 +56,21 @@ namespace UnstableCards.Cards.Buff
                     positive = true,
                     stat = "Ammo",
                     amount = "+40",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Reload Time",
                     amount = "+105%",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Movement Speed",
                     amount = "-5%",
-                    simepleAmount = CardInfoStat.SimpleAmount.slightlyLower
+                    simpleAmount = CardInfoStat.SimpleAmount.slightlyLower
                 }
             };
 

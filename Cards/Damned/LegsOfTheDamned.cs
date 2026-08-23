@@ -52,14 +52,14 @@ namespace UnstableCards.Cards.Damned
                     positive = true,
                     stat = "Movement Speed",
                     amount = "+50%",
-                    simepleAmount = CardInfoStat.SimpleAmount.Some
+                    simpleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Sacrifice",
                     amount = "ALOT",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aLotOf
                 }
             };
 

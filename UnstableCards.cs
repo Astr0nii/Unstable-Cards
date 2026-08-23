@@ -125,7 +125,7 @@ namespace UnstableCards
             CustomCard.BuildCard<BulletsOfTheDamned>(c => { ModdingUtils.Utils.Cards.instance.AddHiddenCard(c); damnedCards.Add(c); });
 
             //Special Cards
-            CustomCard.BuildCard<RebirthedSoul>(cardInfo => SaveCardInfo(cardInfo));
+            CustomCard.BuildCard<RebornSoul>(cardInfo => SaveCardInfo(cardInfo));
 
                 instance = this;
         }

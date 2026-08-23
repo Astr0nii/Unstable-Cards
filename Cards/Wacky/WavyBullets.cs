@@ -59,21 +59,21 @@ namespace UnstableCards.Cards.Wacky
                     positive = true,
                     stat = "Wavy Bullets",
                     amount = "Yes",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Bullet Speed",
                     amount = "+65%",
-                    simepleAmount = CardInfoStat.SimpleAmount.Some
+                    simpleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Damage",
                     amount = "-15%",
-                    simepleAmount = CardInfoStat.SimpleAmount.lower
+                    simpleAmount = CardInfoStat.SimpleAmount.lower
                 }
             };
 

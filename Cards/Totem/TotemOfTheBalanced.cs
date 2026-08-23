@@ -76,7 +76,7 @@ namespace UnstableCards.Cards.Totem
                     positive = true,
                     stat = "Cards Converted",
                     amount = "All",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aLotOf
                 }
             };
 

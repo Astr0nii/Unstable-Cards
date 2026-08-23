@@ -56,14 +56,14 @@ namespace UnstableCards.Cards.Wacky
                     positive = true,
                     stat = "Bullet Speed",
                     amount = "+9999%",
-                    simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Bullet Spread",
                     amount = "resets",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotLower
+                    simpleAmount = CardInfoStat.SimpleAmount.aLotLower
                 }
             };
 

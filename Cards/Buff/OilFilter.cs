@@ -52,14 +52,14 @@ namespace UnstableCards.Cards.Buff
                     positive = true,
                     stat = "Recoil",
                     amount = "-50%",
-                    simepleAmount = CardInfoStat.SimpleAmount.lower
+                    simpleAmount = CardInfoStat.SimpleAmount.lower
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Damage",
                     amount = "-10%",
-                    simepleAmount = CardInfoStat.SimpleAmount.slightlyLower
+                    simpleAmount = CardInfoStat.SimpleAmount.slightlyLower
                 }
             };
 

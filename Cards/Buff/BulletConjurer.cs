@@ -49,7 +49,7 @@ namespace UnstableCards.Cards.Buff
                     positive = true,
                     stat = "Ammo Regen",
                     amount = "+1/s",
-                    simepleAmount = CardInfoStat.SimpleAmount.Some
+                    simpleAmount = CardInfoStat.SimpleAmount.Some
                 }
             };
 

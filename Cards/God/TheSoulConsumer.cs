@@ -62,35 +62,35 @@ namespace UnstableCards.Cards.God
                     positive = true,
                     stat = "Life Steal",
                     amount = "Everything",
-                    simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Damage",
                     amount = "+100%",
-                    simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Additional Lives",
                     amount = "+2",
-                    simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Soul Protector",
                     amount = "+7.5s DMG takeover",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Size",
                     amount = "+75%",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                    simpleAmount = CardInfoStat.SimpleAmount.aLotOf
                 }
             };
 

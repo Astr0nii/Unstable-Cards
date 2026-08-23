@@ -63,21 +63,21 @@ namespace UnstableCards.Cards.Buff
                     positive = true,
                     stat = "Movement speed",
                     amount = "+30%",
-                    simepleAmount = CardInfoStat.SimpleAmount.Some
+                    simpleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Additonal Jumps",
+                    stat = "Additional Jumps",
                     amount = "+1",
-                    simepleAmount = CardInfoStat.SimpleAmount.Some
+                    simpleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Health",
                     amount = "-25%",
-                    simepleAmount = CardInfoStat.SimpleAmount.lower
+                    simpleAmount = CardInfoStat.SimpleAmount.lower
                 }
             };
 

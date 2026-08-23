@@ -52,21 +52,21 @@ namespace UnstableCards.Cards.Buff
                     positive = true,
                     stat = "Bullets",
                     amount = "+3",
-                    simepleAmount = CardInfoStat.SimpleAmount.Some
+                    simpleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Bullet Size",
                     amount = "-50%",
-                    simepleAmount = CardInfoStat.SimpleAmount.lower
+                    simpleAmount = CardInfoStat.SimpleAmount.lower
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Bullet Speed",
                     amount = "-30%",
-                    simepleAmount = CardInfoStat.SimpleAmount.lower
+                    simpleAmount = CardInfoStat.SimpleAmount.lower
                 }
             };
 
