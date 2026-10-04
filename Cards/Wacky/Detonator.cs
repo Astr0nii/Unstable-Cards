@@ -1,11 +1,6 @@
 ﻿using ClassesManagerReborn.Util;
-using Photon.Pun.Simple;
-using RarityLib.Utils;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using RarityLib.Utils;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
@@ -35,30 +30,35 @@ namespace UnstableCards.Cards.Wacky
             {
                 (GameObject AddToProjectile, GameObject effect, Explosion explosion) = UnstableCards.LoadExplosion("explosionDetonator", gun);
 
-                explosion.force *= 10f;
-                explosion.range *= 3f;
-                explosion.damage = int.MaxValue;
-                explosion.ignoreWalls = true;
-
-                explosionToSpawn[0] = new ObjectsToSpawn
+                if (explosion != null)
                 {
-                    AddToProjectile = AddToProjectile,
-                    direction = ObjectsToSpawn.Direction.forward,
-                    effect = effect,
-                    normalOffset = 1f,
-                    scaleFromDamage = 1f,
-                    scaleStackM = 0.2f,
-                    scaleStacks = true,
-                    spawnAsChild = false,
-                    spawnOn = ObjectsToSpawn.SpawnOn.all,
-                    stacks = 1,
-                    stickToAllTargets = false,
-                    stickToBigTargets = false,
-                    zeroZ = false,
-                    
-                };
+                    explosion.force *= 10f;
+                    explosion.range *= 3f;
+                    explosion.damage = int.MaxValue;
+                    explosion.ignoreWalls = true;
+
+                    explosionToSpawn[0] = new ObjectsToSpawn
+                    {
+                        AddToProjectile = AddToProjectile,
+                        direction = ObjectsToSpawn.Direction.forward,
+                        effect = effect,
+                        normalOffset = 1f,
+                        scaleFromDamage = 1f,
+                        scaleStackM = 0.2f,
+                        scaleStacks = true,
+                        spawnAsChild = false,
+                        spawnOn = ObjectsToSpawn.SpawnOn.all,
+                        stacks = 1,
+                        stickToAllTargets = false,
+                        stickToBigTargets = false,
+                        zeroZ = false,
+                    };
+                }
             }
-            gun.objectsToSpawn = gun.objectsToSpawn.Concat(explosionToSpawn).ToArray();
+            if (explosionToSpawn[0] != null && !gun.objectsToSpawn.Contains(explosionToSpawn[0]))
+            {
+                gun.objectsToSpawn = gun.objectsToSpawn.Append(explosionToSpawn[0]).ToArray();
+            }
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {

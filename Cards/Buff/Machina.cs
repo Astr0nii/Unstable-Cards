@@ -1,19 +1,10 @@
 ﻿using ClassesManagerReborn.Util;
-using ModsPlus;
-using Photon.Pun;
-using RarityLib.Utils;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnboundLib;
+using ModsPlus;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
 using UnstableCards.MonoBehaviours;
-using WillsWackyManagers.MonoBehaviours;
 
 namespace UnstableCards.Cards.Buff
 {

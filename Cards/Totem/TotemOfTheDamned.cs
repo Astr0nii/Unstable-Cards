@@ -1,21 +1,10 @@
 ﻿using ClassesManagerReborn.Util;
-using RarityLib.Utils;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using RarityLib.Utils;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
-using ModdingUtils;
-using System.Collections;
-using ModdingUtils.Patches;
-using UnboundLib.Utils;
-using CardChoiceSpawnUniqueCardPatch.CustomCategories;
-using ModdingUtils.Utils;
-using static CardInfo;
 
 namespace UnstableCards.Cards.Totem
 {
@@ -84,22 +73,6 @@ namespace UnstableCards.Cards.Totem
         public override string GetModName()
         {
             return UnstableCards.ModInitials;
-        }
-        private static class WaitFor
-        {
-            public static IEnumerator Frames(int frameCount)
-            {
-                if (frameCount <= 0)
-                {
-                    throw new ArgumentOutOfRangeException("frameCount", "Cannot wait for less that 1 frame");
-                }
-
-                while (frameCount > 0)
-                {
-                    frameCount--;
-                    yield return null;
-                }
-            }
         }
     }
 }

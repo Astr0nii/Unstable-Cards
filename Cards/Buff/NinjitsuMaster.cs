@@ -1,10 +1,4 @@
 ﻿using ClassesManagerReborn.Util;
-using RarityLib.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
@@ -57,7 +51,7 @@ namespace UnstableCards.Cards.Buff
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Addtional Blocks",
+                    stat = "Additional Blocks",
                     amount = "+2",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
@@ -78,7 +72,7 @@ namespace UnstableCards.Cards.Buff
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "health",
+                    stat = "Health",
                     amount = "-25%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
                 },

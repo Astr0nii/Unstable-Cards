@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnboundLib;
+using RarityLib.Utils;
 using UnboundLib.Cards;
 using UnityEngine;
-using RarityLib;
-using RarityLib.Utils;
-using ClassesManagerReborn.Util;
 using UnstableCards.Cards.NameClasses;
 
 namespace UnstableCards.Cards.Wacky

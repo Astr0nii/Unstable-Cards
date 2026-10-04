@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnboundLib.Cards;
 using HarmonyLib;
-using RarityLib.Utils;
 using System.Collections.Generic;
 using UnstableCards.Cards.Wacky;
 using UnstableCards.Cards.God;
@@ -10,14 +9,10 @@ using UnstableCards.Cards.Buff;
 using UnstableCards.Cards.Damned;
 using UnstableCards.Cards.Special;
 using UnboundLib;
-using ModdingUtils;
-using UnboundLib.Utils;
 using System.Linq;
 using UnstableCards.Cards.Totem;
 using System;
 using UnstableCards.Cards.Sorcery;
-//using UnstableCards.Cards.Defense;
-//using UnstableCards.Cards.Sorcery;
 
 namespace UnstableCards
 {
@@ -75,7 +70,7 @@ namespace UnstableCards
         void Start()
         {
             // Wacky Cards
-            CustomCard.BuildCard<Boomstick>(cardInfo => SaveCardInfo(cardInfo));
+            CustomCard.BuildCard<Boomstick>();
             CustomCard.BuildCard<PointClickAdventureGame>();
             CustomCard.BuildCard<UraniumPayload>();
             CustomCard.BuildCard<StabbinLicense>();
@@ -88,8 +83,9 @@ namespace UnstableCards
             CustomCard.BuildCard<Bubble>();
             CustomCard.BuildCard<TrainBullets>();
             CustomCard.BuildCard<GasGasGas>();
+
+            // Sorcery Cards
             CustomCard.BuildCard<PinballWizard>();
-           //CustomCard.BuildCard<GravityWell>();
 
             // Normal Cards
             CustomCard.BuildCard<RustBucket>();
@@ -110,7 +106,7 @@ namespace UnstableCards
             CustomCard.BuildCard<OilFilter>();
             CustomCard.BuildCard<CardCollector>();
 
-            // Defense Cards
+            // Defense Cards (not ready yet)
             //CustomCard.BuildCard<FortifiedShield>();
             //CustomCard.BuildCard<GuardiansAegis>();
 
@@ -124,17 +120,22 @@ namespace UnstableCards
             CustomCard.BuildCard<TotemOfTheBalanced>();
             CustomCard.BuildCard<TotemOfTheDamned>();
 
-            //Damned Totem Cards
+            //Damned Totem Cards (hidden; only granted by Totem Of The Damned)
             CustomCard.BuildCard<HeartOfTheDamned>(c => { ModdingUtils.Utils.Cards.instance.AddHiddenCard(c); damnedCards.Add(c); });
             CustomCard.BuildCard<SkullOfTheDamned>(c => { ModdingUtils.Utils.Cards.instance.AddHiddenCard(c); damnedCards.Add(c); });
             CustomCard.BuildCard<ShieldOfTheDamned>(c => { ModdingUtils.Utils.Cards.instance.AddHiddenCard(c); damnedCards.Add(c); });
             CustomCard.BuildCard<SoulOfTheDamned>(c => { ModdingUtils.Utils.Cards.instance.AddHiddenCard(c); damnedCards.Add(c); });
             CustomCard.BuildCard<BulletsOfTheDamned>(c => { ModdingUtils.Utils.Cards.instance.AddHiddenCard(c); damnedCards.Add(c); });
+            // LegsOfTheDamned is intentionally not built until it has an art asset and is added to the damned pool.
 
-            //Special Cards
-            CustomCard.BuildCard<RebirthedSoul>(cardInfo => SaveCardInfo(cardInfo));
+            //Special Cards (hidden; only granted by Totem Of Rebirth)
+            CustomCard.BuildCard<RebirthedSoul>(cardInfo =>
+            {
+                SaveCardInfo(cardInfo);
+                ModdingUtils.Utils.Cards.instance.AddHiddenCard(cardInfo);
+            });
 
-                instance = this;
+            instance = this;
         }
         public static UnstableCards instance { get; private set; }
 
@@ -143,9 +144,15 @@ namespace UnstableCards
             // load explosion effect from Explosive Bullet card
             GameObject? explosiveBullet = (GameObject)Resources.Load("0 cards/Explosive bullet");
 
+            if (explosiveBullet == null)
+            {
+                UnityEngine.Debug.LogError($"[UC] Failed to load '0 cards/Explosive bullet' for explosion '{name}'.");
+                return (null, null, null);
+            }
+
             Gun explosiveGun = explosiveBullet.GetComponent<Gun>();
 
-            if (gun != null)
+            if (gun != null && explosiveGun != null)
             {
                 // change the gun sounds
                 gun.soundGun.AddSoundImpactModifier(explosiveGun.soundImpactModifier);

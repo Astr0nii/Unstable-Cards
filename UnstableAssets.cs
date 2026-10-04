@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
-using System.IO;
-using System.Reflection;
 
 namespace UnstableCards
 {
@@ -50,7 +46,6 @@ namespace UnstableCards
         public static GameObject RunItBackArt => Bundle?.LoadAsset<GameObject>("C_RunItBack");
         public static GameObject DenseBulletsArt => Bundle?.LoadAsset<GameObject>("C_DenseBullets");
         public static GameObject OneInTheChamberArt => Bundle?.LoadAsset<GameObject>("C_OneInTheChamber");
-        public static GameObject TwoInTheChamberArt => Bundle?.LoadAsset<GameObject>("C_TwoInTheChamber");
         public static GameObject ShieldOfTheDamnedArt => Bundle?.LoadAsset<GameObject>("C_ShieldOfTheDamned");
         public static GameObject HeartOfTheDamnedArt => Bundle?.LoadAsset<GameObject>("C_HeartOfTheDamned");
         public static GameObject SkullOfTheDamnedArt => Bundle?.LoadAsset<GameObject>("C_SkullOfTheDamned");
@@ -65,7 +60,6 @@ namespace UnstableCards
         public static GameObject RocketJumperArt => Bundle?.LoadAsset<GameObject>("C_RocketJumper");
         public static GameObject TotemOfTheDamnedArt => Bundle?.LoadAsset<GameObject>("C_TotemOfTheDamned");
         public static GameObject TotemOfTheBalancedArt => Bundle?.LoadAsset<GameObject>("C_TotemOfTheBalanced");
-        public static GameObject TotemOfTheForgottenArt => Bundle?.LoadAsset<GameObject>("C_TotemOfTheForgotten");
         public static GameObject HeavyWeaponsGuyArt => Bundle?.LoadAsset<GameObject>("C_HeavyWeaponsGuy");
         public static GameObject StabbinLicenseArt => Bundle?.LoadAsset<GameObject>("C_StabbinLicense");
         public static GameObject TheSoulConsumerArt => Bundle?.LoadAsset<GameObject>("C_TheSoulConsumer");
