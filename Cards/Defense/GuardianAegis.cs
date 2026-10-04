@@ -10,50 +10,52 @@ using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
 
-namespace UnstableCards.Cards.Buff
+namespace UnstableCards.Cards.Defense
 {
-    class EnchantedGoldenApple : CustomCard
+    class GuardiansAegis : CustomCard
     {
         public override void Callback()
         {
-            gameObject.GetOrAddComponent<ClassNameMono>().className = BuffClass.name;
+            gameObject.GetOrAddComponent<ClassNameMono>().className = DefenseClass.name;
         }
+
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.health = 2.0f;
+            block.cooldown = 1.0f; // Standard block cooldown
+            block.forceToAdd = 1.5f; // Greatly increased block force
+            statModifiers.health = 1.15f; // Increase max health
+            statModifiers.movementSpeed *= 0.95f; // Slightly slower movement
+            gun.damage = 0.9f; // Slightly reduced damage
         }
+
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            // Audio Logic
-            var audioSource = new GameObject("audioSource").gameObject.GetOrAddComponent<AudioSource>();
-            audioSource.gameObject.GetOrAddComponent<RemoveAfterSeconds>();
-            var timer = audioSource.GetComponent<RemoveAfterSeconds>();
-            timer.seconds = 5;
-            audioSource.PlayOneShot(UnstableAssets.GoldenAppleAudio, 1.5f);
-
-            player.data.healthHandler.regeneration += 25;
-            characterStats.movementSpeed *= 0.65f;
         }
+
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
         }
 
         protected override string GetTitle()
         {
-            return "Enchanted Golden Apple";
+            return "Guardian's Aegis";
         }
+
         protected override string GetDescription()
         {
-            return "Gain life regeneration, health, but lose movement speed. How on earth do you eat this?";
+            return "Enhances block capabilities significantly, with a slight decrease in movement speed and damage output. Ideal for those who prioritize defense.";
         }
+
         protected override GameObject GetCardArt()
         {
-            return UnstableAssets.EnchantedGoldenAppleArt;
+            return Assets.PlaceHolderArt; // Placeholder for custom art
         }
+
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Legendary");
+            return CardInfo.Rarity.Uncommon;
         }
+
         protected override CardInfoStat[] GetStats()
         {
             return new CardInfoStat[]
@@ -61,31 +63,46 @@ namespace UnstableCards.Cards.Buff
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Life Regeneration",
-                    amount = "+25hp/s",
+                    stat = "Block Force",
+                    amount = "+50%",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "health",
-                    amount = "+100%",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                    stat = "Max Health",
+                    amount = "+15%",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "Luck",
+                    amount = "+10%",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Movement Speed",
-                    amount = "-35%",
-                    simepleAmount = CardInfoStat.SimpleAmount.lower
+                    amount = "-5%",
+                    simepleAmount = CardInfoStat.SimpleAmount.slightlyLower
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
+                    stat = "Damage",
+                    amount = "-10%",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
                 }
             };
-
         }
+
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.FirepowerYellow;
+            return CardThemeColor.CardThemeColorType.DefensiveBlue;
         }
+
         public override string GetModName()
         {
             return UnstableCards.ModInitials;

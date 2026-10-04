@@ -34,7 +34,7 @@ namespace UnstableCards.Cards.Wacky
             audioSource.gameObject.GetOrAddComponent<RemoveAfterSeconds>();
             var timer = audioSource.GetComponent<RemoveAfterSeconds>();
             timer.seconds = 5;
-            audioSource.PlayOneShot(Assets.HeavyWeaponsGuyAudio, 1.5f);
+            audioSource.PlayOneShot(UnstableAssets.HeavyWeaponsGuyAudio, 1.5f);
 
             gunAmmo.maxAmmo += 99;
         }
@@ -52,7 +52,7 @@ namespace UnstableCards.Cards.Wacky
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.HeavyWeaponsGuyArt;
+            return UnstableAssets.HeavyWeaponsGuyArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

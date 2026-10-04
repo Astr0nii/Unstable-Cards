@@ -40,11 +40,11 @@ namespace UnstableCards.Cards.Buff
         }
         protected override string GetDescription()
         {
-            return "Schedule your weapon for a free comprehensive servicing covered by Geico!";
+            return "Schedule your weapon for a free comprehensive servicing covered by the Rounds Modding Community!";
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.WeaponServicingArt;
+            return UnstableAssets.WeaponServicingArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

@@ -33,11 +33,11 @@ namespace UnstableCards.Cards.Buff
         }
         protected override string GetDescription()
         {
-            return "Compress your existing bullets and new ones into one SOLID projectile";
+            return "Reduces spread to zero so your projectiles appear to be 'one bullet'.";
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.DenseBulletsArt;
+            return UnstableAssets.DenseBulletsArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

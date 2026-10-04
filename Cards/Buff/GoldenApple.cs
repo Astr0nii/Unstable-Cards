@@ -28,7 +28,7 @@ namespace UnstableCards.Cards.Buff
             audioSource.gameObject.GetOrAddComponent<RemoveAfterSeconds>();
             var timer = audioSource.GetComponent<RemoveAfterSeconds>();
             timer.seconds = 5;
-            audioSource.PlayOneShot(Assets.GoldenAppleAudio, 1.5f);
+            audioSource.PlayOneShot(UnstableAssets.GoldenAppleAudio, 1.5f);
 
             player.data.healthHandler.regeneration += 5;
             characterStats.movementSpeed *= 0.9f;
@@ -43,11 +43,11 @@ namespace UnstableCards.Cards.Buff
         }
         protected override string GetDescription()
         {
-            return "Painful to eat but beneficial to digest (Excluding weight gains).";
+            return "Gain life regeneration, health, but lose movement speed. How on earth do you eat this? The less powerful variant of the enchanted variety.";
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.GoldenAppleArt;
+            return UnstableAssets.GoldenAppleArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

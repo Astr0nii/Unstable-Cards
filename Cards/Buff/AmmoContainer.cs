@@ -24,8 +24,8 @@ namespace UnstableCards.Cards.Buff
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gunAmmo.maxAmmo += 99;
-            characterStats.movementSpeed *= 0.9f;
+            gunAmmo.maxAmmo += 55;
+            characterStats.movementSpeed *= 0.7f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -37,11 +37,11 @@ namespace UnstableCards.Cards.Buff
         }
         protected override string GetDescription()
         {
-            return "Need ammo? No problem";
+            return "Gives you the maximum amount of ammo possible in rounds. Need ammo? No problem.";
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.AmmoContainerArt;
+            return UnstableAssets.AmmoContainerArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {
@@ -69,7 +69,7 @@ namespace UnstableCards.Cards.Buff
                 {
                     positive = false,
                     stat = "Movement Speed",
-                    amount = "-10%",
+                    amount = "-30%",
                     simepleAmount = CardInfoStat.SimpleAmount.slightlyLower
                 }
             };

@@ -29,12 +29,12 @@ namespace UnstableCards.Cards.Buff
                 cardCount = player.data.currentCards.Count;
             }
             
-            gun.damage *= 1 + (cardCount * 0.05f);
-            gun.projectileSpeed *= 1 + (cardCount * 0.05f);
-            player.data.maxHealth *= 1 + (cardCount * 0.05f);
-            gun.attackSpeed *= 1 - (cardCount * 0.05f);
-            gunAmmo.reloadTimeMultiplier *= 1 - (cardCount * 0.05f);
-            characterStats.movementSpeed *= 1 - (cardCount * 0.05f);
+            gun.damage *= 1 + (cardCount * 0.04f);
+            gun.projectileSpeed *= 1 + (cardCount * 0.04f);
+            player.data.maxHealth *= 1 + (cardCount * 0.04f);
+            gun.attackSpeed *= 1 - (cardCount * 0.04f);
+            gunAmmo.reloadTimeMultiplier *= 1 - (cardCount * 0.04f);
+            characterStats.movementSpeed *= 1 - (cardCount * 0.04f);
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -46,11 +46,11 @@ namespace UnstableCards.Cards.Buff
         }
         protected override string GetDescription()
         {
-            return "No way dude is that a *insert absurdly rare card from a card game*. Isn't that worth like 100K? Per card gain (Capped at 10 cards):";
+            return "Gain stats for every card you own. No way! Is that a real shiny block card?";
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.CardCollectorArt;
+            return UnstableAssets.CardCollectorArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {
@@ -64,42 +64,42 @@ namespace UnstableCards.Cards.Buff
                 {
                     positive = true,
                     stat = "Damage",
-                    amount = "+5%",
+                    amount = "+4%",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Health",
-                    amount = "+5%",
+                    amount = "+4%",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Bullet Speed",
-                    amount = "+5%",
+                    amount = "+4%",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "ATKSPD",
-                    amount = "-5%",
+                    amount = "-4%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Reload Time",
-                    amount = "-5%",
+                    amount = "-4%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Movement Speed",
-                    amount = "-5%",
+                    amount = "-4%",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 }
             };

@@ -38,7 +38,7 @@ namespace UnstableCards.Cards.Buff
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.RunItBackArt;
+            return UnstableAssets.RunItBackArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

@@ -36,7 +36,7 @@ namespace UnstableCards.Cards.Wacky
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.PlaceHolderArt;
+            return UnstableAssets.GasGasGasArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

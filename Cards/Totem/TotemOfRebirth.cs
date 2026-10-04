@@ -28,7 +28,7 @@ namespace UnstableCards.Cards.Totem
             audioSource.gameObject.GetOrAddComponent<RemoveAfterSeconds>();
             var timer = audioSource.GetComponent<RemoveAfterSeconds>();
             timer.seconds = 5;
-            audioSource.PlayOneShot(Assets.totemOfTheForgottenAudio, 1.2f);
+            audioSource.PlayOneShot(UnstableAssets.totemOfTheForgottenAudio, 1.2f);
 
 
             // Card Removing Logic
@@ -39,12 +39,12 @@ namespace UnstableCards.Cards.Totem
             }
             ModdingUtils.Utils.Cards.instance.RemoveCardsFromPlayer(player, cardIndicesToRemove.ToArray());
 
-            //Stat modifiers
+            // Add new card
             string cardName = "Rebirthed Soul";
             CardInfo cardInfo = UnstableCards.GetCardInfoByName(cardName);
             if (cardInfo != null)
             {
-                ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, cardInfo, reassign: false, twoLetterCode: "", forceDisplay: 0f, forceDisplayDelay: 0f);
+                ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, cardInfo, reassign: true, twoLetterCode: "", forceDisplay: 0f, forceDisplayDelay: 0f);
             }
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -61,7 +61,7 @@ namespace UnstableCards.Cards.Totem
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.TotemOfTheForgottenArt;
+            return UnstableAssets.TotemOfTheForgottenArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

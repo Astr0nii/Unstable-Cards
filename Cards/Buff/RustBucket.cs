@@ -25,7 +25,7 @@ namespace UnstableCards.Cards.Buff
             audioSource.gameObject.GetOrAddComponent<RemoveAfterSeconds>();
             var timer = audioSource.GetComponent<RemoveAfterSeconds>();
             timer.seconds = 5;
-            audioSource.PlayOneShot(Assets.RustBucketAudio, 1.5f);
+            audioSource.PlayOneShot(UnstableAssets.RustBucketAudio, 1.5f);
 
             var misfire = player.gameObject.GetOrAddComponent<Misfire_Mono>();
             misfire.misfireChance += 50;
@@ -49,7 +49,7 @@ namespace UnstableCards.Cards.Buff
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.RustBucketArt;
+            return UnstableAssets.RustBucketArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

@@ -36,7 +36,7 @@ namespace UnstableCards.Cards.Totem
             audioSource.gameObject.GetOrAddComponent<RemoveAfterSeconds>();
             var timer = audioSource.GetComponent<RemoveAfterSeconds>();
             timer.seconds = 5;
-            audioSource.PlayOneShot(Assets.totemOfTheDamnedAudio, 1.2f);
+            audioSource.PlayOneShot(UnstableAssets.totemOfTheDamnedAudio, 1.2f);
 
             // Card Adding Logic
             UnstableCards.damnedCards.Shuffle();
@@ -57,7 +57,7 @@ namespace UnstableCards.Cards.Totem
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.TotemOfTheDamnedArt;
+            return UnstableAssets.TotemOfTheDamnedArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

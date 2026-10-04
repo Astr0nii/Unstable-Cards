@@ -53,7 +53,7 @@ namespace UnstableCards.Cards.Wacky
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.BoomstickArt;
+            return UnstableAssets.BoomstickArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

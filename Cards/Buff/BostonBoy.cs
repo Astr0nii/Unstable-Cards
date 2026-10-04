@@ -30,7 +30,7 @@ namespace UnstableCards.Cards.Buff
             audioSource.gameObject.GetOrAddComponent<RemoveAfterSeconds>();
             var timer = audioSource.GetComponent<RemoveAfterSeconds>();
             timer.seconds = 5;
-            audioSource.PlayOneShot(Assets.BostonBoyAudio, 1.2f);
+            audioSource.PlayOneShot(UnstableAssets.BostonBoyAudio, 1.2f);
 
             data.jumps += 1;
         }
@@ -44,11 +44,11 @@ namespace UnstableCards.Cards.Buff
         }
         protected override string GetDescription()
         {
-            return "I'm running circles around ya! BONK!";
+            return "Increased movement capabilities. I'm running circles around ya! BONK!";
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.BostonBoyArt;
+            return UnstableAssets.BostonBoyArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

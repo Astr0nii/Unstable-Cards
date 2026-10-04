@@ -24,8 +24,8 @@ namespace UnstableCards.Cards.Buff
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gunAmmo.maxAmmo += 40;
-            characterStats.movementSpeed *= 0.95f;
+            gunAmmo.maxAmmo += 15;
+            characterStats.movementSpeed *= 0.85f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -37,11 +37,11 @@ namespace UnstableCards.Cards.Buff
         }
         protected override string GetDescription()
         {
-            return "Need ammo? Just attach a drum mag to your weapon!";
+            return "Grants 40 additional ammo. Its a Drum-atically good card!";
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.DrumMagArt;
+            return UnstableAssets.DrumMagArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {
@@ -69,7 +69,7 @@ namespace UnstableCards.Cards.Buff
                 {
                     positive = false,
                     stat = "Movement Speed",
-                    amount = "-5%",
+                    amount = "-15%",
                     simepleAmount = CardInfoStat.SimpleAmount.slightlyLower
                 }
             };

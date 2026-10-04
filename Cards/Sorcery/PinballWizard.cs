@@ -1,59 +1,60 @@
 ﻿using ClassesManagerReborn.Util;
 using RarityLib.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
 
-namespace UnstableCards.Cards.Buff
+namespace UnstableCards.Cards.Sorcery
 {
-    class EnchantedGoldenApple : CustomCard
+    class PinballWizard : CustomCard
     {
         public override void Callback()
         {
-            gameObject.GetOrAddComponent<ClassNameMono>().className = BuffClass.name;
+            gameObject.GetOrAddComponent<ClassNameMono>().className = SorceryClass.name;
         }
+
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.health = 2.0f;
+            gun.damage = 0.6f;
+            gun.projectileSpeed = 1.5f;
+            gun.projectileSize = 0.8f;
+            gun.reflects = 5;
+            gun.speedMOnBounce = 1.1f;
+            gun.dmgMOnBounce = 1.4f;
+            gun.projectielSimulatonSpeed = 1.2f;
         }
+
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            // Audio Logic
-            var audioSource = new GameObject("audioSource").gameObject.GetOrAddComponent<AudioSource>();
-            audioSource.gameObject.GetOrAddComponent<RemoveAfterSeconds>();
-            var timer = audioSource.GetComponent<RemoveAfterSeconds>();
-            timer.seconds = 5;
-            audioSource.PlayOneShot(UnstableAssets.GoldenAppleAudio, 1.5f);
-
-            player.data.healthHandler.regeneration += 25;
-            characterStats.movementSpeed *= 0.65f;
+            var projectileColor = new Color(1f, 0.2f, 0.8f);
+            gun.projectileColor = projectileColor;
         }
+
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
         }
 
         protected override string GetTitle()
         {
-            return "Enchanted Golden Apple";
+            return "Pinball Wizard";
         }
+
         protected override string GetDescription()
         {
-            return "Gain life regeneration, health, but lose movement speed. How on earth do you eat this?";
+            return "That kid sure plays a mean pinball! Your bullets bounce more and get stronger with each hit.";
         }
+
         protected override GameObject GetCardArt()
         {
-            return UnstableAssets.EnchantedGoldenAppleArt;
+            return UnstableAssets.PlaceHolderArt;
         }
+
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Legendary");
+            return CardInfo.Rarity.Rare;
         }
+
         protected override CardInfoStat[] GetStats()
         {
             return new CardInfoStat[]
@@ -61,31 +62,39 @@ namespace UnstableCards.Cards.Buff
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Life Regeneration",
-                    amount = "+25hp/s",
+                    stat = "Bounces",
+                    amount = "+5",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "health",
-                    amount = "+100%",
+                    stat = "Damage on Bounce",
+                    amount = "+40%",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
+                    positive = true,
+                    stat = "Speed on Bounce",
+                    amount = "+10%",
+                    simepleAmount = CardInfoStat.SimpleAmount.Some
+                },
+                new CardInfoStat()
+                {
                     positive = false,
-                    stat = "Movement Speed",
-                    amount = "-35%",
+                    stat = "Initial Damage",
+                    amount = "-40%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
                 }
             };
-
         }
+
         protected override CardThemeColor.CardThemeColorType GetTheme()
         {
-            return CardThemeColor.CardThemeColorType.FirepowerYellow;
+            return CardThemeColor.CardThemeColorType.MagicPink;
         }
+
         public override string GetModName()
         {
             return UnstableCards.ModInitials;

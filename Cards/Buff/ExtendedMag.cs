@@ -37,11 +37,11 @@ namespace UnstableCards.Cards.Buff
         }
         protected override string GetDescription()
         {
-            return "The quintessential upgrade that must be in any shooter game worth its money with upgrades.";
+            return "5 extra ammo. The quintessential upgrade that must be in any shooter game";
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.ExtendedMagArt;
+            return UnstableAssets.ExtendedMagArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {
@@ -56,7 +56,7 @@ namespace UnstableCards.Cards.Buff
                     positive = true,
                     stat = "Ammo",
                     amount = "+5",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                    simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
                 },
                 new CardInfoStat()
                 {

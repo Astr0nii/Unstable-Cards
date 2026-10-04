@@ -37,7 +37,7 @@ namespace UnstableCards.Cards.Damned
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.PlaceHolderArt;
+            return UnstableAssets.PlaceHolderArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

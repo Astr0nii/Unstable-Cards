@@ -15,6 +15,9 @@ using UnboundLib.Utils;
 using System.Linq;
 using UnstableCards.Cards.Totem;
 using System;
+using UnstableCards.Cards.Sorcery;
+//using UnstableCards.Cards.Defense;
+//using UnstableCards.Cards.Sorcery;
 
 namespace UnstableCards
 {
@@ -30,7 +33,6 @@ namespace UnstableCards
     [BepInDependency("root.classes.manager.reborn", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.willuwontu.rounds.BlockForcePatch", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.willuwontu.rounds.RespawnPatch", BepInDependency.DependencyFlags.HardDependency)]
-    [BepInDependency("com.rounds.willuwontu.gunchargepatch", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.willis.rounds.modsplus", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.root.projectile.size.patch", BepInDependency.DependencyFlags.HardDependency)]
 
@@ -44,7 +46,7 @@ namespace UnstableCards
     {
         private const string ModId = "com.Astr0ni.Rounds.UnstableCards";
         private const string ModName = "Unstable Cards";
-        private const string Version = "2.8.0"; // Mod version (major.minor.patch)
+        private const string Version = "2.9.0"; // Mod version (major.minor.patch)
 
         public const string ModInitials = "UC";
 
@@ -86,6 +88,8 @@ namespace UnstableCards
             CustomCard.BuildCard<Bubble>();
             CustomCard.BuildCard<TrainBullets>();
             CustomCard.BuildCard<GasGasGas>();
+            CustomCard.BuildCard<PinballWizard>();
+           //CustomCard.BuildCard<GravityWell>();
 
             // Normal Cards
             CustomCard.BuildCard<RustBucket>();
@@ -106,6 +110,9 @@ namespace UnstableCards
             CustomCard.BuildCard<OilFilter>();
             CustomCard.BuildCard<CardCollector>();
 
+            // Defense Cards
+            //CustomCard.BuildCard<FortifiedShield>();
+            //CustomCard.BuildCard<GuardiansAegis>();
 
             //God Cards
             CustomCard.BuildCard<TheCat>();

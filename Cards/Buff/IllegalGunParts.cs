@@ -42,7 +42,7 @@ namespace UnstableCards.Cards.Buff
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.IllegalGunPartsArt;
+            return UnstableAssets.IllegalGunPartsArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

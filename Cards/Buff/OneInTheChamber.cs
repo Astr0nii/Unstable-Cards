@@ -43,7 +43,7 @@ namespace UnstableCards.Cards.Buff
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.OneInTheChamberArt;
+            return UnstableAssets.OneInTheChamberArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

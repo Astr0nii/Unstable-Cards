@@ -31,7 +31,7 @@ namespace UnstableCards.Cards.Totem
             audioSource.gameObject.GetOrAddComponent<RemoveAfterSeconds>();
             var timer = audioSource.GetComponent<RemoveAfterSeconds>();
             timer.seconds = 5;
-            audioSource.PlayOneShot(Assets.totemOfTheBalancedAudio, 1.2f);
+            audioSource.PlayOneShot(UnstableAssets.totemOfTheBalancedAudio, 1.2f);
 
             // Card Adding/Removing Logic
             UnityEngine.Debug.Log($"{player.data.currentCards}");
@@ -61,7 +61,7 @@ namespace UnstableCards.Cards.Totem
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.TotemOfTheBalancedArt;
+            return UnstableAssets.TotemOfTheBalancedArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

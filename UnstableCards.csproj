@@ -6,21 +6,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="MonoBehaviours\**" />
-    <EmbeddedResource Remove="MonoBehaviours\**" />
-    <None Remove="MonoBehaviours\**" />
+    <Compile Remove="Cards\Defense\**" />
+    <Compile Remove="Cards\Weapon\**" />
+    <EmbeddedResource Remove="Cards\Defense\**" />
+    <EmbeddedResource Remove="Cards\Weapon\**" />
+    <None Remove="Cards\Defense\**" />
+    <None Remove="Cards\Weapon\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Cards\Buff\HotPotato.cs" />
     <Compile Remove="Cards\Buff\Machina.cs" />
+    <Compile Remove="Cards\Buff\OverclockedRounds.cs" />
+    <Compile Remove="Cards\NameClasses\DefenseClass.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="AssetsEmbedded\assets" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="AssetsEmbedded\assets" />
+    <EmbeddedResource Include="ucassets" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,9 +40,6 @@
     </Reference>
     <Reference Include="ClassesManagerReborn">
       <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Testing\BepInEx\plugins\Root-Classes_Manager_Reborn\ClassesManagerReborn.dll</HintPath>
-    </Reference>
-    <Reference Include="GunChargePatch">
-      <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Default\BepInEx\plugins\willuwontu-GunChargePatch\GunChargePatch.dll</HintPath>
     </Reference>
     <Reference Include="ModdingUtils">
       <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Default\BepInEx\plugins\Pykess-ModdingUtils\ModdingUtils.dll</HintPath>
@@ -78,10 +77,6 @@
     <Reference Include="WillsWackyManagers">
       <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Testing\BepInEx\plugins\willuwontu-WillsWackyManagers\WillsWackyManagers.dll</HintPath>
     </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="MonoBehaviours\" />
   </ItemGroup>
 
 </Project>

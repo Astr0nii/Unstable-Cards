@@ -41,7 +41,7 @@ namespace UnstableCards.Cards.Wacky
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.StoneStatueArt;
+            return UnstableAssets.StoneStatueArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

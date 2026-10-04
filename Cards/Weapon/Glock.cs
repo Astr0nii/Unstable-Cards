@@ -10,9 +10,9 @@ using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
 
-namespace UnstableCards.Cards.Buff
+namespace UnstableCards.Cards.Weapon
 {
-    class EnchantedGoldenApple : CustomCard
+    class Glock : CustomCard
     {
         public override void Callback()
         {
@@ -20,19 +20,12 @@ namespace UnstableCards.Cards.Buff
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.health = 2.0f;
+            gun.reloadTime = 2.05f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            // Audio Logic
-            var audioSource = new GameObject("audioSource").gameObject.GetOrAddComponent<AudioSource>();
-            audioSource.gameObject.GetOrAddComponent<RemoveAfterSeconds>();
-            var timer = audioSource.GetComponent<RemoveAfterSeconds>();
-            timer.seconds = 5;
-            audioSource.PlayOneShot(UnstableAssets.GoldenAppleAudio, 1.5f);
-
-            player.data.healthHandler.regeneration += 25;
-            characterStats.movementSpeed *= 0.65f;
+            gunAmmo.maxAmmo += 40;
+            characterStats.movementSpeed *= 0.95f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -40,19 +33,19 @@ namespace UnstableCards.Cards.Buff
 
         protected override string GetTitle()
         {
-            return "Enchanted Golden Apple";
+            return "Glock";
         }
         protected override string GetDescription()
         {
-            return "Gain life regeneration, health, but lose movement speed. How on earth do you eat this?";
+            return "Grants 40 additional ammo. Its a Drum-atically good card!";
         }
         protected override GameObject GetCardArt()
         {
-            return UnstableAssets.EnchantedGoldenAppleArt;
+            return Assets.DrumMagArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return RarityUtils.GetRarity("Legendary");
+            return CardInfo.Rarity.Common;
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -61,23 +54,23 @@ namespace UnstableCards.Cards.Buff
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Life Regeneration",
-                    amount = "+25hp/s",
+                    stat = "Ammo",
+                    amount = "+40",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
-                    positive = true,
-                    stat = "health",
-                    amount = "+100%",
+                    positive = false,
+                    stat = "Reload Time",
+                    amount = "+105%",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Movement Speed",
-                    amount = "-35%",
-                    simepleAmount = CardInfoStat.SimpleAmount.lower
+                    amount = "-5%",
+                    simepleAmount = CardInfoStat.SimpleAmount.slightlyLower
                 }
             };
 

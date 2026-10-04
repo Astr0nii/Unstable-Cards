@@ -71,11 +71,11 @@ namespace UnstableCards.Cards.Wacky
         }
         protected override string GetDescription()
         {
-            return "Ammunition infused with 20KG of <color=#84FF00>Uranium 235</color> for unstable results. 100% Compliant with OSHA guidelines!";
+            return "Makes your bullets explosive. Ammunition infused with 20KG of <color=#84FF00>Uranium 235</color> for unstable results. 100% Compliant with OSHA guidelines!";
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.UraniumPayloadArt;
+            return UnstableAssets.UraniumPayloadArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

@@ -30,11 +30,11 @@ namespace UnstableCards.Cards.Buff
         }
         protected override string GetDescription()
         {
-            return "W-What! Where do you keep getting them from?! How?! Only works when you are not reloading.";
+            return "You regenerate one bullet every second, only works when you are not reloading. W-What?! How do they regen bullet?";
         }
         protected override GameObject GetCardArt()
         {
-            return Assets.BulletConjurerArt;
+            return UnstableAssets.BulletConjurerArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {
