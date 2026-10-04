@@ -15,12 +15,13 @@ namespace UnstableCards.Cards.Wacky
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            gun.attackSpeed = 0.1f;
+            // Rebalanced: minigun used to be a zero-cost laser beam of death.
+            gun.attackSpeed = 0.2f;
             gun.reflects = -999;
-            gun.spread = 0.4f;
-            gun.reloadTime = 0.5f;
+            gun.spread = 0.6f;
+            gun.reloadTime = 0.8f;
             gun.projectileSpeed = 2.0f;
-            gun.damage = 0.2f;
+            gun.damage = 0.1f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -30,7 +31,7 @@ namespace UnstableCards.Cards.Wacky
             timer.seconds = 5;
             audioSource.PlayOneShot(UnstableAssets.HeavyWeaponsGuyAudio, 1.5f);
 
-            gunAmmo.maxAmmo += 99;
+            gunAmmo.maxAmmo += 75;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -58,9 +59,9 @@ namespace UnstableCards.Cards.Wacky
             {
                 new CardInfoStat()
                 {
-                    positive = true,
+                    positive = false,
                     stat = "Reload Time",
-                    amount = "0.5s",
+                    amount = "0.8s",
                     simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
                 },
                 new CardInfoStat()
@@ -74,7 +75,7 @@ namespace UnstableCards.Cards.Wacky
                 {
                     positive = false,
                     stat = "DMG",
-                    amount = "-80%",
+                    amount = "-90%",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotLower
                 },
                 new CardInfoStat()

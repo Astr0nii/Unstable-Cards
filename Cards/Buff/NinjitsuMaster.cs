@@ -16,9 +16,9 @@ namespace UnstableCards.Cards.Buff
         {
             block.additionalBlocks = +2;
             block.forceToAdd = -15f;
-            block.cdMultiplier = 0.55f;
+            block.cdMultiplier = 0.7f;
             statModifiers.health = 0.85f;
-            statModifiers.movementSpeed = 1.3f;
+            statModifiers.movementSpeed = 1.2f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -59,14 +59,14 @@ namespace UnstableCards.Cards.Buff
                 {
                     positive = true,
                     stat = "Block Cooldown",
-                    amount = "-45%",
+                    amount = "-30%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Movement Speed",
-                    amount = "+30%",
+                    amount = "+20%",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()

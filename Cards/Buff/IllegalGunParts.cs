@@ -16,7 +16,7 @@ namespace UnstableCards.Cards.Buff
         {
             gun.damage = 1.1f;
             gun.projectileSpeed = 1.05f;
-            gun.attackSpeedMultiplier = 1.2f;
+            gun.attackSpeedMultiplier = 1.15f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -56,7 +56,7 @@ namespace UnstableCards.Cards.Buff
                 {
                     positive = true,
                     stat = "ATKSPD",
-                    amount = "+20%",
+                    amount = "+15%",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()

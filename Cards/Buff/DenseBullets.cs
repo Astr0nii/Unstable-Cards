@@ -14,13 +14,13 @@ namespace UnstableCards.Cards.Buff
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            gun.projectileSpeed = 0.7f;
+            gun.projectileSpeed = 0.6f;
             gun.projectileSize = 0.5f;
             gun.spread = 0;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gun.numberOfProjectiles += 3;
+            gun.numberOfProjectiles += 2;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -50,7 +50,7 @@ namespace UnstableCards.Cards.Buff
                 {
                     positive = true,
                     stat = "Bullets",
-                    amount = "+3",
+                    amount = "+2",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
@@ -64,7 +64,7 @@ namespace UnstableCards.Cards.Buff
                 {
                     positive = false,
                     stat = "Bullet Speed",
-                    amount = "-30%",
+                    amount = "-40%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
                 }
             };

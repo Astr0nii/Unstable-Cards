@@ -15,7 +15,7 @@ namespace UnstableCards.Cards.Buff
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            gun.reloadTime = 1.2f;
+            gun.reloadTime = 1.4f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -57,7 +57,7 @@ namespace UnstableCards.Cards.Buff
                 {
                     positive = false,
                     stat = "Reload Time",
-                    amount = "+20%",
+                    amount = "+40%",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()

@@ -22,7 +22,7 @@ namespace UnstableCards.Cards.Buff
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
             gunAmmo.maxAmmo = 1;
-            gun.damage *= 4.0f;
+            gun.damage *= 3.0f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -52,7 +52,7 @@ namespace UnstableCards.Cards.Buff
                 {
                     positive = true,
                     stat = "Damage",
-                    amount = "+400%",
+                    amount = "+300%",
                     simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
                 },
                 new CardInfoStat()

@@ -16,7 +16,7 @@ namespace UnstableCards.Cards.Wacky
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.health = 0.5f;
+            statModifiers.health = 0.4f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -27,7 +27,7 @@ namespace UnstableCards.Cards.Wacky
             flight.SetContinuousTrigger(true);
             flight.SetResetOnWallGrab(true);
             flight.SetInterval(0.1f);
-            gravity.gravityForce = 0.01f;
+            gravity.gravityForce = 0.05f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -64,7 +64,7 @@ namespace UnstableCards.Cards.Wacky
                 {
                     positive = false,
                     stat = "Health",
-                    amount = "-50%",
+                    amount = "-60%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
                 }
             };

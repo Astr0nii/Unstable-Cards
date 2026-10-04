@@ -14,7 +14,7 @@ namespace UnstableCards.Cards.Buff
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.health = 1.35f;
+            statModifiers.health = 1.25f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -25,7 +25,7 @@ namespace UnstableCards.Cards.Buff
             timer.seconds = 5;
             audioSource.PlayOneShot(UnstableAssets.GoldenAppleAudio, 1.5f);
 
-            player.data.healthHandler.regeneration += 5;
+            player.data.healthHandler.regeneration += 3;
             characterStats.movementSpeed *= 0.9f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -56,14 +56,14 @@ namespace UnstableCards.Cards.Buff
                 {
                     positive = true,
                     stat = "Life Regeneration",
-                    amount = "+5hp/s",
+                    amount = "+3hp/s",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Health",
-                    amount = "+35%",
+                    amount = "+25%",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()

@@ -28,12 +28,12 @@ namespace UnstableCards.Cards.Buff
                 cardCount = player.data.currentCards.Count;
             }
             
-            gun.damage *= 1 + (cardCount * 0.04f);
-            gun.projectileSpeed *= 1 + (cardCount * 0.04f);
-            player.data.maxHealth *= 1 + (cardCount * 0.04f);
-            gun.attackSpeed *= 1 - (cardCount * 0.04f);
-            gunAmmo.reloadTimeMultiplier *= 1 - (cardCount * 0.04f);
-            characterStats.movementSpeed *= 1 - (cardCount * 0.04f);
+            gun.damage *= 1 + (cardCount * 0.03f);
+            gun.projectileSpeed *= 1 + (cardCount * 0.03f);
+            player.data.maxHealth *= 1 + (cardCount * 0.03f);
+            gun.attackSpeed *= 1 - (cardCount * 0.05f);
+            gunAmmo.reloadTimeMultiplier *= 1 - (cardCount * 0.05f);
+            characterStats.movementSpeed *= 1 - (cardCount * 0.05f);
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -63,42 +63,42 @@ namespace UnstableCards.Cards.Buff
                 {
                     positive = true,
                     stat = "Damage",
-                    amount = "+4%",
+                    amount = "+3%",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Health",
-                    amount = "+4%",
+                    amount = "+3%",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Bullet Speed",
-                    amount = "+4%",
+                    amount = "+3%",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "ATKSPD",
-                    amount = "-4%",
+                    amount = "-5%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Reload Time",
-                    amount = "-4%",
+                    amount = "-5%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Movement Speed",
-                    amount = "-4%",
+                    amount = "-5%",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 }
             };

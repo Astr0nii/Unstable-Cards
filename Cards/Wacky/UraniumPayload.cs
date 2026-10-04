@@ -18,16 +18,16 @@ namespace UnstableCards.Cards.Wacky
 
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            gun.attackSpeed = 5.5f;
+            gun.attackSpeed = 4.0f;
             gun.projectileColor = Color.green;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gun.damage *= 6f;
+            gun.damage *= 4f;
 
-            characterStats.movementSpeed *= 0.5f;
+            characterStats.movementSpeed *= 0.7f;
 
-            gun.attackSpeed *= 4f;
+            gun.attackSpeed *= 2f;
 
             // add explosion effect
             if (explosionToSpawn[0] == null)
@@ -36,8 +36,10 @@ namespace UnstableCards.Cards.Wacky
 
                 if (explosion != null)
                 {
-                    explosion.force *= 16f;
-                    explosion.range *= 3f;
+                    // Rebalanced: the old blast (force x16, range x3) nuked entire rooms on every shot.
+                    // Uranium is still unstable, just a *smaller* kind of unstable.
+                    explosion.force *= 8f;
+                    explosion.range *= 1.5f;
 
                     explosionToSpawn[0] = new ObjectsToSpawn
                     {
@@ -73,7 +75,7 @@ namespace UnstableCards.Cards.Wacky
         }
         protected override string GetDescription()
         {
-            return "Makes your bullets explosive. Ammunition infused with 20KG of <color=#84FF00>Uranium 235</color> for unstable results. 100% Compliant with OSHA guidelines!";
+            return "Makes your bullets explosive. Ammunition infused with 20KG of <color=#84FF00>Uranium 235</color> for unstable results. 100% Compliant with OSHA guidelines! (Now only a *localised* radiation leak.)";
         }
         protected override GameObject GetCardArt()
         {
@@ -98,14 +100,21 @@ namespace UnstableCards.Cards.Wacky
                 {
                     positive = false,
                     stat = "ATKSPD",
-                    amount = "5.5s",
+                    amount = "8.0s",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = false,
+                    stat = "Blast Radius",
+                    amount = "Small-ish",
+                    simepleAmount = CardInfoStat.SimpleAmount.Some
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
                     stat = "Movement Speed",
-                    amount = "-50%",
+                    amount = "-30%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
                 }
             };
