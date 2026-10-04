@@ -1,4 +1,5 @@
 ﻿using ClassesManagerReborn.Util;
+using HarmonyLib;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
@@ -9,6 +10,9 @@ namespace UnstableCards.Cards.Wacky
 {
     class Fireflies : CustomCard
     {
+        // How long a single firefly lives for, in seconds. After that it flickers out of existence.
+        internal const float FIREFLY_LIFESPAN = 2.0f;
+
         public override void Callback()
         {
             gameObject.GetOrAddComponent<ClassNameMono>().className = WackyClass.name;
@@ -40,7 +44,7 @@ namespace UnstableCards.Cards.Wacky
         }
         protected override string GetDescription()
         {
-            return "Shoot slow moving fireflies, You won't believe your eyes!";
+            return "Shoot slow moving fireflies, You won't believe your eyes! They phase through walls, but they don't live long.";
         }
         protected override GameObject GetCardArt()
         {
@@ -88,6 +92,13 @@ namespace UnstableCards.Cards.Wacky
                     stat = "Bullet Damage",
                     amount = "-80%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
+                    stat = "Bullet Lifespan",
+                    amount = $"{FIREFLY_LIFESPAN:0.0}s",
+                    simepleAmount = CardInfoStat.SimpleAmount.aLotLower
                 }
             };
 
@@ -99,6 +110,29 @@ namespace UnstableCards.Cards.Wacky
         public override string GetModName()
         {
             return UnstableCards.ModInitials;
+        }
+    }
+
+    /// <summary>
+    /// Attaches the Fireflies lifespan timer to every Fireflies projectile as it is instantiated.
+    /// Runs locally on every client, so the phasing fireflies poof away at the same moment for everyone.
+    /// </summary>
+    [HarmonyPatch(typeof(Gun), nameof(Gun.InstantiateProjectile))]
+    internal static class Fireflies_ProjectileLifetime_Patch
+    {
+        const string FIREFLIES_CARD_NAME = "Fireflies";
+
+        static void Postfix(Gun __instance, GameObject __result)
+        {
+            if (__result == null) return;
+
+            // Only our own firefly gun gets a lifespan, every other bullet is left alone.
+            CardInfo cardInfo = __instance.GetComponent<CardInfo>();
+            bool isFireflies = cardInfo != null && cardInfo.cardName == FIREFLIES_CARD_NAME;
+            if (!isFireflies && __instance.name != FIREFLIES_CARD_NAME) return;
+
+            FirefliesLifespan lifespan = __result.AddComponent<FirefliesLifespan>();
+            lifespan.lifespan = Fireflies.FIREFLY_LIFESPAN;
         }
     }
 }

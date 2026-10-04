@@ -14,14 +14,16 @@ namespace UnstableCards.Cards.Wacky
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            gun.projectileSpeed = 1.5f;
-            gun.projectileSize = 1.5f;
+            // Rebalanced: 5 homing freight trains per shot was a little excessive.
+            gun.projectileSpeed = 1.2f;
+            gun.projectileSize = 1.25f;
             gun.spread = 0;
-            gun.knockback = 80.0f;
+            gun.knockback = 50.0f;
+            gun.damage = 0.85f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            gun.numberOfProjectiles += 5;
+            gun.numberOfProjectiles += 3;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -51,22 +53,29 @@ namespace UnstableCards.Cards.Wacky
                 {
                     positive = true,
                     stat = "Bullets",
-                    amount = "+5",
+                    amount = "+3",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Bullet Size",
-                    amount = "+50%",
+                    amount = "+25%",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Bullet Speed",
-                    amount = "+200%",
-                    simepleAmount = CardInfoStat.SimpleAmount.aLotOf
+                    amount = "+20%",
+                    simepleAmount = CardInfoStat.SimpleAmount.Some
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
+                    stat = "Damage",
+                    amount = "-15%",
+                    simepleAmount = CardInfoStat.SimpleAmount.lower
                 },
                 new CardInfoStat()
                 {

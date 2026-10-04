@@ -15,9 +15,13 @@ namespace UnstableCards.Cards.Wacky
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
+            // Rebalanced: hitscan bullets were free. Now you pay for them.
             gun.spread = 0f;
             gun.projectileSpeed = 99.9f;
             gun.projectielSimulatonSpeed = 9.9f;
+            gun.damage = 0.5f;
+            gun.knockback = 0f;
+            gun.size = 0.5f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         { 
@@ -59,6 +63,20 @@ namespace UnstableCards.Cards.Wacky
                     stat = "Bullet Spread",
                     amount = "resets",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotLower
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
+                    stat = "Damage",
+                    amount = "-50%",
+                    simepleAmount = CardInfoStat.SimpleAmount.lower
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
+                    stat = "Knockback",
+                    amount = "resets",
+                    simepleAmount = CardInfoStat.SimpleAmount.lower
                 }
             };
 

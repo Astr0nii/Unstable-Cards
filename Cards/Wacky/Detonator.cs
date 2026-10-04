@@ -18,10 +18,13 @@ namespace UnstableCards.Cards.Wacky
 
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            gun.bulletDamageMultiplier = 2.0f;
-            gun.size = 10.0f;
+            // Rebalanced: unblockable one-shot-kill bomb is kept (it kills YOU too),
+            // but the blast no longer reaches across the whole map.
+            gun.bulletDamageMultiplier = 1.5f;
+            gun.size = 6.0f;
             gun.projectileSpeed = 0.5f;
             gun.unblockable = true;
+            gun.numberOfProjectiles = 1;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -32,8 +35,8 @@ namespace UnstableCards.Cards.Wacky
 
                 if (explosion != null)
                 {
-                    explosion.force *= 10f;
-                    explosion.range *= 3f;
+                    explosion.force *= 8f;
+                    explosion.range *= 2f;
                     explosion.damage = int.MaxValue;
                     explosion.ignoreWalls = true;
 
@@ -90,6 +93,20 @@ namespace UnstableCards.Cards.Wacky
                     positive = false,
                     stat = "Self Explosion",
                     amount = "explosion!",
+                    simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
+                    stat = "Blast Radius",
+                    amount = "smaller than it looks",
+                    simepleAmount = CardInfoStat.SimpleAmount.Some
+                },
+                new CardInfoStat()
+                {
+                    positive = false,
+                    stat = "Bullet Size",
+                    amount = "+500%",
                     simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
                 }
             };

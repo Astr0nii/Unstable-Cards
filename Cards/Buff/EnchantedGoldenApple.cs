@@ -15,7 +15,7 @@ namespace UnstableCards.Cards.Buff
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.health = 2.0f;
+            statModifiers.health = 1.6f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -26,8 +26,8 @@ namespace UnstableCards.Cards.Buff
             timer.seconds = 5;
             audioSource.PlayOneShot(UnstableAssets.GoldenAppleAudio, 1.5f);
 
-            player.data.healthHandler.regeneration += 25;
-            characterStats.movementSpeed *= 0.65f;
+            player.data.healthHandler.regeneration += 12;
+            characterStats.movementSpeed *= 0.55f;
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -57,21 +57,21 @@ namespace UnstableCards.Cards.Buff
                 {
                     positive = true,
                     stat = "Life Regeneration",
-                    amount = "+25hp/s",
+                    amount = "+12hp/s",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = true,
                     stat = "Health",
-                    amount = "+100%",
+                    amount = "+60%",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Movement Speed",
-                    amount = "-35%",
+                    amount = "-45%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
                 }
             };

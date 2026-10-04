@@ -14,7 +14,7 @@ namespace UnstableCards.Cards.Buff
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            gun.damage = 0.9f;
+            gun.damage = 0.8f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -56,7 +56,7 @@ namespace UnstableCards.Cards.Buff
                 {
                     positive = false,
                     stat = "Damage",
-                    amount = "-10%",
+                    amount = "-20%",
                     simepleAmount = CardInfoStat.SimpleAmount.slightlyLower
                 }
             };

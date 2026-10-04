@@ -16,10 +16,10 @@ namespace UnstableCards.Cards.Wacky
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             gun.attackSpeed = 1.5f;
-            gun.damage = 0.75f;
-            gun.spread = 0.25f;
+            gun.damage = 0.6f;
+            gun.spread = 0.35f;
             gun.multiplySpread = 1.75f;
-            gun.knockback = 10.0f;
+            gun.knockback = 6.0f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -30,7 +30,7 @@ namespace UnstableCards.Cards.Wacky
             timer.seconds = 5;
             audioSource.PlayOneShot(Assets.BoomstickAudio, 1.5f);*/
 
-            gun.bodyRecoil += 350;
+            gun.bodyRecoil += 450;
             gunAmmo.reloadTimeAdd += 2.0f;
             gun.numberOfProjectiles += 5; 
         }
@@ -62,7 +62,7 @@ namespace UnstableCards.Cards.Wacky
                 {
                     positive = true,
                     stat = "Knockback",
-                    amount = "+1000%",
+                    amount = "+600%",
                     simepleAmount = CardInfoStat.SimpleAmount.aHugeAmountOf
                 },
                 new CardInfoStat()
@@ -90,21 +90,21 @@ namespace UnstableCards.Cards.Wacky
                 {
                     positive = false,
                     stat = "DMG",
-                    amount = "-20%",
+                    amount = "-40%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Spread",
-                    amount = "+25%",
+                    amount = "+35%",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Recoil",
-                    amount = "+350",
+                    amount = "+450",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 }
             };
