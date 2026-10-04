@@ -1,16 +1,11 @@
 ﻿using ClassesManagerReborn.Util;
-using RarityLib.Utils;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using RarityLib.Utils;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.Special;
 using UnstableCards.Cards.NameClasses;
-using ModdingUtils;
 
 namespace UnstableCards.Cards.Totem
 {
@@ -32,19 +27,23 @@ namespace UnstableCards.Cards.Totem
 
 
             // Card Removing Logic
-            List<int> cardIndicesToRemove = new List<int>();
-            for (int i = 0; i < player.data.currentCards.Count(); i++)
+            // The Totem itself occupies the last slot, so only remove the cards that come before it.
+            int totemIndex = player.data.currentCards.Count - 1;
+            if (totemIndex > 0)
             {
-                cardIndicesToRemove.Add(i);
+                int[] cardIndicesToRemove = Enumerable.Range(0, totemIndex).ToArray();
+                ModdingUtils.Utils.Cards.instance.RemoveCardsFromPlayer(player, cardIndicesToRemove);
             }
-            ModdingUtils.Utils.Cards.instance.RemoveCardsFromPlayer(player, cardIndicesToRemove.ToArray());
 
             // Add new card
-            string cardName = "Rebirthed Soul";
-            CardInfo cardInfo = UnstableCards.GetCardInfoByName(cardName);
+            CardInfo cardInfo = UnstableCards.GetCardInfoByName("Rebirthed Soul");
             if (cardInfo != null)
             {
-                ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, cardInfo, reassign: true, twoLetterCode: "", forceDisplay: 0f, forceDisplayDelay: 0f);
+                ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, cardInfo, reassign: false, twoLetterCode: "", forceDisplay: 0f, forceDisplayDelay: 0f);
+            }
+            else
+            {
+                Debug.LogWarning("[UC] Totem Of Rebirth could not find the 'Rebirthed Soul' card.");
             }
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)

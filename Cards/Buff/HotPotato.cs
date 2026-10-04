@@ -1,7 +1,6 @@
 ﻿using UnboundLib.Cards;
 using UnityEngine;
 using System.Collections;
-using ClassesManagerReborn.Util;
 using UnboundLib;
 using UnstableCards.Cards.NameClasses;
 

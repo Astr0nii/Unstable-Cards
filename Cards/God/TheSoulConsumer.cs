@@ -1,17 +1,9 @@
 ﻿using ClassesManagerReborn.Util;
-using Photon.Pun.Simple;
-using RarityLib.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnboundLib;
+using RarityLib.Utils;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
-using static CardInfoStat;
-using static UnityEngine.Random;
 
 namespace UnstableCards.Cards.God
 {

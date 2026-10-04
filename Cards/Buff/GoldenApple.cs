@@ -1,9 +1,4 @@
 ﻿using ClassesManagerReborn.Util;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
@@ -67,7 +62,7 @@ namespace UnstableCards.Cards.Buff
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "health",
+                    stat = "Health",
                     amount = "+35%",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 },

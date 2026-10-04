@@ -1,6 +1,6 @@
 ﻿using ClassesManagerReborn.Util;
-using RarityLib.Utils;
 using UnboundLib;
+using RarityLib.Utils;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
@@ -34,7 +34,7 @@ namespace UnstableCards.Cards.Damned
         }
         protected override string GetDescription()
         {
-            return "Infused with the souls of whom were condemmed to defending this land. Sacrifice is generally the opposite stat of what is being buffed!";
+            return "Infused with the souls of whom were condemned to defending this land. Sacrifice is generally the opposite stat of what is being buffed!";
         }
         protected override GameObject GetCardArt()
         {

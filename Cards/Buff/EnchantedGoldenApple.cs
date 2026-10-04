@@ -1,11 +1,6 @@
 ﻿using ClassesManagerReborn.Util;
-using RarityLib.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnboundLib;
+using RarityLib.Utils;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
@@ -68,7 +63,7 @@ namespace UnstableCards.Cards.Buff
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "health",
+                    stat = "Health",
                     amount = "+100%",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },

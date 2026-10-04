@@ -1,15 +1,9 @@
 ﻿using ClassesManagerReborn.Util;
-using RarityLib.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnboundLib;
+using RarityLib.Utils;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
-using ModdingUtils;
 
 namespace UnstableCards.Cards.Special
 {
@@ -17,7 +11,8 @@ namespace UnstableCards.Cards.Special
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            statModifiers.health = 3.0f;
+            cardInfo.allowMultiple = false;
+            statModifiers.health = 2.0f;
             statModifiers.respawns += 1;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -38,7 +33,7 @@ namespace UnstableCards.Cards.Special
         }
         protected override GameObject GetCardArt()
         {
-            return null; // Replace with actual card art if available
+            return UnstableAssets.PlaceHolderArt;
         }
         protected override CardInfo.Rarity GetRarity()
         {

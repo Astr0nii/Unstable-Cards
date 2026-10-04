@@ -1,6 +1,4 @@
 ﻿using ClassesManagerReborn.Util;
-using RarityLib.Utils;
-using System;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;

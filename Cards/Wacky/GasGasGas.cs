@@ -1,5 +1,4 @@
 ﻿using ClassesManagerReborn.Util;
-using RarityLib.Utils;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
@@ -11,7 +10,7 @@ namespace UnstableCards.Cards.Wacky
     {
         public override void Callback()
         {
-            gameObject.GetOrAddComponent<ClassNameMono>().className = BuffClass.name;
+            gameObject.GetOrAddComponent<ClassNameMono>().className = WackyClass.name;
         }
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {

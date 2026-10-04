@@ -1,17 +1,11 @@
 ﻿using ClassesManagerReborn.Util;
-using RarityLib.Utils;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using RarityLib.Utils;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 using UnstableCards.Cards.NameClasses;
-using System.Threading;
 using System.Collections;
-using Photon.Pun;
 
 namespace UnstableCards.Cards.Totem
 {
@@ -34,7 +28,6 @@ namespace UnstableCards.Cards.Totem
             audioSource.PlayOneShot(UnstableAssets.totemOfTheBalancedAudio, 1.2f);
 
             // Card Adding/Removing Logic
-            UnityEngine.Debug.Log($"{player.data.currentCards}");
             Unbound.Instance.StartCoroutine(DoReplaceCards(player));
         }
         private static IEnumerator DoReplaceCards(Player player)
