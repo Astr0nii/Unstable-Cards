@@ -83,6 +83,9 @@ namespace UnstableCards
             CustomCard.BuildCard<Bubble>();
             CustomCard.BuildCard<TrainBullets>();
             CustomCard.BuildCard<GasGasGas>();
+            CustomCard.BuildCard<Dealership>();
+            CustomCard.BuildCard<FiveHeadedDog>();
+            CustomCard.BuildCard<BananaPeel>();
 
             // Sorcery Cards
             CustomCard.BuildCard<PinballWizard>();
